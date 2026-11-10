@@ -1,0 +1,33 @@
+{
+  "ai_ml": {
+    "n": 6565,
+    "p25": 18.0,
+    "p50": 30.0,
+    "p75": 50.0
+  },
+  "fullstack": {
+    "n": 18380,
+    "p25": 15.0,
+    "p50": 25.0,
+    "p75": 37.0
+  },
+  "data_analyst": {
+    "n": 14021,
+    "p25": 15.0,
+    "p50": 30.0,
+    "p75": 50.0
+  },
+  "by_primary_skill_success_dataset": {
+    "AI & Machine Learning": 280.0,
+    "Accounting & Finance": 280.0,
+    "Content Writing / Copywriting": 280.0,
+    "Data Science & Analytics": 280.0,
+    "Digital Marketing": 280.0,
+    "Graphic Design": 280.0,
+    "Mobile App Development": 280.0,
+    "SEO / SEM": 280.0,
+    "Video Editing": 280.0,
+    "Virtual Assistant": 280.0,
+    "Web Development": 280.0
+  }
+}

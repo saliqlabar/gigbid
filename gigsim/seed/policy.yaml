@@ -1,0 +1,10 @@
+# GigSim platform policy (stand-in). The Compliance Guard and Pricing read rules from here via the
+# marketplace port, so a platform policy update is a data change, not a code change.
+version: "1.0"
+effective_from: "2026-10-27"
+rules:
+  connects_surcharge: 0          # extra Connects added to every submission
+  max_cover_letter_words: 400
+  no_off_platform_contact: true
+  no_guarantees: true
+  no_unpaid_trials: true

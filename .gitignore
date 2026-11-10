@@ -16,3 +16,4 @@ data/raw/
 !.env.example
 playwright-report/
 test-results/
+gigsim/*.sqlite3
