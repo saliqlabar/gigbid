@@ -213,8 +213,7 @@ async def structured(node: str, prompt: str, variables: dict, model: type[T], te
     try:
         return model.model_validate_json(_extract_json(raw))
     except ValidationError as e:
-        fix = [{"role": "assistant", "content": raw},
-               {"role": "user", "content": f"That JSON did not validate: {str(e)[:800]}\n"
-                                           f"Return ONLY corrected JSON matching the schema."}]
+        _, _, repair = prompts.render("json_repair", {"error": str(e)[:800]})
+        fix = [{"role": "assistant", "content": raw}, {"role": "user", "content": repair}]
         raw2 = await acomplete(node, prompt, variables, json_mode=True, temperature=0, extra_messages=fix)
         return model.model_validate_json(_extract_json(raw2))

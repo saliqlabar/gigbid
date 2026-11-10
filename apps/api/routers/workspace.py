@@ -1,7 +1,6 @@
 """Pipeline board, client messages, analytics, settings, memory viewer, marketplace status, portfolio upload."""
 from __future__ import annotations
 
-import json
 from collections import Counter, defaultdict
 from pathlib import Path
 

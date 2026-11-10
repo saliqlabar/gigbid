@@ -1,0 +1,19 @@
+name: Eval gate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  smoke-eval:
+    name: 30-job smoke eval with failure thresholds
+    runs-on: ubuntu-latest
+    env: {MODEL_PROFILE: test, PYTHONPATH: .}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip, cache-dependency-path: requirements.lock}
+      - run: pip install -r requirements.lock
+      - name: Smoke eval (fails if bid/skip F1 drops or unsupported claims rise past evals/thresholds.yaml)
+        run: python -m evals.runners.smoke_eval --jobs 30
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: smoke-eval, path: evals/results/smoke_eval.json}

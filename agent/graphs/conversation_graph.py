@@ -8,8 +8,7 @@ from __future__ import annotations
 from langgraph.graph import END, START, StateGraph
 
 from agent.nodes._base import halted
-from agent.nodes.client_liaison import (approve_reply, classify, draft_reply, offer_slots, read_messages,
-                                        send_reply)
+from agent.nodes.client_liaison import approve_reply, classify, draft_reply, offer_slots, read_messages, send_reply
 from agent.state import ConversationState
 
 

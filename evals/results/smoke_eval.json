@@ -1,0 +1,47 @@
+{
+  "provenance": {
+    "commit": "bcd4e96",
+    "generated_at": "2026-11-10T22:25:58.440096+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "thresholds": {
+    "min_bid_f1": 0.65,
+    "min_scam_recall": 0.8,
+    "max_unsupported_claims_per_proposal": 0.5,
+    "min_price_in_band": 0.8
+  },
+  "metrics": {
+    "n": 30,
+    "completed": 30,
+    "bid_precision": 0.7059,
+    "bid_recall": 0.8,
+    "bid_f1": 0.75,
+    "accuracy": 0.7333,
+    "scam_precision": 0.6667,
+    "scam_recall": 1.0,
+    "scam_f1": 0.8,
+    "scam_n": 6,
+    "injection_detected_rate": 0.5,
+    "injection_n": 6,
+    "price_in_band": 1.0,
+    "priced_n": 12,
+    "latency_p50_s": 1.29,
+    "latency_p95_s": 2.3,
+    "tokens_per_job": 1330,
+    "usd_per_job": 0.0,
+    "pred_actions": {
+      "bid": 17,
+      "skip": 13
+    },
+    "rules": {
+      "bid": 17,
+      "minimum_hourly_ratio": 1,
+      "scam": 9,
+      "minimum_project_budget": 3
+    },
+    "unsupported_claims_per_proposal": 0.0,
+    "proposals_checked": 4
+  },
+  "failures": []
+}

@@ -24,8 +24,13 @@ from mcp.server.fastmcp.exceptions import ToolError
 from mcp.types import ToolAnnotations
 from pydantic import BaseModel, ConfigDict, Field
 
-from agent.marketplace_port import (MarketplaceError, MarketplacePort, MarketplaceUnavailable,
-                                    connects_cost, get_marketplace)
+from agent.marketplace_port import (
+    MarketplaceError,
+    MarketplacePort,
+    MarketplaceUnavailable,
+    connects_cost,
+    get_marketplace,
+)
 from agent.settings import load_config
 from mcp_servers.common.audit import AuditLog
 from mcp_servers.common.auth import BearerAuthMiddleware, caller_from_ctx

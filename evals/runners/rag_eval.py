@@ -16,8 +16,18 @@ import json
 import time
 from statistics import mean
 
-from evals.runners.common import (PERSONAS, RESULTS, dev_set, job_text, mrr, ndcg_at, percentile,
-                                  recall_at, seed_jobs, write_result)
+from evals.runners.common import (
+    PERSONAS,
+    RESULTS,
+    dev_set,
+    job_text,
+    mrr,
+    ndcg_at,
+    percentile,
+    recall_at,
+    seed_jobs,
+    write_result,
+)
 from rag.retriever import PRESETS, Pipeline, get_corpus
 from rag.variants.base import Query
 

@@ -1,0 +1,9 @@
+{
+ "gigsim/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+ "gigsim/README.md": "cb04d923f0a03b9444798324d029a2e53eea6c4a64ddcffd9e4578a1b00ff188",
+ "gigsim/app.py": "822fe8dc39ef29aae19587a6dfe3138128602249ea2028588e6f16c3368e4153",
+ "gigsim/seed/clients.json": "08e702b90ffa1a72f42e98ba0c6e98217306964dbcb81da111e9ac4846ff8cdb",
+ "gigsim/seed/jobs.json": "6dc82222f303676c6092ddc99a50585edb9bd411c98cf558a928bf6004699edb",
+ "gigsim/seed/market_rates.json": "75729d6ec3a734e7458c060fd31d4b45e02ab950901e489f1a8cf263dba828dc",
+ "gigsim/seed/policy.yaml": "a38b7129d222ede799179e09b6b77e0bd65e54fd1dd93fba7b47fa7ba58a8daf"
+}

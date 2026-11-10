@@ -1,8 +1,7 @@
 import httpx
 import pytest
 
-from agent.marketplace_port import (MarketplaceError, MarketplacePort, MarketplaceUnavailable,
-                                    connects_cost)
+from agent.marketplace_port import MarketplaceError, MarketplacePort, MarketplaceUnavailable, connects_cost
 from mcp_servers.marketplace.adapters.gigsim import GigSimAdapter
 
 LETTER = "I built a React and Node.js booking portal for a clinic; here is how I would start. " * 2

@@ -22,7 +22,9 @@ async def main(a):
         if res["interrupts"]:
             p = res["interrupts"][0]
             print("\n== DRAFT\n", p["draft"]["cover_letter"])
-            print("\n== CLAIMS"); [print(" -", c["status"], "|", c["claim"][:110], c["evidence_ids"]) for c in p["claims"]]
+            print("\n== CLAIMS")
+            for c in p["claims"]:
+                print(" -", c["status"], "|", c["claim"][:110], c["evidence_ids"])
             print("\n== CRITIQUES", json.dumps(s.get("critiques"), indent=1)[:1500])
             print("\n== COMPLIANCE", json.dumps(p["compliance"], indent=1)[:800])
             print("\n== DRY RUN", json.dumps(p["dry_run_preview"], indent=1)[:600])

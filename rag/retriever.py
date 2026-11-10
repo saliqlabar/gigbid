@@ -13,8 +13,7 @@ from rag.index.bm25 import BM25Index
 from rag.index.vector import VectorIndex
 from rag.ingest.chunkers import fixed_chunks, section_chunks
 from rag.ingest.loaders import EvidenceItem, load_persona
-from rag.variants import (v0_naive, v1_decompose, v2_hybrid, v3_rerank, v4_outcome, v5_multivector,
-                          v8_corrective)
+from rag.variants import v0_naive, v1_decompose, v2_hybrid, v3_rerank, v4_outcome, v5_multivector, v8_corrective
 from rag.variants.base import FIT_TYPES, Flags, Hit, Query, rrf
 
 PRESETS: dict[str, Flags] = {

@@ -261,7 +261,7 @@ def gold_evidence(job_skills: list[str], persona: str) -> list[dict]:
             scored.append((overlap, m))
     scored.sort(key=lambda x: -x[0])
     out = []
-    for rank, (ov, m) in enumerate(scored[:4]):
+    for rank, (_ov, m) in enumerate(scored[:4]):
         grade = 2 if rank < 2 else 1
         for t in ("case", "readme", "code"):
             out.append({"evidence_id": f"{persona}:{t}:{m['project']}", "grade": grade})

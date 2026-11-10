@@ -107,8 +107,9 @@ class UpworkLiveAdapter:
         return {"category": category or "all", "n_fixed": 0, "n_hourly": 0, "source": "unavailable_in_live_mode"}
 
     async def get_policy(self):
-        from agent.settings import ROOT
         import yaml
+
+        from agent.settings import ROOT
         return yaml.safe_load((ROOT / "data" / "policy_pack" / "live_policy.yaml").read_text())
 
     async def list_messages(self, freelancer_id: str, thread_id: str = ""):
