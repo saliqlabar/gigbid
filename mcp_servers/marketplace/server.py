@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import os
 from collections import defaultdict
 from typing import Annotated, Any, Literal
 
@@ -40,7 +41,8 @@ mcp = FastMCP("gigbid-marketplace", instructions=(
 _port: MarketplacePort | None = None
 _audit: AuditLog | None = None
 _idem: IdempotencyStore | None = None
-_limiter = PerUserRateLimiter(int(load_config()["marketplace"].get("max_requests_per_minute", 20)))
+_limiter = PerUserRateLimiter(int(os.getenv("MARKETPLACE_RATE_LIMIT") or
+                                  load_config()["marketplace"].get("max_requests_per_minute", 20)))
 _key_locks: dict[str, asyncio.Lock] = defaultdict(asyncio.Lock)
 
 

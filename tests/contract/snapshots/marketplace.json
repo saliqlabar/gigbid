@@ -1,0 +1,1410 @@
+{
+ "prompts": [],
+ "resource_templates": [],
+ "tools": {
+  "create_proposal_draft": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false,
+    "title": "Create proposal draft"
+   },
+   "input": {
+    "properties": {
+     "bid_amount": {
+      "description": "USD; hourly rate if bid_type=hourly",
+      "exclusiveMinimum": 0,
+      "maximum": 1000000,
+      "title": "Bid Amount",
+      "type": "number"
+     },
+     "bid_type": {
+      "default": "fixed",
+      "enum": [
+       "fixed",
+       "hourly"
+      ],
+      "title": "Bid Type",
+      "type": "string"
+     },
+     "cover_letter": {
+      "maxLength": 5000,
+      "minLength": 50,
+      "title": "Cover Letter",
+      "type": "string"
+     },
+     "dry_run": {
+      "default": false,
+      "description": "Preview only: return the payload and cost, send nothing",
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "Unique per intended action; retries must reuse it",
+      "maxLength": 128,
+      "minLength": 8,
+      "pattern": "^[A-Za-z0-9:_\\-.]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "job_id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Job Id",
+      "type": "string"
+     },
+     "screening_answers": {
+      "default": [],
+      "items": {
+       "maxLength": 2000,
+       "type": "string"
+      },
+      "maxItems": 10,
+      "title": "Screening Answers",
+      "type": "array"
+     }
+    },
+    "required": [
+     "job_id",
+     "cover_letter",
+     "bid_amount",
+     "idempotency_key"
+    ],
+    "title": "create_proposal_draftArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "balance_before": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance Before"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replayed": {
+      "default": false,
+      "description": "True when an earlier call with this idempotency_key is returned",
+      "title": "Replayed",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "thread_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Thread Id"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "description": "dry_run only: the exact payload that would be sent",
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  },
+  "get_client_history": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "client_id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Client Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "client_id"
+    ],
+    "title": "get_client_historyArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "average_rating": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Average Rating"
+     },
+     "client_id": {
+      "title": "Client Id",
+      "type": "string"
+     },
+     "country": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Country"
+     },
+     "hire_rate": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hire Rate"
+     },
+     "jobs_posted": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Jobs Posted"
+     },
+     "member_since": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Member Since"
+     },
+     "payment_verified": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Payment Verified"
+     },
+     "reviews_count": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Reviews Count"
+     },
+     "total_spent_usd": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Total Spent Usd"
+     }
+    },
+    "required": [
+     "client_id"
+    ],
+    "title": "ClientHistory",
+    "type": "object"
+   }
+  },
+  "get_connects_balance": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "get_connects_balanceArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "balance": {
+      "title": "Balance",
+      "type": "integer"
+     },
+     "freelancer_id": {
+      "title": "Freelancer Id",
+      "type": "string"
+     },
+     "weekly_grant": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Weekly Grant"
+     }
+    },
+    "required": [
+     "freelancer_id",
+     "balance"
+    ],
+    "title": "ConnectsBalance",
+    "type": "object"
+   }
+  },
+  "get_job": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "job_id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Job Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "job_id"
+    ],
+    "title": "get_jobArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "budget_max": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Budget Max"
+     },
+     "budget_min": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Budget Min"
+     },
+     "budget_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Budget Type"
+     },
+     "category": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Category"
+     },
+     "client_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Client Id"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "description": {
+      "default": "",
+      "title": "Description",
+      "type": "string"
+     },
+     "hourly_high": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hourly High"
+     },
+     "hourly_low": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hourly Low"
+     },
+     "job_id": {
+      "title": "Job Id",
+      "type": "string"
+     },
+     "published_at": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Published At"
+     },
+     "screening_questions": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Screening Questions",
+      "type": "array"
+     },
+     "skills": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Skills",
+      "type": "array"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "job_id",
+     "title"
+    ],
+    "title": "Job",
+    "type": "object"
+   }
+  },
+  "get_market_stats": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "category": {
+      "default": "",
+      "maxLength": 60,
+      "title": "Category",
+      "type": "string"
+     }
+    },
+    "title": "get_market_statsArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "category": {
+      "title": "Category",
+      "type": "string"
+     },
+     "fixed_p25": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Fixed P25"
+     },
+     "fixed_p50": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Fixed P50"
+     },
+     "fixed_p75": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Fixed P75"
+     },
+     "hourly_p25": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hourly P25"
+     },
+     "hourly_p50": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hourly P50"
+     },
+     "hourly_p75": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Hourly P75"
+     },
+     "n_fixed": {
+      "title": "N Fixed",
+      "type": "integer"
+     },
+     "n_hourly": {
+      "title": "N Hourly",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "category",
+     "n_fixed",
+     "n_hourly"
+    ],
+    "title": "MarketStats",
+    "type": "object"
+   }
+  },
+  "get_policy": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "get_policyArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "rules": {
+      "additionalProperties": true,
+      "title": "Rules",
+      "type": "object"
+     },
+     "version": {
+      "title": "Version",
+      "type": "string"
+     }
+    },
+    "required": [
+     "version",
+     "rules"
+    ],
+    "title": "Policy",
+    "type": "object"
+   }
+  },
+  "list_events": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "after": {
+      "default": 0,
+      "minimum": 0,
+      "title": "After",
+      "type": "integer"
+     }
+    },
+    "title": "list_eventsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "events": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Events",
+      "type": "array"
+     },
+     "last_seq": {
+      "title": "Last Seq",
+      "type": "integer"
+     }
+    },
+    "required": [
+     "events",
+     "last_seq"
+    ],
+    "title": "EventList",
+    "type": "object"
+   }
+  },
+  "list_messages": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "thread_id": {
+      "default": "",
+      "maxLength": 64,
+      "title": "Thread Id",
+      "type": "string"
+     }
+    },
+    "title": "list_messagesArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "Thread": {
+      "additionalProperties": true,
+      "properties": {
+       "client_id": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Client Id"
+       },
+       "job_id": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Job Id"
+       },
+       "messages": {
+        "default": [],
+        "items": {
+         "additionalProperties": true,
+         "type": "object"
+        },
+        "title": "Messages",
+        "type": "array"
+       },
+       "proposal_id": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Proposal Id"
+       },
+       "thread_id": {
+        "title": "Thread Id",
+        "type": "string"
+       }
+      },
+      "required": [
+       "thread_id"
+      ],
+      "title": "Thread",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "threads": {
+      "items": {
+       "$ref": "#/$defs/Thread"
+      },
+      "title": "Threads",
+      "type": "array"
+     }
+    },
+    "required": [
+     "threads"
+    ],
+    "title": "ThreadList",
+    "type": "object"
+   }
+  },
+  "list_proposals": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "list_proposalsArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "proposals": {
+      "items": {
+       "additionalProperties": true,
+       "type": "object"
+      },
+      "title": "Proposals",
+      "type": "array"
+     }
+    },
+    "required": [
+     "proposals"
+    ],
+    "title": "ProposalList",
+    "type": "object"
+   }
+  },
+  "marketplace_status": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {},
+    "title": "marketplace_statusArguments",
+    "type": "object"
+   },
+   "output": {
+    "properties": {
+     "available": {
+      "title": "Available",
+      "type": "boolean"
+     },
+     "detail": {
+      "default": "",
+      "title": "Detail",
+      "type": "string"
+     },
+     "marketplace": {
+      "title": "Marketplace",
+      "type": "string"
+     }
+    },
+    "required": [
+     "marketplace",
+     "available"
+    ],
+    "title": "Status",
+    "type": "object"
+   }
+  },
+  "search_jobs": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": true
+   },
+   "input": {
+    "properties": {
+     "category": {
+      "default": "",
+      "maxLength": 60,
+      "title": "Category",
+      "type": "string"
+     },
+     "limit": {
+      "default": 20,
+      "maximum": 50,
+      "minimum": 1,
+      "title": "Limit",
+      "type": "integer"
+     },
+     "query": {
+      "default": "",
+      "description": "Space-separated keywords, all must match",
+      "maxLength": 200,
+      "title": "Query",
+      "type": "string"
+     },
+     "since": {
+      "default": "",
+      "description": "ISO timestamp; only jobs published after it",
+      "maxLength": 40,
+      "title": "Since",
+      "type": "string"
+     }
+    },
+    "title": "search_jobsArguments",
+    "type": "object"
+   },
+   "output": {
+    "$defs": {
+     "Job": {
+      "additionalProperties": true,
+      "properties": {
+       "budget_max": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Budget Max"
+       },
+       "budget_min": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Budget Min"
+       },
+       "budget_type": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Budget Type"
+       },
+       "category": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Category"
+       },
+       "client_id": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Client Id"
+       },
+       "connects_cost": {
+        "anyOf": [
+         {
+          "type": "integer"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Connects Cost"
+       },
+       "description": {
+        "default": "",
+        "title": "Description",
+        "type": "string"
+       },
+       "hourly_high": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Hourly High"
+       },
+       "hourly_low": {
+        "anyOf": [
+         {
+          "type": "number"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Hourly Low"
+       },
+       "job_id": {
+        "title": "Job Id",
+        "type": "string"
+       },
+       "published_at": {
+        "anyOf": [
+         {
+          "type": "string"
+         },
+         {
+          "type": "null"
+         }
+        ],
+        "default": null,
+        "title": "Published At"
+       },
+       "screening_questions": {
+        "default": [],
+        "items": {
+         "type": "string"
+        },
+        "title": "Screening Questions",
+        "type": "array"
+       },
+       "skills": {
+        "default": [],
+        "items": {
+         "type": "string"
+        },
+        "title": "Skills",
+        "type": "array"
+       },
+       "title": {
+        "title": "Title",
+        "type": "string"
+       }
+      },
+      "required": [
+       "job_id",
+       "title"
+      ],
+      "title": "Job",
+      "type": "object"
+     }
+    },
+    "properties": {
+     "count": {
+      "title": "Count",
+      "type": "integer"
+     },
+     "jobs": {
+      "items": {
+       "$ref": "#/$defs/Job"
+      },
+      "title": "Jobs",
+      "type": "array"
+     }
+    },
+    "required": [
+     "jobs",
+     "count"
+    ],
+    "title": "JobList",
+    "type": "object"
+   }
+  },
+  "send_message": {
+   "annotations": {
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false,
+    "title": "Send message to client"
+   },
+   "input": {
+    "properties": {
+     "dry_run": {
+      "default": false,
+      "description": "Preview only: return the payload and cost, send nothing",
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "Unique per intended action; retries must reuse it",
+      "maxLength": 128,
+      "minLength": 8,
+      "pattern": "^[A-Za-z0-9:_\\-.]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "text": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+     },
+     "thread_id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Thread Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "thread_id",
+     "text",
+     "idempotency_key"
+    ],
+    "title": "send_messageArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "balance_before": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance Before"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replayed": {
+      "default": false,
+      "description": "True when an earlier call with this idempotency_key is returned",
+      "title": "Replayed",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "thread_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Thread Id"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "description": "dry_run only: the exact payload that would be sent",
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  },
+  "submit_proposal": {
+   "annotations": {
+    "destructiveHint": true,
+    "idempotentHint": true,
+    "openWorldHint": true,
+    "readOnlyHint": false,
+    "title": "Submit proposal (spends Connects)"
+   },
+   "input": {
+    "properties": {
+     "dry_run": {
+      "default": false,
+      "description": "Preview only: return the payload and cost, send nothing",
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "idempotency_key": {
+      "description": "Unique per intended action; retries must reuse it",
+      "maxLength": 128,
+      "minLength": 8,
+      "pattern": "^[A-Za-z0-9:_\\-.]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "proposal_id": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Proposal Id",
+      "type": "string"
+     }
+    },
+    "required": [
+     "proposal_id",
+     "idempotency_key"
+    ],
+    "title": "submit_proposalArguments",
+    "type": "object"
+   },
+   "output": {
+    "additionalProperties": true,
+    "properties": {
+     "balance_after": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance After"
+     },
+     "balance_before": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Balance Before"
+     },
+     "connects_cost": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Connects Cost"
+     },
+     "dry_run": {
+      "title": "Dry Run",
+      "type": "boolean"
+     },
+     "message_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Message Id"
+     },
+     "proposal_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Proposal Id"
+     },
+     "replayed": {
+      "default": false,
+      "description": "True when an earlier call with this idempotency_key is returned",
+      "title": "Replayed",
+      "type": "boolean"
+     },
+     "status": {
+      "title": "Status",
+      "type": "string"
+     },
+     "thread_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Thread Id"
+     },
+     "would_send": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "description": "dry_run only: the exact payload that would be sent",
+      "title": "Would Send"
+     }
+    },
+    "required": [
+     "dry_run",
+     "status"
+    ],
+    "title": "WriteResult",
+    "type": "object"
+   }
+  }
+ }
+}
