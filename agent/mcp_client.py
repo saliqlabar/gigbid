@@ -100,7 +100,7 @@ class ToolLayer:
     def _connections(self) -> dict:
         token = os.getenv("MCP_CLIENT_TOKEN", "dev-mcp-token")
         headers = {"Authorization": f"Bearer {token}", "X-Trace-Id": self.trace_id,
-                   "X-GigBid-User": self.user_id}
+                   "X-GigBid-User": self.user_id, "X-GigBid-Freelancer": self.freelancer_id}
         urls = {"marketplace": os.getenv("MARKETPLACE_MCP_URL", "http://localhost:8091/mcp"),
                 "portfolio": os.getenv("PORTFOLIO_MCP_URL", "http://localhost:8092/mcp"),
                 "workspace": os.getenv("WORKSPACE_MCP_URL", "http://localhost:8093/mcp")}

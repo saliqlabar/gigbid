@@ -1,7 +1,9 @@
 """Bearer-token auth for the MCP servers' Streamable HTTP endpoint, and per-request identity.
 
-MCP_TOKENS="tokenA=user_a:fullstack,tokenB=user_b:ai_ml" maps a bearer token to (user_id,
-freelancer_id). The ASGI middleware rejects unknown tokens with 401 before MCP sees the request; tools
+MCP_TOKENS="tokenA=user_a:fullstack,svc=service:service" maps a bearer token to (user_id,
+freelancer_id). A personal token (Claude Desktop, Cursor) is pinned to its user. The `service` token is
+held only by GigBid's own API and worker: it acts on behalf of the user named in the X-GigBid-User /
+X-GigBid-Freelancer headers, which the API sets from the signed-in session (never from user input). The ASGI middleware rejects unknown tokens with 401 before MCP sees the request; tools
 then resolve the caller from the request headers, so every call is scoped to that user's tenant.
 Over stdio / in-memory (a local host such as Claude Desktop) the caller is GIGBID_USER_ID.
 """
@@ -24,7 +26,7 @@ class Caller:
 
 
 def token_table() -> dict[str, tuple[str, str]]:
-    raw = os.getenv("MCP_TOKENS", "dev-mcp-token=reviewer:fullstack")
+    raw = os.getenv("MCP_TOKENS", "dev-mcp-token=service:service")
     out = {}
     for item in filter(None, (x.strip() for x in raw.split(","))):
         tok, _, who = item.partition("=")
@@ -69,6 +71,9 @@ def caller_from_ctx(ctx: Any) -> Caller:
     if req is not None and getattr(req, "headers", None) is not None:
         tok = req.headers.get("authorization", "").removeprefix("Bearer ").strip()
         user, fid = token_table().get(tok, ("anonymous", "anonymous"))
+        if user == "service":
+            user = req.headers.get("x-gigbid-user", "anonymous")
+            fid = req.headers.get("x-gigbid-freelancer", "anonymous")
         trace_id = trace_id or req.headers.get("x-trace-id")
     else:
         user = os.getenv("GIGBID_USER_ID", "local")

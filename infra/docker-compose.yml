@@ -1,3 +1,72 @@
-# TODO: Define web, API, worker, MCP servers, GigSim, Postgres, Redis,
-# vector store and local model service as appropriate.
-services: {}
+# docker compose -f infra/docker-compose.yml --env-file .env up --build
+# Starts web, API, worker, the three MCP servers, GigSim, Postgres, Redis, Phoenix (tracing) and Ollama.
+# The vector index is exact cosine over NumPy matrices inside the Portfolio server (docs/adr/0003-vector-store.md),
+# so there is no separate vector-store container.
+x-app: &app
+  env_file: ../.env
+  restart: unless-stopped
+  volumes: [processed:/app/data/processed]
+  environment: &appenv
+    DATABASE_URL: postgresql://gigbid:gigbid@postgres:5432/gigbid
+    REDIS_URL: redis://redis:6379/0
+    GIGSIM_BASE_URL: http://gigsim:8081
+    MCP_BACKEND: http
+    MARKETPLACE_MCP_URL: http://marketplace-mcp:8091/mcp
+    PORTFOLIO_MCP_URL: http://portfolio-mcp:8092/mcp
+    WORKSPACE_MCP_URL: http://workspace-mcp:8093/mcp
+    OLLAMA_BASE_URL: http://ollama:11434/v1
+    PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006/v1/traces
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment: {POSTGRES_USER: gigbid, POSTGRES_PASSWORD: gigbid, POSTGRES_DB: gigbid}
+    volumes: [pg:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD", "pg_isready", "-U", "gigbid"], interval: 5s, retries: 10}
+  redis:
+    image: redis:7-alpine
+    healthcheck: {test: ["CMD", "redis-cli", "ping"], interval: 5s, retries: 10}
+  phoenix:
+    image: arizephoenix/phoenix:version-11.20.0
+    ports: ["6006:6006"]
+  ollama:
+    image: ollama/ollama:0.12.3
+    profiles: [open]               # docker compose --profile open up  (local open-weight models)
+    volumes: [ollama:/root/.ollama]
+    ports: ["11434:11434"]
+  gigsim:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/gigsim.Dockerfile}
+    environment: {GIGSIM_DB: /app/data/processed/gigsim.sqlite3}
+    ports: ["8081:8081"]
+  marketplace-mcp:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/marketplace-mcp.Dockerfile}
+    depends_on: [gigsim]
+  portfolio-mcp:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/portfolio-mcp.Dockerfile}
+  workspace-mcp:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/workspace-mcp.Dockerfile}
+  api:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/api.Dockerfile}
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      marketplace-mcp: {condition: service_started}
+      portfolio-mcp: {condition: service_started}
+    ports: ["8000:8000"]
+  worker:
+    <<: *app
+    build: {context: .., dockerfile: infra/docker/worker.Dockerfile}
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+  web:
+    build: {context: .., dockerfile: infra/docker/web.Dockerfile}
+    depends_on: [api]
+    ports: ["8080:80"]
+
+volumes: {pg: {}, ollama: {}, processed: {}}
