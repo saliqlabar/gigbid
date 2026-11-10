@@ -18,12 +18,12 @@ def merge_dicts(a: dict | None, b: dict | None) -> dict:
     return {**(a or {}), **(b or {})}
 
 
-_SEVERITY = {"dead_letter": 5, "needs_attention": 4, "degraded": 3, "blocked": 2}
+_SEVERITY = {"dead_letter": 5, "needs_attention": 4, "degraded": 3}
 
 
 def pick_status(a: str | None, b: str | None) -> str | None:
     """Status reducer. Parallel branches may both write a status: a more severe one is kept
-    (dead_letter > needs_attention > degraded > blocked > anything else). A value starting with '='
+    (dead_letter > needs_attention > degraded > anything else). A value starting with '='
     overrides unconditionally (used when a degraded job is resumed)."""
     if b is None:
         return a

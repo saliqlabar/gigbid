@@ -110,9 +110,25 @@ def _specs(node: str) -> list[dict]:
     return specs
 
 
+class _FakeResp:
+    def __init__(self, text: str, tin: int, tout: int):
+        from types import SimpleNamespace as NS
+        self.choices = [NS(message=NS(content=text))]
+        self.usage = NS(prompt_tokens=tin, completion_tokens=tout)
+
+
+def _fake(node: str, spec: dict, prompt: str, system: str, user: str, ver: str) -> str:
+    from agent.testing.fake_llm import respond
+    text = respond(prompt, system, user)
+    _record(node, spec, _FakeResp(text, len((system + user).split()), len(text.split())), 0.001, ver)
+    return text
+
+
 async def acomplete(node: str, prompt: str, variables: dict, json_mode: bool = False,
                     temperature: float = 0.2, extra_messages: list[dict] | None = None) -> str:
     system, user, ver = prompts.render(prompt, variables)
+    if model_for(node)["provider"] == "fake":
+        return _fake(node, model_for(node), prompt, system, user, ver)
     msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}] + (extra_messages or [])
     last = None
     for spec in _specs(node):
@@ -132,6 +148,8 @@ async def acomplete(node: str, prompt: str, variables: dict, json_mode: bool = F
 def complete_text(node: str, variables: dict, prompt: str | None = None) -> str:
     """Synchronous variant for small helper calls (e.g. the V8 query rewrite)."""
     system, user, ver = prompts.render(prompt or node, variables)
+    if model_for(node)["provider"] == "fake":
+        return _fake(node, model_for(node), prompt or node, system, user, ver)
     msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     last = None
     for spec in _specs(node):

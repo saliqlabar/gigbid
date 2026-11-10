@@ -20,6 +20,7 @@ models:
   providers:                   # all OpenAI-compatible endpoints
     ollama: {base_url: "http://localhost:11434/v1", api_key_env: OLLAMA_API_KEY}
     groq:   {base_url: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
+    fake:   {base_url: "http://unused", api_key_env: NONE}
   # USD per 1M tokens (input, output), used for cost reporting. Local models cost 0 USD; we report
   # hardware + tokens/s for them instead. Check https://groq.com/pricing before quoting numbers.
   prices:
@@ -31,6 +32,10 @@ models:
       cheap:  {provider: ollama, model: "qwen3:4b-instruct"}
       strong: {provider: ollama, model: "qwen3:8b", think: false}
       fallback: {provider: ollama, model: "llama3.2"}
+    test:                      # CI / Playwright only: scripted fake model (agent/testing/fake_llm.py)
+      cheap:  {provider: fake, model: scripted}
+      strong: {provider: fake, model: scripted}
+      fallback: {provider: fake, model: scripted}
     open_hosted:               # deployed link: open-weight models through a hosted provider (no GPU on free hosts)
       cheap:  {provider: groq, model: "openai/gpt-oss-20b", reasoning_effort: low}
       strong: {provider: groq, model: "openai/gpt-oss-120b", reasoning_effort: low}

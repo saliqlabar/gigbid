@@ -28,6 +28,14 @@ def check(text: str, policy: dict, unsupported_left: int = 0) -> ComplianceVerdi
     rules, pat = (policy or {}).get("rules", {}), patterns()
     v: list[ComplianceViolation] = []
     out = text
+    blocked = None
+    # blocking rules are checked on the ORIGINAL text, before any redaction or sentence removal
+    if rules.get("no_off_platform_contact", True) and (m := re.search(pat["off_platform"], text, flags=re.I)):
+        v.append(ComplianceViolation(rule="no_off_platform_contact", excerpt=m.group(0), fix="blocked"))
+        blocked = "asks to communicate or pay outside the platform"
+    if rules.get("no_unpaid_trials", True) and (m := re.search(pat["unpaid_work"], text, flags=re.I)):
+        v.append(ComplianceViolation(rule="no_unpaid_trials", excerpt=m.group(0), fix="blocked"))
+        blocked = blocked or "offers unpaid work"
     for name in ("email", "phone", "url"):
         for m in re.finditer(pat["redact"][name], out, flags=re.I):
             v.append(ComplianceViolation(rule=f"no_contact_details:{name}", excerpt=m.group(0), fix="redacted"))
@@ -40,15 +48,6 @@ def check(text: str, policy: dict, unsupported_left: int = 0) -> ComplianceVerdi
             else:
                 kept.append(s)
         out = " ".join(kept) if len(kept) != len(split_sentences(out)) else out
-    blocked = None
-    if rules.get("no_off_platform_contact", True) and re.search(pat["off_platform"], out, flags=re.I):
-        m = re.search(pat["off_platform"], out, flags=re.I)
-        v.append(ComplianceViolation(rule="no_off_platform_contact", excerpt=m.group(0), fix="blocked"))
-        blocked = "asks to communicate or pay outside the platform"
-    if rules.get("no_unpaid_trials", True) and re.search(pat["unpaid_work"], out, flags=re.I):
-        m = re.search(pat["unpaid_work"], out, flags=re.I)
-        v.append(ComplianceViolation(rule="no_unpaid_trials", excerpt=m.group(0), fix="blocked"))
-        blocked = blocked or "offers unpaid work"
     max_words = int(rules.get("max_cover_letter_words", 400))
     if len(out.split()) > max_words:
         v.append(ComplianceViolation(rule="max_cover_letter_words", excerpt=f"{len(out.split())} words", fix="blocked"))
