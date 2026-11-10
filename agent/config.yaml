@@ -1,6 +1,19 @@
 marketplace:
-  mode: gigsim
-  max_requests_per_minute: 20
+  mode: gigsim                 # gigsim | upwork_live   (env MARKETPLACE_MODE overrides)
+  max_requests_per_minute: 20  # per-user limiter in the Marketplace MCP server (GigSim allows 60/token)
+  timeout_s: 10
+  max_retries: 3
+  # Port method -> tool name on the official Upwork MCP server. Fill these in from the server's
+  # tools/list after connecting; an unmapped method raises "not supported in live mode".
+  upwork_tools:
+    search_jobs: search_jobs
+    get_job: get_job
+    get_client_history: get_client
+    get_connects_balance: get_connects
+    list_messages: list_messages
+    list_proposals: list_proposals
+    create_proposal_draft: create_proposal_draft
+    send_message: create_message_draft
 
 models:
   profile: open

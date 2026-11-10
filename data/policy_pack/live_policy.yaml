@@ -1,0 +1,9 @@
+# Rules applied in live (Upwork) mode, where the platform exposes no policy endpoint.
+# Mirrors data/policy_pack/marketplace_policy.md; Upwork itself shows the real Connects cost on confirm.
+version: "live-1.0"
+rules:
+  connects_surcharge: 0
+  max_cover_letter_words: 400
+  no_off_platform_contact: true
+  no_guarantees: true
+  no_unpaid_trials: true
