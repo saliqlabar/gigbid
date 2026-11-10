@@ -153,9 +153,43 @@ def _extract_json(text: str) -> str:
     return text[i:j + 1] if i >= 0 and j > i else text
 
 
+def template(model: type[BaseModel]) -> str:
+    """A compact fill-in JSON template for a Pydantic model. Small models copy a raw JSON Schema back
+    verbatim; a template of `field: <type - description>` is filled in reliably."""
+    schema = model.model_json_schema()
+    defs = schema.get("$defs", {})
+
+    def desc(p: dict) -> Any:
+        if "$ref" in p:
+            return obj(defs[p["$ref"].split("/")[-1]])
+        if "anyOf" in p:
+            p = next((x for x in p["anyOf"] if x.get("type") != "null"), p["anyOf"][0]) | \
+                {k: v for k, v in p.items() if k != "anyOf"}
+            if "$ref" in p:
+                return obj(defs[p["$ref"].split("/")[-1]])
+        t = p.get("type", "any")
+        if t == "array":
+            return [desc(p.get("items", {}))]
+        if t == "object" and "properties" in p:
+            return obj(p)
+        bits = [t]
+        if "enum" in p:
+            bits = ["one of " + "|".join(map(str, p["enum"]))]
+        if "minimum" in p or "maximum" in p:
+            bits.append(f"{p.get('minimum', '')}..{p.get('maximum', '')}")
+        if p.get("description"):
+            bits.append(p["description"])
+        return "<" + " - ".join(bits) + ">"
+
+    def obj(sch: dict) -> dict:
+        return {k: desc(v) for k, v in sch.get("properties", {}).items()}
+
+    return json.dumps(obj(schema), indent=1)
+
+
 async def structured(node: str, prompt: str, variables: dict, model: type[T], temperature: float = 0.1) -> T:
     """Call the node's model in JSON mode and validate into `model` (one repair attempt)."""
-    schema = json.dumps(model.model_json_schema(), separators=(",", ":"))
+    schema = "Fill in this template (replace every <...> with a value; keep the keys):\n" + template(model)
     variables = {**variables, "schema": schema}
     raw = await acomplete(node, prompt, variables, json_mode=True, temperature=temperature)
     try:

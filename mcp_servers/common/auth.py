@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import os
 import uuid
+from contextvars import ContextVar
 from dataclasses import dataclass
 from typing import Any
 
@@ -48,7 +49,13 @@ class BearerAuthMiddleware:
         await self.app(scope, receive, send)
 
 
+# Set by agent/mcp_client.py's in-process backend (tests, evals): same identity rules, no HTTP hop.
+INPROC_CALLER: ContextVar["Caller | None"] = ContextVar("gigbid_inproc_caller", default=None)
+
+
 def caller_from_ctx(ctx: Any) -> Caller:
+    if (c := INPROC_CALLER.get()) is not None:
+        return c
     req = None
     meta = None
     try:
