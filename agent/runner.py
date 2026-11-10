@@ -123,3 +123,28 @@ def new_graph(checkpointer, store):
     from agent.runtime import set_store
     set_store(store)
     return build_bid_graph(checkpointer=checkpointer, store=store)
+
+
+def new_conversation_graph(checkpointer, store):
+    from agent.graphs.conversation_graph import build_conversation_graph
+    from agent.runtime import set_store
+    set_store(store)
+    return build_conversation_graph(checkpointer=checkpointer, store=store)
+
+
+async def start_conversation(graph, conversation_id: str, user_id: str, persona: str, proposal: dict | None = None,
+                             job: dict | None = None, new_message_id: str = "") -> dict:
+    """One graph thread per client conversation; each new client message is a new run on that thread."""
+    thread_id = f"conv-{user_id}-{conversation_id}"
+    trace_id = "tr_" + uuid.uuid4().hex[:16]
+    cfg = {"configurable": {"thread_id": thread_id, "trace_id": trace_id}, "recursion_limit": 40}
+    snap = await graph.aget_state(cfg)
+    if snap.values and any(t.interrupts for t in snap.tasks):
+        return {"thread_id": thread_id, "status": "awaiting_approval", "state": snap.values,
+                "interrupts": [i.value for t in snap.tasks for i in (t.interrupts or [])]}
+    if snap.values and new_message_id and snap.values.get("last_seen_message_id") == new_message_id:
+        return {"thread_id": thread_id, "status": "exists", "state": snap.values, "interrupts": []}
+    inp = {"thread_id": thread_id, "user_id": user_id, "persona": persona, "trace_id": trace_id,
+           "conversation_id": conversation_id, "proposal": proposal or {}, "job": job or {}, "status": "reading"}
+    trace.emit("graph", "start", {"conversation_id": conversation_id}, thread_id, trace_id)
+    return await _drive(graph, inp, cfg, thread_id, user_id, kind="conversation")

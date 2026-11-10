@@ -15,7 +15,11 @@ async def main(thread, action, extra):
             dec["reason"] = extra or "not a fit"
         if action == "edit":
             dec["edited_text"] = extra
-        r = await resume(g, thread, "reviewer", dec)
+        from agent.runner import new_conversation_graph
+        if thread.startswith("conv-"):
+            g = new_conversation_graph(cp, store)
+        r = await resume(g, thread, "reviewer", dec, kind="conversation" if thread.startswith("conv-") else "bid")
+        print(r["state"].get("sent"))
         print(r["status"], json.dumps(r["state"].get("submission"), indent=1))
 
 
