@@ -1,0 +1,228 @@
+[
+  {
+    "project": "p00",
+    "name": "Sales performance dashboard",
+    "skills": [
+      "Power BI",
+      "SQL",
+      "Excel"
+    ],
+    "industry": "wholesale",
+    "date": "2022-06-01",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p01",
+    "name": "Marketing attribution model",
+    "skills": [
+      "SQL",
+      "Python",
+      "pandas",
+      "BigQuery"
+    ],
+    "industry": "e-commerce",
+    "date": "2021-06-26",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p02",
+    "name": "Warehouse modelling with dbt",
+    "skills": [
+      "dbt",
+      "Snowflake",
+      "SQL"
+    ],
+    "industry": "SaaS",
+    "date": "2025-09-17",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p03",
+    "name": "Pricing A/B test analysis",
+    "skills": [
+      "A/B testing",
+      "statistics",
+      "Python",
+      "pandas"
+    ],
+    "industry": "consumer apps",
+    "date": "2025-02-05",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p04",
+    "name": "Customer cohort analysis",
+    "skills": [
+      "SQL",
+      "Tableau",
+      "pandas"
+    ],
+    "industry": "food & beverage",
+    "date": "2021-11-07",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p05",
+    "name": "Financial reporting automation",
+    "skills": [
+      "Excel",
+      "Python",
+      "pandas",
+      "ETL"
+    ],
+    "industry": "finance",
+    "date": "2021-09-11",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p06",
+    "name": "Hospital wait-time study",
+    "skills": [
+      "SQL",
+      "Tableau",
+      "statistics"
+    ],
+    "industry": "healthcare",
+    "date": "2024-05-09",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p07",
+    "name": "Google Sheets KPI tracker",
+    "skills": [
+      "Google Sheets",
+      "Looker Studio"
+    ],
+    "industry": "B2B services",
+    "date": "2024-05-10",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p08",
+    "name": "Inventory ETL pipeline",
+    "skills": [
+      "Python",
+      "ETL",
+      "Airflow",
+      "PostgreSQL"
+    ],
+    "industry": "healthcare",
+    "date": "2023-10-26",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p09",
+    "name": "Survey analysis report",
+    "skills": [
+      "Python",
+      "pandas",
+      "statistics",
+      "Excel"
+    ],
+    "industry": "non-profit",
+    "date": "2023-07-04",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p10",
+    "name": "Product usage analytics",
+    "skills": [
+      "SQL",
+      "BigQuery",
+      "Looker Studio"
+    ],
+    "industry": "SaaS",
+    "date": "2024-01-17",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p11",
+    "name": "Retail basket analysis",
+    "skills": [
+      "SQL",
+      "Python",
+      "pandas",
+      "Power BI"
+    ],
+    "industry": "retail",
+    "date": "2022-05-23",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p12",
+    "name": "Snowflake cost audit",
+    "skills": [
+      "Snowflake",
+      "SQL",
+      "dbt"
+    ],
+    "industry": "SaaS",
+    "date": "2023-12-18",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p13",
+    "name": "Real-estate market report",
+    "skills": [
+      "Python",
+      "pandas",
+      "Tableau",
+      "statistics"
+    ],
+    "industry": "real estate",
+    "date": "2025-02-17",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p14",
+    "name": "Call centre KPI dashboard",
+    "skills": [
+      "Power BI",
+      "SQL",
+      "ETL"
+    ],
+    "industry": "telecom",
+    "date": "2022-06-02",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p15",
+    "name": "Excel forecasting model",
+    "skills": [
+      "Excel",
+      "statistics"
+    ],
+    "industry": "manufacturing",
+    "date": "2022-02-09",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p16",
+    "name": "Data cleaning for CRM migration",
+    "skills": [
+      "Python",
+      "pandas",
+      "SQL"
+    ],
+    "industry": "B2B services",
+    "date": "2023-08-14",
+    "sparse_readme": false,
+    "has_review": true
+  }
+]

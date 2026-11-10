@@ -1,0 +1,37 @@
+{
+  "freelancer_id": "ai_ml",
+  "display_name": "Ayesha Raza (synthetic)",
+  "headline": "AI/ML Engineer - RAG, LLM agents, computer vision",
+  "hourly_rate_usd": 45,
+  "minimum_project_budget_usd": 400,
+  "years": 5,
+  "categories": [
+    "AI/ML",
+    "LLM apps",
+    "Computer vision",
+    "Data science"
+  ],
+  "skills": [
+    "AWS",
+    "Airflow",
+    "Celery",
+    "Docker",
+    "FAISS",
+    "FastAPI",
+    "Hugging Face Transformers",
+    "LangChain",
+    "LangGraph",
+    "LoRA fine-tuning",
+    "MLflow",
+    "OpenCV",
+    "Pinecone",
+    "PyTorch",
+    "Python",
+    "RAG",
+    "Redis",
+    "XGBoost",
+    "pandas",
+    "scikit-learn"
+  ],
+  "synthetic": true
+}

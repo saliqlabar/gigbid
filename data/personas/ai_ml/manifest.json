@@ -1,0 +1,284 @@
+[
+  {
+    "project": "p00",
+    "name": "SupportBot RAG assistant",
+    "skills": [
+      "Python",
+      "LangChain",
+      "RAG",
+      "Pinecone",
+      "FastAPI",
+      "Docker"
+    ],
+    "industry": "SaaS",
+    "date": "2021-08-15",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p01",
+    "name": "Invoice field extractor",
+    "skills": [
+      "Python",
+      "Hugging Face Transformers",
+      "OpenCV",
+      "FastAPI"
+    ],
+    "industry": "fintech",
+    "date": "2024-01-30",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p02",
+    "name": "Churn early-warning model",
+    "skills": [
+      "Python",
+      "XGBoost",
+      "scikit-learn",
+      "pandas",
+      "MLflow"
+    ],
+    "industry": "e-commerce",
+    "date": "2022-09-24",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p03",
+    "name": "Clinical notes summariser",
+    "skills": [
+      "Python",
+      "LoRA fine-tuning",
+      "PyTorch",
+      "Hugging Face Transformers"
+    ],
+    "industry": "healthcare",
+    "date": "2022-05-10",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p04",
+    "name": "Contract clause search",
+    "skills": [
+      "Python",
+      "FAISS",
+      "RAG",
+      "FastAPI"
+    ],
+    "industry": "legal",
+    "date": "2023-12-11",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p05",
+    "name": "Async report generator",
+    "skills": [
+      "Python",
+      "Celery",
+      "Redis",
+      "FastAPI",
+      "Docker"
+    ],
+    "industry": "SaaS",
+    "date": "2021-10-01",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p06",
+    "name": "Retail shelf detector",
+    "skills": [
+      "Python",
+      "PyTorch",
+      "OpenCV"
+    ],
+    "industry": "retail",
+    "date": "2021-06-27",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p07",
+    "name": "Lead-scoring agent",
+    "skills": [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "FastAPI"
+    ],
+    "industry": "B2B services",
+    "date": "2022-08-19",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p08",
+    "name": "Demand forecasting pipeline",
+    "skills": [
+      "Python",
+      "pandas",
+      "XGBoost",
+      "Airflow"
+    ],
+    "industry": "food & beverage",
+    "date": "2025-09-26",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p09",
+    "name": "Resume screening classifier",
+    "skills": [
+      "Python",
+      "scikit-learn",
+      "Hugging Face Transformers"
+    ],
+    "industry": "HR tech",
+    "date": "2021-10-11",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p10",
+    "name": "Model monitoring dashboard",
+    "skills": [
+      "Python",
+      "MLflow",
+      "pandas",
+      "Docker"
+    ],
+    "industry": "fintech",
+    "date": "2023-08-23",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p11",
+    "name": "Product Q&A chatbot",
+    "skills": [
+      "Python",
+      "LangChain",
+      "RAG",
+      "FAISS"
+    ],
+    "industry": "e-commerce",
+    "date": "2023-04-24",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p12",
+    "name": "Speech-to-text meeting notes",
+    "skills": [
+      "Python",
+      "PyTorch",
+      "Hugging Face Transformers",
+      "Celery"
+    ],
+    "industry": "consulting",
+    "date": "2022-04-16",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p13",
+    "name": "Fraud anomaly detector",
+    "skills": [
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "pandas"
+    ],
+    "industry": "fintech",
+    "date": "2022-06-01",
+    "sparse_readme": true,
+    "has_review": false
+  },
+  {
+    "project": "p14",
+    "name": "Multilingual ticket router",
+    "skills": [
+      "Python",
+      "Hugging Face Transformers",
+      "FastAPI",
+      "Docker"
+    ],
+    "industry": "travel",
+    "date": "2024-09-12",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p15",
+    "name": "Agentic research assistant",
+    "skills": [
+      "Python",
+      "LangGraph",
+      "RAG",
+      "Pinecone"
+    ],
+    "industry": "finance",
+    "date": "2024-08-19",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p16",
+    "name": "Image dedup service",
+    "skills": [
+      "Python",
+      "PyTorch",
+      "FAISS",
+      "FastAPI"
+    ],
+    "industry": "media",
+    "date": "2023-04-25",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p17",
+    "name": "LLM evaluation harness",
+    "skills": [
+      "Python",
+      "LangChain",
+      "pandas",
+      "MLflow"
+    ],
+    "industry": "SaaS",
+    "date": "2021-06-12",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p18",
+    "name": "Predictive maintenance model",
+    "skills": [
+      "Python",
+      "scikit-learn",
+      "pandas",
+      "Airflow"
+    ],
+    "industry": "manufacturing",
+    "date": "2024-05-02",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p19",
+    "name": "Document classifier on AWS",
+    "skills": [
+      "Python",
+      "PyTorch",
+      "AWS",
+      "Docker"
+    ],
+    "industry": "insurance",
+    "date": "2024-08-23",
+    "sparse_readme": false,
+    "has_review": false
+  }
+]

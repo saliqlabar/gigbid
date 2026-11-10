@@ -1,0 +1,33 @@
+{
+  "freelancer_id": "data_analyst",
+  "display_name": "Sara Malik (synthetic)",
+  "headline": "Data analyst - SQL, dashboards, experiments",
+  "hourly_rate_usd": 28,
+  "minimum_project_budget_usd": 150,
+  "years": 4,
+  "categories": [
+    "Data analysis",
+    "BI dashboards",
+    "Data engineering",
+    "Statistics"
+  ],
+  "skills": [
+    "A/B testing",
+    "Airflow",
+    "BigQuery",
+    "ETL",
+    "Excel",
+    "Google Sheets",
+    "Looker Studio",
+    "PostgreSQL",
+    "Power BI",
+    "Python",
+    "SQL",
+    "Snowflake",
+    "Tableau",
+    "dbt",
+    "pandas",
+    "statistics"
+  ],
+  "synthetic": true
+}

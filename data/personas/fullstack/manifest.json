@@ -1,0 +1,253 @@
+[
+  {
+    "project": "p00",
+    "name": "Clinic booking portal",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind CSS"
+    ],
+    "industry": "healthcare",
+    "date": "2024-05-17",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p01",
+    "name": "Subscription billing revamp",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "industry": "fitness",
+    "date": "2025-03-28",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p02",
+    "name": "Marketplace admin panel",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL",
+      "Node.js"
+    ],
+    "industry": "e-commerce",
+    "date": "2024-01-20",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p03",
+    "name": "Real-time delivery tracker",
+    "skills": [
+      "React",
+      "Node.js",
+      "WebSockets",
+      "Redis"
+    ],
+    "industry": "logistics",
+    "date": "2025-04-18",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p04",
+    "name": "Django LMS",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery",
+      "Docker"
+    ],
+    "industry": "education",
+    "date": "2024-01-19",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p05",
+    "name": "Shopify inventory sync",
+    "skills": [
+      "Shopify",
+      "Node.js",
+      "REST API",
+      "Redis"
+    ],
+    "industry": "retail",
+    "date": "2022-09-12",
+    "sparse_readme": true,
+    "has_review": true
+  },
+  {
+    "project": "p06",
+    "name": "SaaS onboarding flow",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL"
+    ],
+    "industry": "SaaS",
+    "date": "2025-06-13",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p07",
+    "name": "Restaurant ordering PWA",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe",
+      "Node.js"
+    ],
+    "industry": "food & beverage",
+    "date": "2025-02-16",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p08",
+    "name": "Property listings site",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "AWS"
+    ],
+    "industry": "real estate",
+    "date": "2025-06-27",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p09",
+    "name": "Internal HR portal",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "industry": "HR tech",
+    "date": "2022-08-10",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p10",
+    "name": "Event ticketing platform",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "industry": "events",
+    "date": "2024-10-20",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p11",
+    "name": "Chat support widget",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "industry": "education",
+    "date": "2022-11-16",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p12",
+    "name": "Multi-tenant CRM",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery",
+      "Redis",
+      "Docker"
+    ],
+    "industry": "B2B services",
+    "date": "2021-08-12",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p13",
+    "name": "Mobile API for a fitness app",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL",
+      "AWS"
+    ],
+    "industry": "fitness",
+    "date": "2023-05-10",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p14",
+    "name": "Image upload pipeline",
+    "skills": [
+      "Node.js",
+      "AWS",
+      "REST API",
+      "Docker"
+    ],
+    "industry": "printing",
+    "date": "2023-12-22",
+    "sparse_readme": false,
+    "has_review": true
+  },
+  {
+    "project": "p15",
+    "name": "Accessibility overhaul",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "industry": "public sector",
+    "date": "2021-06-04",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p16",
+    "name": "Analytics dashboard frontend",
+    "skills": [
+      "React",
+      "TypeScript",
+      "REST API"
+    ],
+    "industry": "SaaS",
+    "date": "2023-01-01",
+    "sparse_readme": false,
+    "has_review": false
+  },
+  {
+    "project": "p17",
+    "name": "Background email campaigns",
+    "skills": [
+      "Django",
+      "Celery",
+      "Redis",
+      "PostgreSQL"
+    ],
+    "industry": "media",
+    "date": "2024-10-15",
+    "sparse_readme": false,
+    "has_review": true
+  }
+]

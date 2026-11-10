@@ -1,0 +1,33 @@
+{
+  "freelancer_id": "fullstack",
+  "display_name": "Bilal Khan (synthetic)",
+  "headline": "Full-stack web developer - React, Next.js, Django",
+  "hourly_rate_usd": 35,
+  "minimum_project_budget_usd": 300,
+  "years": 6,
+  "categories": [
+    "Web development",
+    "SaaS",
+    "E-commerce",
+    "APIs"
+  ],
+  "skills": [
+    "AWS",
+    "Celery",
+    "Django",
+    "Docker",
+    "GraphQL",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "REST API",
+    "React",
+    "Redis",
+    "Shopify",
+    "Stripe",
+    "Tailwind CSS",
+    "TypeScript",
+    "WebSockets"
+  ],
+  "synthetic": true
+}

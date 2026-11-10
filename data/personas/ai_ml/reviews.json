@@ -1,0 +1,162 @@
+[
+  {
+    "evidence_id": "ai_ml:review:p00",
+    "type": "review",
+    "project": "p00",
+    "rating": 5.0,
+    "text": "Delivered what was promised. SupportBot RAG assistant is now part of our daily workflow.",
+    "client_industry": "SaaS",
+    "date": "2021-08-15",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p01",
+    "type": "review",
+    "project": "p01",
+    "rating": 5.0,
+    "text": "Great work on our fintech project. Communication was clear and the result reached 96% field-level accuracy on 2,000 held-out invoices.",
+    "client_industry": "fintech",
+    "date": "2024-01-30",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p02",
+    "type": "review",
+    "project": "p02",
+    "rating": 4.8,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "e-commerce",
+    "date": "2022-09-24",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p03",
+    "type": "review",
+    "project": "p03",
+    "rating": 5.0,
+    "text": "Great work on our healthcare project. Communication was clear and the result reduced summary writing time by about half in a 3-week pilot.",
+    "client_industry": "healthcare",
+    "date": "2022-05-10",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p05",
+    "type": "review",
+    "project": "p05",
+    "rating": 5.0,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "SaaS",
+    "date": "2021-10-01",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p07",
+    "type": "review",
+    "project": "p07",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "B2B services",
+    "date": "2022-08-19",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p08",
+    "type": "review",
+    "project": "p08",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "food & beverage",
+    "date": "2025-09-26",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p09",
+    "type": "review",
+    "project": "p09",
+    "rating": 4.8,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "HR tech",
+    "date": "2021-10-11",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p10",
+    "type": "review",
+    "project": "p10",
+    "rating": 5.0,
+    "text": "Great work on our fintech project. Communication was clear and the result caught a data drift incident within a day of release.",
+    "client_industry": "fintech",
+    "date": "2023-08-23",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p11",
+    "type": "review",
+    "project": "p11",
+    "rating": 4.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "e-commerce",
+    "date": "2023-04-24",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p12",
+    "type": "review",
+    "project": "p12",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "consulting",
+    "date": "2022-04-16",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p14",
+    "type": "review",
+    "project": "p14",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "travel",
+    "date": "2024-09-12",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p15",
+    "type": "review",
+    "project": "p15",
+    "rating": 5.0,
+    "text": "Great work on our finance project. Communication was clear and the result turned a 2-hour brief into a 15-minute review.",
+    "client_industry": "finance",
+    "date": "2024-08-19",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p16",
+    "type": "review",
+    "project": "p16",
+    "rating": 4.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "media",
+    "date": "2023-04-25",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p17",
+    "type": "review",
+    "project": "p17",
+    "rating": 5.0,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "SaaS",
+    "date": "2021-06-12",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "ai_ml:review:p18",
+    "type": "review",
+    "project": "p18",
+    "rating": 4.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "manufacturing",
+    "date": "2024-05-02",
+    "synthetic": true
+  }
+]

@@ -1,0 +1,2154 @@
+[
+  {
+    "evidence_id": "fullstack:proposal:0000",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "SaaS",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2023-04-25",
+    "outcome": "won",
+    "text": "You mentioned a mobile team blocked on an unstable backend; I solved almost the same problem for a fitness client last year. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0001",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2025-01-09",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0002",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "SaaS",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2025-04-14",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0003",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "APIs",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2023-06-19",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0004",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2024-03-04",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Node.js, GraphQL, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0005",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "SaaS",
+    "client_industry": "healthcare",
+    "skills": [],
+    "date": "2024-10-29",
+    "outcome": "replied",
+    "text": "Your post says a dental clinic taking bookings by phone. In my Clinic booking portal project I moved 70% of bookings online in six weeks. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0006",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "SaaS",
+    "client_industry": "education",
+    "skills": [],
+    "date": "2025-08-29",
+    "outcome": "replied",
+    "text": "You mentioned a tutoring academy emailing PDFs to students; I solved almost the same problem for a education client last year. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0007",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "APIs",
+    "client_industry": "SaaS",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "date": "2023-07-01",
+    "outcome": "won",
+    "text": "The tricky part of this job is a B2B tool losing trial users on day one, and that is exactly what my SaaS onboarding flow work dealt with. For a similar job I used Next.js, TypeScript, Tailwind CSS. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0008",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2025-02-28",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0009",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2024-01-22",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used React, WebSockets, Node.js. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0010",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "E-commerce",
+    "client_industry": "media",
+    "skills": [
+      "Django",
+      "Celery",
+      "Redis"
+    ],
+    "date": "2023-08-09",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Django, Celery, Redis. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0011",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "E-commerce",
+    "client_industry": "printing",
+    "skills": [
+      "Node.js",
+      "AWS",
+      "REST API"
+    ],
+    "date": "2023-02-12",
+    "outcome": "won",
+    "text": "You mentioned a print shop losing customer files; I solved almost the same problem for a printing client last year. For a similar job I used Node.js, AWS, REST API. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0012",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "E-commerce",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2023-08-22",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0013",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "SaaS",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2024-02-24",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0014",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "Web development",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2023-09-10",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0015",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "APIs",
+    "client_industry": "HR tech",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "date": "2024-10-24",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Django, PostgreSQL, React. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0016",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "Web development",
+    "client_industry": "retail",
+    "skills": [],
+    "date": "2025-01-09",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a clothing brand overselling across two stores, and that is exactly what my Shopify inventory sync work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0017",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "Web development",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2023-07-07",
+    "outcome": "won",
+    "text": "You mentioned a restaurant group paying 30% commission to delivery apps; I solved almost the same problem for a food & beverage client last year. For a similar job I used React, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0018",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "E-commerce",
+    "client_industry": "HR tech",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "date": "2025-02-14",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Django, PostgreSQL, React. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0019",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2023-02-06",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used React, WebSockets, Node.js. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0020",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "E-commerce",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-03-03",
+    "outcome": "won",
+    "text": "You mentioned an agency juggling clients in Trello; I solved almost the same problem for a B2B services client last year. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0021",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "SaaS",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2024-08-10",
+    "outcome": "won",
+    "text": "The tricky part of this job is an online course seller answering questions by email, and that is exactly what my Chat support widget work dealt with. For a similar job I used React, WebSockets, Node.js. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0022",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "SaaS",
+    "client_industry": "retail",
+    "skills": [
+      "Shopify",
+      "Node.js",
+      "REST API"
+    ],
+    "date": "2023-01-23",
+    "outcome": "won",
+    "text": "You mentioned a clothing brand overselling across two stores; I solved almost the same problem for a retail client last year. For a similar job I used Shopify, Node.js, REST API. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0023",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "SaaS",
+    "client_industry": "printing",
+    "skills": [],
+    "date": "2023-12-16",
+    "outcome": "replied",
+    "text": "You mentioned a print shop losing customer files; I solved almost the same problem for a printing client last year. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0024",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "Web development",
+    "client_industry": "retail",
+    "skills": [],
+    "date": "2023-08-09",
+    "outcome": "replied",
+    "text": "Your post says a clothing brand overselling across two stores. In my Shopify inventory sync project I eliminated overselling across 2 storefronts. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0025",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "APIs",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-07-20",
+    "outcome": "won",
+    "text": "You mentioned a tutoring academy emailing PDFs to students; I solved almost the same problem for a education client last year. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0026",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "E-commerce",
+    "client_industry": "media",
+    "skills": [
+      "Django",
+      "Celery",
+      "Redis"
+    ],
+    "date": "2025-09-10",
+    "outcome": "won",
+    "text": "Your post says a newsletter platform whose sends blocked the web app. In my Background email campaigns project I sent 400k emails a day without slowing the UI. For a similar job I used Django, Celery, Redis. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0027",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "SaaS",
+    "client_industry": "real estate",
+    "skills": [],
+    "date": "2023-05-10",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0028",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "SaaS",
+    "client_industry": "retail",
+    "skills": [
+      "Shopify",
+      "Node.js",
+      "REST API"
+    ],
+    "date": "2024-04-04",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Shopify, Node.js, REST API. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0029",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "SaaS",
+    "client_industry": "food & beverage",
+    "skills": [],
+    "date": "2025-08-06",
+    "outcome": "won",
+    "text": "The tricky part of this job is a restaurant group paying 30% commission to delivery apps, and that is exactly what my Restaurant ordering PWA work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0030",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "E-commerce",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-06-17",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0031",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "Web development",
+    "client_industry": "printing",
+    "skills": [],
+    "date": "2023-06-13",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0032",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "Web development",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2024-10-01",
+    "outcome": "ignored",
+    "text": "The tricky part of this job is a B2B tool losing trial users on day one, and that is exactly what my SaaS onboarding flow work dealt with. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0033",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "Web development",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2024-05-26",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Next.js, Stripe, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0034",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "SaaS",
+    "client_industry": "real estate",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "date": "2024-05-17",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Next.js, TypeScript, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0035",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "APIs",
+    "client_industry": "media",
+    "skills": [],
+    "date": "2023-05-30",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0036",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2025-04-19",
+    "outcome": "won",
+    "text": "Your post says an online course seller answering questions by email. In my Chat support widget project I answered 80% of pre-sale questions live. For a similar job I used React, WebSockets, Node.js. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0037",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "Web development",
+    "client_industry": "public sector",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "date": "2023-03-03",
+    "outcome": "won",
+    "text": "Your post says a government contractor failing a WCAG audit. In my Accessibility overhaul project I passed the WCAG 2.1 AA re-audit. For a similar job I used React, TypeScript, Tailwind CSS. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0038",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "SaaS",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2023-05-27",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a SaaS whose customers could not see their usage, and that is exactly what my Analytics dashboard frontend work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0039",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2023-12-15",
+    "outcome": "won",
+    "text": "Your post says a mobile team blocked on an unstable backend. In my Mobile API for a fitness app project I kept p95 API latency under 180 ms at launch. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0040",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "APIs",
+    "client_industry": "education",
+    "skills": [],
+    "date": "2025-07-03",
+    "outcome": "replied",
+    "text": "The tricky part of this job is an online course seller answering questions by email, and that is exactly what my Chat support widget work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0041",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "E-commerce",
+    "client_industry": "printing",
+    "skills": [
+      "Node.js",
+      "AWS",
+      "REST API"
+    ],
+    "date": "2023-10-28",
+    "outcome": "replied",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Node.js, AWS, REST API. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0042",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "SaaS",
+    "client_industry": "HR tech",
+    "skills": [],
+    "date": "2024-05-14",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0043",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "E-commerce",
+    "client_industry": "printing",
+    "skills": [],
+    "date": "2024-03-30",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0044",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "E-commerce",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2025-01-27",
+    "outcome": "won",
+    "text": "The tricky part of this job is a tutoring academy emailing PDFs to students, and that is exactly what my Django LMS work dealt with. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0045",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "Web development",
+    "client_industry": "healthcare",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Node.js"
+    ],
+    "date": "2023-12-06",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used React, TypeScript, Node.js. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0046",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "SaaS",
+    "client_industry": "B2B services",
+    "skills": [],
+    "date": "2024-08-10",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0047",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "E-commerce",
+    "client_industry": "logistics",
+    "skills": [],
+    "date": "2024-08-30",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0048",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "APIs",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2023-05-15",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Next.js, Stripe, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0049",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "E-commerce",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2025-01-27",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a B2B tool losing trial users on day one, and that is exactly what my SaaS onboarding flow work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0050",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "SaaS",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2023-12-02",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a concert promoter overselling venues, and that is exactly what my Event ticketing platform work dealt with. For a similar job I used Next.js, Stripe, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0051",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "E-commerce",
+    "client_industry": "events",
+    "skills": [],
+    "date": "2025-03-14",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0052",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2023-08-23",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0053",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2023-12-03",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0054",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "APIs",
+    "client_industry": "printing",
+    "skills": [],
+    "date": "2025-05-08",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0055",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "APIs",
+    "client_industry": "real estate",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "date": "2023-12-11",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Next.js, TypeScript, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0056",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "SaaS",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2023-06-27",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0057",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "SaaS",
+    "client_industry": "education",
+    "skills": [],
+    "date": "2025-08-20",
+    "outcome": "ignored",
+    "text": "The tricky part of this job is a tutoring academy emailing PDFs to students, and that is exactly what my Django LMS work dealt with. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0058",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2025-05-18",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a mobile team blocked on an unstable backend, and that is exactly what my Mobile API for a fitness app work dealt with. For a similar job I used Node.js, GraphQL, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0059",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "Web development",
+    "client_industry": "SaaS",
+    "skills": [
+      "React",
+      "TypeScript",
+      "REST API"
+    ],
+    "date": "2023-10-09",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used React, TypeScript, REST API. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0060",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "Web development",
+    "client_industry": "media",
+    "skills": [],
+    "date": "2025-06-21",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0061",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2025-03-22",
+    "outcome": "replied",
+    "text": "Your post says a mobile team blocked on an unstable backend. In my Mobile API for a fitness app project I kept p95 API latency under 180 ms at launch. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0062",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "E-commerce",
+    "client_industry": "public sector",
+    "skills": [],
+    "date": "2025-02-11",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0063",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "SaaS",
+    "client_industry": "retail",
+    "skills": [],
+    "date": "2024-05-17",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a clothing brand overselling across two stores, and that is exactly what my Shopify inventory sync work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0064",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "Web development",
+    "client_industry": "logistics",
+    "skills": [
+      "React",
+      "Node.js",
+      "WebSockets"
+    ],
+    "date": "2023-06-06",
+    "outcome": "won",
+    "text": "Your post says a courier startup fielding 'where is my parcel' calls. In my Real-time delivery tracker project I halved support calls in the first month. For a similar job I used React, Node.js, WebSockets. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0065",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "APIs",
+    "client_industry": "SaaS",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "date": "2023-12-19",
+    "outcome": "won",
+    "text": "The tricky part of this job is a B2B tool losing trial users on day one, and that is exactly what my SaaS onboarding flow work dealt with. For a similar job I used Next.js, TypeScript, Tailwind CSS. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0066",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "Web development",
+    "client_industry": "food & beverage",
+    "skills": [],
+    "date": "2023-05-02",
+    "outcome": "replied",
+    "text": "Your post says a restaurant group paying 30% commission to delivery apps. In my Restaurant ordering PWA project I shifted 25% of orders to direct ordering. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0067",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "SaaS",
+    "client_industry": "HR tech",
+    "skills": [],
+    "date": "2025-02-14",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0068",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "Web development",
+    "client_industry": "e-commerce",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "date": "2023-01-16",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a second-hand furniture marketplace moderating listings in spreadsheets, and that is exactly what my Marketplace admin panel work dealt with. For a similar job I used React, TypeScript, GraphQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0069",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "Web development",
+    "client_industry": "public sector",
+    "skills": [],
+    "date": "2025-02-02",
+    "outcome": "won",
+    "text": "Your post says a government contractor failing a WCAG audit. In my Accessibility overhaul project I passed the WCAG 2.1 AA re-audit. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0070",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "SaaS",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2025-01-11",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a fitness app with failing recurring payments, and that is exactly what my Subscription billing revamp work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0071",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "Web development",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2024-11-22",
+    "outcome": "won",
+    "text": "The tricky part of this job is a restaurant group paying 30% commission to delivery apps, and that is exactly what my Restaurant ordering PWA work dealt with. For a similar job I used React, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0072",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "Web development",
+    "client_industry": "real estate",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "date": "2024-01-05",
+    "outcome": "won",
+    "text": "Your post says a real-estate agency with a slow WordPress site. In my Property listings site project I brought page load from 6s to 1.2s. For a similar job I used Next.js, TypeScript, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0073",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "APIs",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-12-07",
+    "outcome": "won",
+    "text": "The tricky part of this job is a tutoring academy emailing PDFs to students, and that is exactly what my Django LMS work dealt with. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0074",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "SaaS",
+    "client_industry": "SaaS",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "date": "2024-06-05",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Next.js, TypeScript, Tailwind CSS. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0075",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "APIs",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2023-09-02",
+    "outcome": "replied",
+    "text": "Your post says a SaaS whose customers could not see their usage. In my Analytics dashboard frontend project I became the most visited page after login. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0076",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "APIs",
+    "client_industry": "events",
+    "skills": [],
+    "date": "2024-08-31",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0077",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "SaaS",
+    "client_industry": "printing",
+    "skills": [
+      "Node.js",
+      "AWS",
+      "REST API"
+    ],
+    "date": "2023-08-14",
+    "outcome": "won",
+    "text": "Your post says a print shop losing customer files. In my Image upload pipeline project I handled 50k uploads a month without loss. For a similar job I used Node.js, AWS, REST API. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0078",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "Web development",
+    "client_industry": "SaaS",
+    "skills": [
+      "React",
+      "TypeScript",
+      "REST API"
+    ],
+    "date": "2024-03-06",
+    "outcome": "won",
+    "text": "You mentioned a SaaS whose customers could not see their usage; I solved almost the same problem for a SaaS client last year. For a similar job I used React, TypeScript, REST API. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0079",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "Web development",
+    "client_industry": "retail",
+    "skills": [
+      "Shopify",
+      "Node.js",
+      "REST API"
+    ],
+    "date": "2024-03-19",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Shopify, Node.js, REST API. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0080",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2025-04-19",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a fitness app with failing recurring payments, and that is exactly what my Subscription billing revamp work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0081",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "SaaS",
+    "client_industry": "e-commerce",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "date": "2025-05-23",
+    "outcome": "won",
+    "text": "You mentioned a second-hand furniture marketplace moderating listings in spreadsheets; I solved almost the same problem for a e-commerce client last year. For a similar job I used React, TypeScript, GraphQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0082",
+    "type": "proposal",
+    "project": "p06",
+    "job_category": "Web development",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2024-01-20",
+    "outcome": "replied",
+    "text": "Your post says a B2B tool losing trial users on day one. In my SaaS onboarding flow project I raised trial activation from 22% to 37%. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0083",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "Web development",
+    "client_industry": "real estate",
+    "skills": [],
+    "date": "2023-09-08",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a real-estate agency with a slow WordPress site, and that is exactly what my Property listings site work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0084",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "SaaS",
+    "client_industry": "media",
+    "skills": [],
+    "date": "2023-02-19",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0085",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "SaaS",
+    "client_industry": "logistics",
+    "skills": [],
+    "date": "2024-07-31",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0086",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "APIs",
+    "client_industry": "SaaS",
+    "skills": [],
+    "date": "2023-10-17",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0087",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "Web development",
+    "client_industry": "HR tech",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "date": "2024-01-19",
+    "outcome": "replied",
+    "text": "You mentioned an HR team handling leave requests over email; I solved almost the same problem for a HR tech client last year. For a similar job I used Django, PostgreSQL, React. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0088",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "SaaS",
+    "client_industry": "media",
+    "skills": [],
+    "date": "2024-03-30",
+    "outcome": "replied",
+    "text": "Your post says a newsletter platform whose sends blocked the web app. In my Background email campaigns project I sent 400k emails a day without slowing the UI. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0089",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2025-01-22",
+    "outcome": "won",
+    "text": "You mentioned a tutoring academy emailing PDFs to students; I solved almost the same problem for a education client last year. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0090",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [],
+    "date": "2023-03-22",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0091",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "Web development",
+    "client_industry": "e-commerce",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "date": "2024-09-06",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used React, TypeScript, GraphQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0092",
+    "type": "proposal",
+    "project": "p17",
+    "job_category": "SaaS",
+    "client_industry": "media",
+    "skills": [
+      "Django",
+      "Celery",
+      "Redis"
+    ],
+    "date": "2025-02-22",
+    "outcome": "won",
+    "text": "Your post says a newsletter platform whose sends blocked the web app. In my Background email campaigns project I sent 400k emails a day without slowing the UI. For a similar job I used Django, Celery, Redis. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0093",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "Web development",
+    "client_industry": "e-commerce",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "date": "2024-06-13",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used React, TypeScript, GraphQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0094",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "Web development",
+    "client_industry": "HR tech",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "date": "2023-01-14",
+    "outcome": "won",
+    "text": "Your post says an HR team handling leave requests over email. In my Internal HR portal project I processed 1,800 leave requests in its first quarter. For a similar job I used Django, PostgreSQL, React. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0095",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "E-commerce",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2024-02-17",
+    "outcome": "won",
+    "text": "The tricky part of this job is an online course seller answering questions by email, and that is exactly what my Chat support widget work dealt with. For a similar job I used React, WebSockets, Node.js. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0096",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "E-commerce",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-06-12",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0097",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "APIs",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-08-11",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0098",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "APIs",
+    "client_industry": "healthcare",
+    "skills": [],
+    "date": "2024-01-01",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0099",
+    "type": "proposal",
+    "project": "p14",
+    "job_category": "APIs",
+    "client_industry": "printing",
+    "skills": [
+      "Node.js",
+      "AWS",
+      "REST API"
+    ],
+    "date": "2024-07-20",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Node.js, AWS, REST API. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0100",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "Web development",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2025-03-18",
+    "outcome": "replied",
+    "text": "You mentioned a restaurant group paying 30% commission to delivery apps; I solved almost the same problem for a food & beverage client last year. For a similar job I used React, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0101",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "E-commerce",
+    "client_industry": "HR tech",
+    "skills": [],
+    "date": "2025-03-24",
+    "outcome": "replied",
+    "text": "Your post says an HR team handling leave requests over email. In my Internal HR portal project I processed 1,800 leave requests in its first quarter. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0102",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "SaaS",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2023-03-30",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0103",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "E-commerce",
+    "client_industry": "public sector",
+    "skills": [],
+    "date": "2023-04-26",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0104",
+    "type": "proposal",
+    "project": "p16",
+    "job_category": "SaaS",
+    "client_industry": "SaaS",
+    "skills": [
+      "React",
+      "TypeScript",
+      "REST API"
+    ],
+    "date": "2024-02-19",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used React, TypeScript, REST API. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0105",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "APIs",
+    "client_industry": "healthcare",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Node.js"
+    ],
+    "date": "2023-10-07",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used React, TypeScript, Node.js. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0106",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "E-commerce",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-11-25",
+    "outcome": "won",
+    "text": "You mentioned an agency juggling clients in Trello; I solved almost the same problem for a B2B services client last year. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0107",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "E-commerce",
+    "client_industry": "fitness",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2024-08-02",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Next.js, TypeScript, Stripe. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0108",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2023-04-06",
+    "outcome": "replied",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0109",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "E-commerce",
+    "client_industry": "real estate",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "date": "2025-04-13",
+    "outcome": "won",
+    "text": "The tricky part of this job is a real-estate agency with a slow WordPress site, and that is exactly what my Property listings site work dealt with. For a similar job I used Next.js, TypeScript, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0110",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "SaaS",
+    "client_industry": "healthcare",
+    "skills": [],
+    "date": "2024-05-23",
+    "outcome": "replied",
+    "text": "You mentioned a dental clinic taking bookings by phone; I solved almost the same problem for a healthcare client last year. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0111",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2025-04-04",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0112",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "Web development",
+    "client_industry": "real estate",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "date": "2023-12-21",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Next.js, TypeScript, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0113",
+    "type": "proposal",
+    "project": "p00",
+    "job_category": "SaaS",
+    "client_industry": "healthcare",
+    "skills": [],
+    "date": "2024-11-28",
+    "outcome": "replied",
+    "text": "Your post says a dental clinic taking bookings by phone. In my Clinic booking portal project I moved 70% of bookings online in six weeks. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0114",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "Web development",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2024-10-16",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used Next.js, Stripe, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0115",
+    "type": "proposal",
+    "project": "p08",
+    "job_category": "APIs",
+    "client_industry": "real estate",
+    "skills": [],
+    "date": "2025-02-22",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0116",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "SaaS",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2025-03-08",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0117",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2025-09-17",
+    "outcome": "replied",
+    "text": "Hello, I have read your job post and I am very interested in working with you. For a similar job I used Next.js, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0118",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "SaaS",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2023-09-15",
+    "outcome": "replied",
+    "text": "You mentioned a restaurant group paying 30% commission to delivery apps; I solved almost the same problem for a food & beverage client last year. For a similar job I used React, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0119",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "Web development",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2024-07-23",
+    "outcome": "won",
+    "text": "You mentioned a concert promoter overselling venues; I solved almost the same problem for a events client last year. For a similar job I used Next.js, Stripe, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0120",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2025-03-17",
+    "outcome": "replied",
+    "text": "Your post says an online course seller answering questions by email. In my Chat support widget project I answered 80% of pre-sale questions live. For a similar job I used React, WebSockets, Node.js. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0121",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "Web development",
+    "client_industry": "e-commerce",
+    "skills": [
+      "React",
+      "TypeScript",
+      "GraphQL"
+    ],
+    "date": "2024-08-20",
+    "outcome": "replied",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used React, TypeScript, GraphQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0122",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2024-10-29",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0123",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "APIs",
+    "client_industry": "events",
+    "skills": [],
+    "date": "2023-01-13",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0124",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "Web development",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-09-24",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0125",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "Web development",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2023-09-16",
+    "outcome": "won",
+    "text": "You mentioned a restaurant group paying 30% commission to delivery apps; I solved almost the same problem for a food & beverage client last year. For a similar job I used React, TypeScript, Stripe. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0126",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Node.js",
+      "GraphQL",
+      "PostgreSQL"
+    ],
+    "date": "2024-01-06",
+    "outcome": "replied",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Node.js, GraphQL, PostgreSQL. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0127",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2024-02-05",
+    "outcome": "won",
+    "text": "Your post says a fitness app with failing recurring payments. In my Subscription billing revamp project I recovered 12% of failed renewals with retries and dunning emails. For a similar job I used Next.js, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0128",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "APIs",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2023-06-20",
+    "outcome": "won",
+    "text": "You mentioned an agency juggling clients in Trello; I solved almost the same problem for a B2B services client last year. For a similar job I used Django, PostgreSQL, Celery. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0129",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "Web development",
+    "client_industry": "fitness",
+    "skills": [
+      "Next.js",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2023-10-08",
+    "outcome": "ignored",
+    "text": "Dear Hiring Manager, I am a passionate and hardworking freelancer and I can do this job. For a similar job I used Next.js, TypeScript, Stripe. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0130",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "APIs",
+    "client_industry": "public sector",
+    "skills": [],
+    "date": "2025-08-10",
+    "outcome": "replied",
+    "text": "Your post says a government contractor failing a WCAG audit. In my Accessibility overhaul project I passed the WCAG 2.1 AA re-audit. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0131",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "Web development",
+    "client_industry": "HR tech",
+    "skills": [],
+    "date": "2024-12-07",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0132",
+    "type": "proposal",
+    "project": "p13",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2023-12-28",
+    "outcome": "replied",
+    "text": "The tricky part of this job is a mobile team blocked on an unstable backend, and that is exactly what my Mobile API for a fitness app work dealt with. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0133",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "Web development",
+    "client_industry": "B2B services",
+    "skills": [],
+    "date": "2024-06-01",
+    "outcome": "won",
+    "text": "Your post says an agency juggling clients in Trello. In my Multi-tenant CRM project I consolidated 40 client pipelines into one app. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0134",
+    "type": "proposal",
+    "project": "p01",
+    "job_category": "APIs",
+    "client_industry": "fitness",
+    "skills": [],
+    "date": "2023-03-02",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0135",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "APIs",
+    "client_industry": "logistics",
+    "skills": [
+      "React",
+      "Node.js",
+      "WebSockets"
+    ],
+    "date": "2024-05-31",
+    "outcome": "won",
+    "text": "You mentioned a courier startup fielding 'where is my parcel' calls; I solved almost the same problem for a logistics client last year. For a similar job I used React, Node.js, WebSockets. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0136",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "SaaS",
+    "client_industry": "logistics",
+    "skills": [
+      "React",
+      "Node.js",
+      "WebSockets"
+    ],
+    "date": "2023-08-04",
+    "outcome": "replied",
+    "text": "Your post says a courier startup fielding 'where is my parcel' calls. In my Real-time delivery tracker project I halved support calls in the first month. For a similar job I used React, Node.js, WebSockets. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0137",
+    "type": "proposal",
+    "project": "p09",
+    "job_category": "SaaS",
+    "client_industry": "HR tech",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "React"
+    ],
+    "date": "2023-06-12",
+    "outcome": "won",
+    "text": "Your post says an HR team handling leave requests over email. In my Internal HR portal project I processed 1,800 leave requests in its first quarter. For a similar job I used Django, PostgreSQL, React. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0138",
+    "type": "proposal",
+    "project": "p07",
+    "job_category": "APIs",
+    "client_industry": "food & beverage",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Stripe"
+    ],
+    "date": "2023-10-31",
+    "outcome": "won",
+    "text": "Your post says a restaurant group paying 30% commission to delivery apps. In my Restaurant ordering PWA project I shifted 25% of orders to direct ordering. For a similar job I used React, TypeScript, Stripe. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0139",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "E-commerce",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2024-07-13",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used React, WebSockets, Node.js. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0140",
+    "type": "proposal",
+    "project": "p04",
+    "job_category": "E-commerce",
+    "client_industry": "education",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2024-12-12",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0141",
+    "type": "proposal",
+    "project": "p03",
+    "job_category": "E-commerce",
+    "client_industry": "logistics",
+    "skills": [],
+    "date": "2024-07-18",
+    "outcome": "ignored",
+    "text": "Your post says a courier startup fielding 'where is my parcel' calls. In my Real-time delivery tracker project I halved support calls in the first month. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0142",
+    "type": "proposal",
+    "project": "p11",
+    "job_category": "Web development",
+    "client_industry": "education",
+    "skills": [
+      "React",
+      "WebSockets",
+      "Node.js"
+    ],
+    "date": "2023-10-16",
+    "outcome": "ignored",
+    "text": "Greetings, I am an expert with many years of experience in this field. For a similar job I used React, WebSockets, Node.js. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0143",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "SaaS",
+    "client_industry": "retail",
+    "skills": [],
+    "date": "2023-02-14",
+    "outcome": "ignored",
+    "text": "The tricky part of this job is a clothing brand overselling across two stores, and that is exactly what my Shopify inventory sync work dealt with. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0144",
+    "type": "proposal",
+    "project": "p05",
+    "job_category": "Web development",
+    "client_industry": "retail",
+    "skills": [],
+    "date": "2024-03-04",
+    "outcome": "ignored",
+    "text": "Hi there! I am the perfect fit for your project and will deliver high quality work. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0145",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "SaaS",
+    "client_industry": "events",
+    "skills": [],
+    "date": "2024-10-04",
+    "outcome": "ignored",
+    "text": "You mentioned a concert promoter overselling venues; I solved almost the same problem for a events client last year. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0146",
+    "type": "proposal",
+    "project": "p12",
+    "job_category": "Web development",
+    "client_industry": "B2B services",
+    "skills": [
+      "Django",
+      "PostgreSQL",
+      "Celery"
+    ],
+    "date": "2023-09-19",
+    "outcome": "won",
+    "text": "The tricky part of this job is an agency juggling clients in Trello, and that is exactly what my Multi-tenant CRM work dealt with. For a similar job I used Django, PostgreSQL, Celery. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0147",
+    "type": "proposal",
+    "project": "p15",
+    "job_category": "SaaS",
+    "client_industry": "public sector",
+    "skills": [],
+    "date": "2024-12-20",
+    "outcome": "ignored",
+    "text": "The tricky part of this job is a government contractor failing a WCAG audit, and that is exactly what my Accessibility overhaul work dealt with. I have worked with many technologies and can learn anything quickly. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0148",
+    "type": "proposal",
+    "project": "p02",
+    "job_category": "APIs",
+    "client_industry": "e-commerce",
+    "skills": [],
+    "date": "2024-12-12",
+    "outcome": "ignored",
+    "text": "Hello, I have read your job post and I am very interested in working with you. I have worked with many technologies and can learn anything quickly. I can share a short plan for the first milestone.",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "fullstack:proposal:0149",
+    "type": "proposal",
+    "project": "p10",
+    "job_category": "APIs",
+    "client_industry": "events",
+    "skills": [
+      "Next.js",
+      "Stripe",
+      "PostgreSQL"
+    ],
+    "date": "2025-07-24",
+    "outcome": "won",
+    "text": "The tricky part of this job is a concert promoter overselling venues, and that is exactly what my Event ticketing platform work dealt with. For a similar job I used Next.js, Stripe, PostgreSQL. I am available 24/7, I guarantee 100% satisfaction, and I will deliver beyond expectations, with unlimited revisions and complete dedication to your success in every way.",
+    "synthetic": true
+  }
+]

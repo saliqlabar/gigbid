@@ -1,0 +1,112 @@
+[
+  {
+    "evidence_id": "data_analyst:review:p01",
+    "type": "review",
+    "project": "p01",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "e-commerce",
+    "date": "2021-06-26",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p04",
+    "type": "review",
+    "project": "p04",
+    "rating": 4.5,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "food & beverage",
+    "date": "2021-11-07",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p05",
+    "type": "review",
+    "project": "p05",
+    "rating": 4.8,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "finance",
+    "date": "2021-09-11",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p06",
+    "type": "review",
+    "project": "p06",
+    "rating": 5.0,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "healthcare",
+    "date": "2024-05-09",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p07",
+    "type": "review",
+    "project": "p07",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "B2B services",
+    "date": "2024-05-10",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p08",
+    "type": "review",
+    "project": "p08",
+    "rating": 4.5,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "healthcare",
+    "date": "2023-10-26",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p09",
+    "type": "review",
+    "project": "p09",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "non-profit",
+    "date": "2023-07-04",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p11",
+    "type": "review",
+    "project": "p11",
+    "rating": 5.0,
+    "text": "Good work, a few days late on the final milestone but quality was high.",
+    "client_industry": "retail",
+    "date": "2022-05-23",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p12",
+    "type": "review",
+    "project": "p12",
+    "rating": 5.0,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "SaaS",
+    "date": "2023-12-18",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p15",
+    "type": "review",
+    "project": "p15",
+    "rating": 4.5,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "manufacturing",
+    "date": "2022-02-09",
+    "synthetic": true
+  },
+  {
+    "evidence_id": "data_analyst:review:p16",
+    "type": "review",
+    "project": "p16",
+    "rating": 4.8,
+    "text": "Knew the tools well and asked the right questions before starting. Would hire again.",
+    "client_industry": "B2B services",
+    "date": "2023-08-14",
+    "synthetic": true
+  }
+]
