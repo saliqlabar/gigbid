@@ -63,8 +63,59 @@ rag:
 budgets:
   max_graph_steps: 30
   max_revisions: 2
-  max_tokens_per_job: 12000
+  max_tokens_per_job: 40000   # declared token budget per job thread (R8)
 
-thresholds:
-  minimum_fit_score: 0.60
+thresholds:                    # decision node (agent/nodes/decide.py)
+  minimum_fit_score: 0.40      # >= this -> bid (provisional; tuned on the dev set, see evals/results/decisions.json)
+  watch_fit_score: 0.20        # between watch and minimum -> watch, below -> skip
   maximum_risk_score: 0.70
+  minimum_hourly_ratio: 0.6    # skip hourly jobs whose top rate is below 60% of my rate (user setting)
+
+fit:
+  evidence_per_requirement: 3
+
+pricing:
+  assumed_hours: 20            # hourly jobs: hours assumed for expected value
+  fixed_fraction_of_budget: 0.9
+  base_win_rate: 0.04
+  fit_win_weight: 0.20
+  hire_rate_weight: 0.10
+  usd_per_connect: 0.15        # Upwork sells Connects at $0.15 each
+
+tools:
+  backend: inproc              # inproc (tests/evals) | http (docker compose, deploy); env MCP_BACKEND overrides
+  timeout_s: 30
+  max_retries: 2
+  # Each node sees only these tools (server.tool). Compliance and the Analyst have no MCP access.
+  allowlist:
+    scout: [marketplace.search_jobs, marketplace.get_job, marketplace.get_policy]
+    analyst: []
+    risk_assessor: [marketplace.get_client_history]
+    fit_matcher: [portfolio.search_evidence]
+    pricing: [marketplace.get_market_stats, marketplace.get_connects_balance]
+    writer: [portfolio.search_evidence, portfolio.get_evidence]
+    verifier: [portfolio.get_evidence, portfolio.search_evidence]
+    critic: [portfolio.get_evidence]
+    compliance: []
+    approval: [marketplace.create_proposal_draft]          # dry_run preview only
+    submitter: [marketplace.create_proposal_draft, marketplace.submit_proposal]
+    client_liaison: [marketplace.list_messages, marketplace.get_job, workspace.get_free_slots]
+    liaison_sender: [marketplace.send_message, workspace.create_interview_hold, workspace.create_email_draft]
+    worker: [marketplace.list_events, marketplace.list_messages, marketplace.list_proposals,
+             marketplace.marketplace_status, marketplace.get_connects_balance]
+
+nodes:                         # per-node retries / timeouts (C7); unspecified nodes: 1 retry, 300 s
+  intake: {retries: 1, timeout_s: 60}
+  submitter: {retries: 0, timeout_s: 60}   # idempotency keys make a retried submit safe; the worker retries
+
+risk:                          # Risk Assessor score = w_scam*scam_likelihood + w_client*(1-client_quality) + w_injection*injected
+  w_scam: 0.65
+  w_client: 0.25
+  w_injection: 0.10
+  high_flag_floor: 0.75        # a high-severity scam/off-platform/free-work flag forces at least this score
+  scam_threshold: 0.6
+
+memory:                        # promotion rules (agent/memory/promotion_rules.py)
+  style_window: 5              # look at the last 5 edits ...
+  style_min_support: 3         # ... a style signal must appear in at least 3 of them
+  outcome_min_outcomes: 3      # per category, before any outcome lesson is promoted

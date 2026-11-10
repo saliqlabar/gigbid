@@ -1,0 +1,10 @@
+# Patterns the Compliance Guard applies. Which rules are ON comes from the platform policy
+# (GET /policy -> rules.*); a policy update that adds a rule adds an entry under extra_rules.
+redact:
+  email: '[\w.+-]+@[\w-]+\.[\w.-]+'
+  phone: '(?<!\w)\+?\d[\d\s().-]{7,}\d(?!\w)'
+  url: '\b(?:https?://|www\.)\S+'
+guarantee: '\b(guarantee[sd]?|100\s?% (?:satisf|success|accura)|i promise|risk[- ]free|money[- ]back)\b'
+off_platform: '\b(whats\s?app|telegram|skype|signal app|wechat|discord|e-?mail me|contact me (?:at|on|via)|call me (?:at|on)|outside (?:of )?(?:upwork|the platform)|off[- ]platform|pay(?:ment)? (?:via|through|by) (?:paypal|wise|bank transfer|crypto))\b'
+unpaid_work: '\b(free (?:sample|trial|test (?:task|work)|of charge)|at no cost|unpaid (?:trial|test|sample)|work for free)\b'
+extra_rules: []
