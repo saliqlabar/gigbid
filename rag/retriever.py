@@ -114,5 +114,6 @@ class Pipeline:
 
 @lru_cache(maxsize=8)
 def get_retriever(variant: str | None = None) -> Pipeline:
-    variant = variant or load_config().get("rag", {}).get("variant", "v0_naive")
+    import os
+    variant = variant or os.getenv("RAG_VARIANT") or load_config().get("rag", {}).get("variant", "v0_naive")
     return Pipeline(PRESETS[variant], variant)
