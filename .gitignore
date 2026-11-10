@@ -17,3 +17,4 @@ data/raw/
 playwright-report/
 test-results/
 gigsim/*.sqlite3
+evals/results/scratch_*

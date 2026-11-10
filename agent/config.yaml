@@ -16,18 +16,49 @@ marketplace:
     send_message: create_message_draft
 
 models:
-  profile: open
+  profile: open                # open | open_hosted | paid   (env MODEL_PROFILE overrides)
+  providers:                   # all OpenAI-compatible endpoints
+    ollama: {base_url: "http://localhost:11434/v1", api_key_env: OLLAMA_API_KEY}
+    groq:   {base_url: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
+  # USD per 1M tokens (input, output), used for cost reporting. Local models cost 0 USD; we report
+  # hardware + tokens/s for them instead. Check https://groq.com/pricing before quoting numbers.
+  prices:
+    "groq:openai/gpt-oss-20b": [0.075, 0.30]
+    "groq:openai/gpt-oss-120b": [0.15, 0.60]
+    "groq:llama-3.1-8b-instant": [0.05, 0.08]
+  profiles:
+    open:                      # required profile, fully local (RTX 4060 8 GB via Ollama)
+      cheap:  {provider: ollama, model: "qwen3:4b-instruct"}
+      strong: {provider: ollama, model: "qwen3:8b", think: false}
+      fallback: {provider: ollama, model: "llama3.2"}
+    open_hosted:               # deployed link: open-weight models through a hosted provider (no GPU on free hosts)
+      cheap:  {provider: groq, model: "openai/gpt-oss-20b", reasoning_effort: low}
+      strong: {provider: groq, model: "openai/gpt-oss-120b", reasoning_effort: low}
+      fallback: {provider: groq, model: "llama-3.1-8b-instant"}
+  # Node -> tier. Cheap, frequent nodes use the small model; Writer, Critic, Liaison the strongest.
   nodes:
-    scout: qwen3-4b
-    analyst: qwen3-4b
-    risk_assessor: qwen3-4b
-    fit_matcher: qwen3-4b
-    pricing: qwen3-4b
-    writer: configure-your-model
-    critic: configure-your-model
-    client_liaison: configure-your-model
-  embeddings: nomic-embed-text
-  reranker: bge-reranker-v2-m3
+    scout: cheap
+    analyst: cheap
+    risk_assessor: cheap
+    fit_matcher: cheap
+    pricing: cheap
+    intent: cheap
+    compliance: cheap
+    rag_rewrite: cheap
+    claim_verifier: cheap
+    writer: strong
+    critic: strong
+    client_liaison: strong
+    judge: strong
+  fallback_nodes: [scout, analyst, risk_assessor, fit_matcher, pricing, intent, compliance, rag_rewrite, claim_verifier]
+  timeout_s: 120
+  max_retries: 1
+
+rag:
+  variant: v0_naive            # set from evals/results/rag_variants.json (R6)
+  embedding_model: nomic-ai/nomic-embed-text-v1.5
+  reranker_model: jinaai/jina-reranker-v1-turbo-en   # bge-reranker-v2-m3 = 3.3-3.9 s per 20 docs on CPU
+  corrective: {relevant: 0.0, weak: -3.0, max_rewrites: 1}
 
 budgets:
   max_graph_steps: 30
