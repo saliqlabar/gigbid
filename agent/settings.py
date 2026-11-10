@@ -15,3 +15,8 @@ CONFIG_PATH = Path(os.getenv("GIGBID_CONFIG", ROOT / "agent" / "config.yaml"))
 @lru_cache(maxsize=1)
 def load_config() -> dict[str, Any]:
     return yaml.safe_load(CONFIG_PATH.read_text())
+
+import logging as _logging
+
+for _n in ("httpx", "mcp", "mcp.server.lowlevel.server"):
+    _logging.getLogger(_n).setLevel(_logging.WARNING)

@@ -87,7 +87,31 @@ def load_persona(persona: str, root: Path = PERSONA_DIR, repo_items: list[Eviden
                                   client_industry=p.get("client_industry"), outcome=p.get("outcome"),
                                   extra={"job_category": p.get("job_category")},
                                   source=f"data/personas/{persona}/proposals.json"))
-    return items
+    return items + load_uploads(persona)
+
+
+UPLOADS = ROOT / "data" / "processed" / "uploads"
+
+
+def load_uploads(persona: str) -> list[EvidenceItem]:
+    """Work the user added in the UI (case studies, CVs, past proposals with outcome)."""
+    out = []
+    base = UPLOADS / persona
+    for kind in ("case", "cv", "proposal"):
+        for f in sorted((base / kind).glob("*")) if (base / kind).exists() else []:
+            if f.suffix.lower() not in (".md", ".txt", ".pdf"):
+                continue
+            if f.suffix.lower() == ".pdf":
+                from pypdf import PdfReader
+                text = "\n".join(p.extract_text() or "" for p in PdfReader(f).pages)
+            else:
+                text = f.read_text(errors="ignore")
+            oc = f.with_name(f.name + ".outcome")
+            out.append(EvidenceItem(f"{persona}:{kind}:up-{f.stem[:40]}", persona, kind, _clean(text),
+                                    title=f"Uploaded: {f.stem}", project=f"up-{f.stem[:40]}" if kind == "case" else None,
+                                    outcome=oc.read_text().strip() if oc.exists() else None,
+                                    source=str(f.relative_to(ROOT))))
+    return out
 
 
 def load_local_repos(pdir: Path, persona: str, manifest: dict[str, dict]) -> list[EvidenceItem]:

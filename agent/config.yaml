@@ -101,6 +101,8 @@ tools:
     submitter: [marketplace.create_proposal_draft, marketplace.submit_proposal]
     client_liaison: [marketplace.list_messages, marketplace.get_job, workspace.get_free_slots]
     liaison_sender: [marketplace.send_message, workspace.create_interview_hold, workspace.create_email_draft]
+    api: [marketplace.list_proposals, marketplace.list_events, marketplace.list_messages,
+          marketplace.marketplace_status, marketplace.get_connects_balance]
     worker: [marketplace.list_events, marketplace.list_messages, marketplace.list_proposals,
              marketplace.marketplace_status, marketplace.get_connects_balance]
 
