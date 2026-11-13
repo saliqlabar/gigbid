@@ -1,0 +1,30 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	read_messages(read_messages)
+	classify(classify)
+	offer_slots(offer_slots)
+	draft_reply(draft_reply)
+	approve_reply(approve_reply)
+	send_reply(send_reply)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> read_messages;
+	approve_reply -.-> __end__;
+	approve_reply -.-> send_reply;
+	classify -.-> __end__;
+	classify -.-> draft_reply;
+	classify -.-> offer_slots;
+	draft_reply -.-> __end__;
+	draft_reply -.-> approve_reply;
+	offer_slots --> draft_reply;
+	read_messages -.-> __end__;
+	read_messages -.-> classify;
+	send_reply --> __end__;
+	approve_reply -.-> approve_reply;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc
