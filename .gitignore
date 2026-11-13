@@ -20,3 +20,4 @@ gigsim/*.sqlite3
 evals/results/scratch_*
 apps/web/dist/
 apps/web/node_modules/
+.logs/

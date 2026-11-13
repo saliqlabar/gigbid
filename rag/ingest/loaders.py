@@ -87,7 +87,8 @@ def load_persona(persona: str, root: Path = PERSONA_DIR, repo_items: list[Eviden
                                   client_industry=p.get("client_industry"), outcome=p.get("outcome"),
                                   extra={"job_category": p.get("job_category")},
                                   source=f"data/personas/{persona}/proposals.json"))
-    return items + load_uploads(persona)
+    from rag.ingest.github_mcp import load_github_items   # repos ingested via the GitHub MCP server
+    return items + load_github_items(persona) + load_uploads(persona)
 
 
 UPLOADS = ROOT / "data" / "processed" / "uploads"
