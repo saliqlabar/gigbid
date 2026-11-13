@@ -6,7 +6,7 @@ Resources: portfolio://case/{id}, portfolio://proposal/{id}, portfolio://readme/
 Prompts: answer a screening question, prove a skill, grounded proposal opening, industry experience.
 
 Use it from any MCP host (Claude Desktop, Cursor):
-    uvx --from git+https://github.com/<you>/gigbid#subdirectory=mcp_servers/portfolio gigbid-portfolio-mcp
+    uvx --from git+https://github.com/saliqlabar/gigbid gigbid-portfolio-mcp      (see mcp_servers/portfolio/README.md)
 or  python -m mcp_servers.portfolio.server               (stdio)
     python -m mcp_servers.portfolio.server --http        (Streamable HTTP on :8092/mcp, bearer auth)
 Set PORTFOLIO_PERSONA (and PORTFOLIO_ROOT for your own portfolio folder).

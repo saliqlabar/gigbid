@@ -10,6 +10,7 @@ official GitHub MCP server when a token and repo list are configured.
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -17,7 +18,7 @@ from typing import Any
 
 from agent.settings import ROOT
 
-PERSONA_DIR = ROOT / "data" / "personas"
+PERSONA_DIR = Path(os.getenv("PORTFOLIO_ROOT") or ROOT / "data" / "personas")   # PORTFOLIO_ROOT: your own folder
 CODE_EXT = {".py", ".ts", ".tsx", ".js", ".sql", ".ipynb", ".r", ".R", ".yaml", ".yml", ".dax", ".m"}
 _SYNTH = re.compile(r"^\s*(<!--|//|#|--)?\s*SYNTHETIC DATA.*$", re.M)
 

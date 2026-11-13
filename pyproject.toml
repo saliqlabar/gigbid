@@ -18,6 +18,21 @@ dependencies = [
   "openinference-instrumentation-openai==0.1.69",
 ]
 
+[project.scripts]
+gigbid-portfolio-mcp = "mcp_servers.portfolio.server:main"
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["agent", "rag", "mcp_servers", "apps"]
+# demo personas ship with the package so `uvx ... gigbid-portfolio-mcp` works out of the box;
+# point PORTFOLIO_ROOT at your own portfolio folder (same layout) to serve yours instead.
+[tool.hatch.build.targets.wheel.force-include]
+"data/personas" = "data/personas"
+"data/policy_pack" = "data/policy_pack"
+
 [project.optional-dependencies]
 data = ["pandas==3.1.1", "fpdf2==2.9.0"]          # dataset build scripts only
 dev = ["pytest==9.2.0", "pytest-asyncio==1.4.1.post1", "ruff==0.17.4"]
