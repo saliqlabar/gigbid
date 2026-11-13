@@ -3,17 +3,18 @@ marketplace:
   max_requests_per_minute: 20  # per-user limiter in the Marketplace MCP server (GigSim allows 60/token)
   timeout_s: 10
   max_retries: 3
-  # Port method -> tool name on the official Upwork MCP server. Fill these in from the server's
-  # tools/list after connecting; an unmapped method raises "not supported in live mode".
+  # Port method -> (tool, action) on the official Upwork MCP server, checked against its real tools/list
+  # (docs/upwork_tools_list.json, 2026-11-14). A method with no entry fails loudly in live mode.
+  # Deliberately NOT mapped: confirm_preview and send_message (GigBid never submits or sends on Upwork).
   upwork_tools:
-    search_jobs: search_jobs
-    get_job: get_job
-    get_client_history: get_client
-    get_connects_balance: get_connects
-    list_messages: list_messages
-    list_proposals: list_proposals
-    create_proposal_draft: create_proposal_draft
-    send_message: create_message_draft
+    list_accounts: {tool: upwork__list_accounts}
+    search_jobs: {tool: upwork__find_jobs, action: search}
+    get_job: {tool: upwork__find_jobs, action: get}
+    get_connects_balance: {tool: upwork__get_profile, action: connects_balance}
+    list_messages: {tool: upwork__get_messages, action: list_rooms}
+    read_messages: {tool: upwork__get_messages, action: list_messages}
+    list_proposals: {tool: upwork__list_freelancer_proposals, action: list}
+    create_proposal_draft: {tool: upwork__manage_proposals, action: create}   # returns a preview only
 
 models:
   profile: open                # open | open_hosted | paid   (env MODEL_PROFILE overrides)
