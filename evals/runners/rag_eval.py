@@ -75,6 +75,7 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=0, help="jobs per persona (0 = all)")
     ap.add_argument("--requirements", choices=["jobspec", "tags"], default="jobspec")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--resume", action="store_true", help="keep variants already in the results file")
     a = ap.parse_args()
 
     if a.ablate:
@@ -85,8 +86,18 @@ def main() -> None:
     else:
         runs = {v: PRESETS[v] for v in a.variants}
 
-    table = {}
+    out = a.out or ("rag_ablation" if a.ablate else "rag_variants")
+    prev = RESULTS / f"{out}.json"
+    table = json.loads(prev.read_text())["results"] if a.resume and prev.exists() else {}
+
+    def save():
+        return write_result(out, {"requirements_source": a.requirements, "limit_per_persona": a.limit or "all",
+                                  "metric_note": "macro-average over personas; gold = dev set gold_evidence",
+                                  "results": table})
     for name, flags in runs.items():
+        if name in table:
+            print(f"{name:32s} (kept from {prev.name})", flush=True)
+            continue
         pipe = Pipeline(flags, name)
         table[name] = {"flags": flags.as_dict(), "personas": {}}
         for persona in PERSONAS:
@@ -98,12 +109,8 @@ def main() -> None:
         table[name]["overall"] = {k: round(mean(p[k] for p in ps), 4) for k in ("recall@5", "mrr", "ndcg@10")}
         print(f"{name:32s} R@5={table[name]['overall']['recall@5']:.3f} MRR={table[name]['overall']['mrr']:.3f} "
               f"nDCG@10={table[name]['overall']['ndcg@10']:.3f}", flush=True)
-
-    out = a.out or ("rag_ablation" if a.ablate else "rag_variants")
-    path = write_result(out, {"requirements_source": a.requirements, "limit_per_persona": a.limit or "all",
-                              "metric_note": "macro-average over personas; gold = dev set gold_evidence",
-                              "results": table})
-    print("wrote", path)
+        save()                                  # after every variant: a crash never loses finished ones
+    print("wrote", save())
 
 
 if __name__ == "__main__":
