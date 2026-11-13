@@ -69,6 +69,10 @@ def check(text: str, policy: dict, unsupported_left: int = 0) -> ComplianceVerdi
 @node("compliance")
 async def compliance(state: dict, tools: ToolLayer) -> dict:
     d = dict(state["proposal_draft"])
+    from agent.safety.injection import level
+    if level() != "full":                       # injection ASR ablation only: guard switched off
+        v = ComplianceVerdict(allowed=True, violations=[], cleaned_text=d["cover_letter"], policy_version="off")
+        return {"compliance_verdict": v.model_dump(), "drafts": [{"stage": "compliance", **d}]}
     verdict = check(d["cover_letter"], state.get("policy") or {})
     answers = []
     for a in d.get("screening_answers", []):

@@ -10,6 +10,8 @@ File format:
 """
 from __future__ import annotations
 
+import os
+import re
 from functools import lru_cache
 from pathlib import Path
 from string import Template
@@ -33,5 +35,9 @@ def load(name: str) -> tuple[dict, str, str]:
 def render(name: str, variables: dict) -> tuple[str, str, str]:
     """(system, user, version) for a prompt file."""
     meta, system, user = load(name)
+    # <defence>...</defence> marks injection-defence instructions. They are always on in production; the
+    # injection ASR study (evals/runners/injection_asr.py) turns them off with GIGBID_DEFENCES=none.
+    keep = os.getenv("GIGBID_DEFENCES", "full") != "none"
+    system, user = (re.sub(r"<defence>(.*?)</defence>", r"\1" if keep else "", x, flags=re.S) for x in (system, user))
     v = {k: (x if isinstance(x, str) else str(x)) for k, x in variables.items()}
     return Template(system).safe_substitute(v), Template(user).safe_substitute(v), str(meta.get("version", "1"))

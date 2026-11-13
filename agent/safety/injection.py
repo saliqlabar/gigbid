@@ -10,7 +10,13 @@ Layers:
 """
 from __future__ import annotations
 
+import os
 import re
+
+
+def level() -> str:
+    """full (production) | prompt (no Compliance Guard) | none (no defences): eval-only ablation switch."""
+    return os.getenv("GIGBID_DEFENCES", "full")
 
 SIGNATURES = [
     r"ignore (all |any )?(the )?(previous|prior|above|earlier) (instructions|rules|prompts?)",
@@ -30,6 +36,8 @@ _RX = [re.compile(s, re.I) for s in SIGNATURES]
 def detect(text: str) -> list[str]:
     """Matched snippets (empty list = nothing suspicious found)."""
     hits = []
+    if level() == "none":
+        return hits
     for rx in _RX:
         m = rx.search(text or "")
         if m:
@@ -39,5 +47,7 @@ def detect(text: str) -> list[str]:
 
 
 def delimit(text: str, kind: str = "job_post") -> str:
+    if level() == "none":
+        return text or ""
     safe = re.sub(r"</?\s*untrusted[^>]*>", "[tag removed]", text or "", flags=re.I)
     return f"<untrusted_{kind}>\n{safe}\n</untrusted_{kind}>"
