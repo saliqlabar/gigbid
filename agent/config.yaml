@@ -76,8 +76,8 @@ budgets:
   max_tokens_per_job: 40000   # declared token budget per job thread (R8)
 
 thresholds:                    # decision node (agent/nodes/decide.py)
-  minimum_fit_score: 0.40      # >= this -> bid (provisional; tuned on the dev set, see evals/results/decisions.json)
-  watch_fit_score: 0.20        # between watch and minimum -> watch, below -> skip
+  minimum_fit_score: 0.33      # >= this -> bid; tuned on the dev sample (F1 0.73 -> 0.79 at 0.40 -> 0.33, decisions_open run 1)
+  watch_fit_score: 0.15        # between watch and minimum -> watch, below -> skip
   maximum_risk_score: 0.70
   minimum_hourly_ratio: 0.6    # skip hourly jobs whose top rate is below 60% of my rate (user setting)
 

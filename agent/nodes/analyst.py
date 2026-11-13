@@ -12,7 +12,7 @@ from agent.handoffs import JobSpec
 from agent.llm import structured
 from agent.mcp_client import ToolLayer
 from agent.nodes._base import node
-from agent.safety.injection import delimit
+from agent.safety.injection import delimit, strip
 
 
 class _SpecOut(BaseModel):
@@ -34,7 +34,7 @@ def budget_text(job: dict) -> str:
 async def analyse(job: dict) -> JobSpec:
     out = await structured("analyst", "analyst", {
         "job_id": job["job_id"], "skills": ", ".join(job.get("skills", [])), "budget": budget_text(job),
-        "job_post": delimit(f"{job['title']}\n\n{job.get('description', '')}", "job_post")}, _SpecOut)
+        "job_post": delimit(strip(f"{job['title']}\n\n{job.get('description', '')}")[0], "job_post")}, _SpecOut)
     # trusted structured fields come from the marketplace record, never from the model
     spec = JobSpec(job_id=job["job_id"], title=job["title"], **out.model_dump())
     spec.budget_type = job.get("budget_type") or "unknown"

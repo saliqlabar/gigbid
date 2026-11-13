@@ -13,7 +13,7 @@ from agent.handoffs import RiskFlag, RiskReport
 from agent.llm import structured
 from agent.mcp_client import ToolCallError, ToolLayer
 from agent.nodes._base import node
-from agent.safety.injection import delimit, detect
+from agent.safety.injection import delimit, detect, strip
 from agent.settings import load_config
 
 
@@ -51,7 +51,7 @@ async def assess(job: dict, client: dict) -> RiskReport:
     facts = {k: client.get(k) for k in ("country", "total_spent_usd", "reviews_count", "average_rating",
                                         "payment_verified", "hire_rate", "jobs_posted")} if client else {}
     llm = await structured("risk_assessor", "risk_assessor",
-                           {"client": json.dumps(facts), "job_post": delimit(text, "job_post")}, _RiskLLM)
+                           {"client": json.dumps(facts), "job_post": delimit(strip(text)[0], "job_post")}, _RiskLLM)
     flags += llm.flags
     if sigs and not any(f.kind == "injection" for f in flags):
         flags.append(RiskFlag(kind="injection", severity="high", evidence=sigs[0][:160]))
