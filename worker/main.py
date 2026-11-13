@@ -32,7 +32,8 @@ class WorkerSettings:
                  tasks.continue_thread]
     cron_jobs = [cron(tasks.schedule, minute=set(range(60)), run_at_startup=True),
                  cron(tasks.poll_events, minute=set(range(0, 60, 2))),
-                 cron(tasks.requeue_degraded, minute=set(range(1, 60, 3)))]
+                 cron(tasks.requeue_degraded, minute=set(range(1, 60, 3))),
+                 cron(tasks.sim_clock, minute=set(range(0, 60, 5)))]
     on_startup, on_shutdown = startup, shutdown
     redis_settings = RedisSettings.from_dsn(os.getenv("REDIS_URL", "redis://localhost:6379/0"))
     max_jobs = int(os.getenv("WORKER_CONCURRENCY", "2"))       # local GPU: few concurrent LLM runs

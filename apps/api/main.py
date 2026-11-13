@@ -30,6 +30,13 @@ async def lifespan(app: FastAPI):
         app.state.bid_graph = new_graph(cp, store)
         app.state.conv_graph = new_conversation_graph(cp, store)
         app.state.queue = None
+        clock = None
+        if os.getenv("GIGSIM_INPROCESS") == "1":
+            from gigsim import app as gigsim_app
+            gigsim_app.init_db()
+        if os.getenv("WORKER_MODE") == "inprocess":
+            from apps.api import inprocess_worker
+            clock = inprocess_worker.start(app.state)
         if os.getenv("REDIS_URL") and os.getenv("WORKER_MODE") != "inline":
             from arq import create_pool
             from arq.connections import RedisSettings
@@ -38,6 +45,8 @@ async def lifespan(app: FastAPI):
             except Exception:  # noqa: BLE001 - surfaced by /status as worker_queue=false
                 app.state.queue = None
         yield
+        if clock is not None:
+            clock.cancel()
         if app.state.queue is not None:
             await app.state.queue.aclose()
 

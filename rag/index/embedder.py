@@ -21,7 +21,8 @@ _lock = threading.Lock()
 
 # nomic-embed-text was trained with task prefixes; omitting them measurably hurts retrieval.
 PREFIX = {"nomic-ai/nomic-embed-text-v1.5": ("search_query: ", "search_document: "),
-          "nomic-ai/nomic-embed-text-v1.5-Q": ("search_query: ", "search_document: ")}
+          "nomic-ai/nomic-embed-text-v1.5-Q": ("search_query: ", "search_document: "),
+          "BAAI/bge-small-en-v1.5": ("Represent this sentence for searching relevant passages: ", "")}
 
 
 def _cfg() -> dict:
@@ -49,7 +50,7 @@ def _con() -> sqlite3.Connection:
 
 def embed(texts: list[str], kind: str = "doc", model: str | None = None) -> np.ndarray:
     """L2-normalised embeddings, shape (n, d). kind = 'query' | 'doc'."""
-    model = model or _cfg().get("embedding_model", "nomic-ai/nomic-embed-text-v1.5")
+    model = model or os.getenv("EMBEDDING_MODEL") or _cfg().get("embedding_model", "nomic-ai/nomic-embed-text-v1.5")
     q, d = PREFIX.get(model, ("", ""))
     full = [(q if kind == "query" else d) + t for t in texts]
     keys = [hashlib.sha1((model + "\x00" + t).encode()).hexdigest() for t in full]

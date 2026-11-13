@@ -6,6 +6,9 @@
 - poll_events (cron): marketplace events -> outcomes into memory (promotion rules) and client messages ->
   handle_conversation (conversation graph).
 - requeue_degraded (cron): threads that hit "marketplace unavailable" are continued once it is back.
+- sim_clock (cron, GigSim only): advances the SIMULATOR, not the agent: releases new jobs from GigSim's live
+  stream and lets simulated clients respond to submitted proposals (GigSim's /admin endpoints). In live
+  Upwork mode it does nothing: the real marketplace has its own clock.
 
 Idempotency: arq job ids are the graph thread ids (a job is queued at most once at a time), `start_bid`
 refuses to re-analyse an existing thread, and every marketplace write carries a thread-derived
@@ -174,6 +177,8 @@ async def poll_events(ctx):
 
 
 async def requeue_degraded(ctx):
+    from agent.runner import _init as runner_init  # a fresh DB has no threads table until a graph ran
+    runner_init()
     rows = db.query("select thread_id, user_id from threads where status='degraded'")
     if not rows:
         return
@@ -185,3 +190,24 @@ async def requeue_degraded(ctx):
     if st.get("available"):
         for r in rows:
             await _enqueue(ctx, "continue_thread", r["user_id"], r["thread_id"], job_id=f"retry-{r['thread_id']}")
+
+
+_clock = {"last_publish": 0.0}
+
+
+async def sim_clock(ctx):
+    import os
+
+    from agent.marketplace_port import get_marketplace
+    from agent.settings import load_config
+    cfg = load_config().get("simulator", {})
+    if os.getenv("MARKETPLACE_MODE", load_config()["marketplace"].get("mode")) != "gigsim" or not cfg.get("enabled", True):
+        return
+    port = get_marketplace("gigsim")
+    try:
+        await port._request("POST", "/admin/tick")
+        if time.time() - _clock["last_publish"] >= 60 * float(cfg.get("publish_every_min", 60)):
+            await port._request("POST", "/admin/publish", params={"n": int(cfg.get("publish_n", 5))})
+            _clock["last_publish"] = time.time()
+    finally:
+        await port.aclose()

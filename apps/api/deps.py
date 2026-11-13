@@ -39,6 +39,9 @@ async def enqueue(request: Request, fn: str, *args, job_id: str | None = None):
     """Queue work for the worker (arq on Redis). `job_id` makes enqueueing idempotent."""
     pool = request.app.state.queue
     if pool is None:
+        if os.getenv("WORKER_MODE") == "inprocess":        # single-process deploy: background task, same idempotency
+            from apps.api import inprocess_worker
+            return inprocess_worker.submit(request.app.state, fn, *args, job_id=job_id)
         if os.getenv("WORKER_MODE") == "inline":           # tests only: run the task in-process
             from worker import tasks
             return await getattr(tasks, fn)({"inline": True, "app_state": request.app.state}, *args)

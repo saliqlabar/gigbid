@@ -33,10 +33,14 @@ class GigSimAdapter:
 
     @classmethod
     def from_env(cls, cfg: dict[str, Any]) -> "GigSimAdapter":
-        return cls(base_url=os.getenv("GIGSIM_BASE_URL", "http://localhost:8081"),
+        transport = None
+        if os.getenv("GIGSIM_INPROCESS") == "1":     # single-process deploy: GigSim runs inside this process
+            from gigsim import app as gigsim_app
+            transport = httpx.ASGITransport(app=gigsim_app.app)
+        return cls(base_url=os.getenv("GIGSIM_BASE_URL", "http://localhost:8081") if transport is None else "http://gigsim",
                    token=os.getenv("GIGSIM_API_TOKEN", "dev-token"),
                    timeout_s=float(cfg.get("timeout_s", 10)),
-                   max_retries=int(cfg.get("max_retries", 3)))
+                   max_retries=int(cfg.get("max_retries", 3)), transport=transport)
 
     async def _request(self, method: str, path: str, **kw: Any) -> Any:
         last: str = ""
