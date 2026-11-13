@@ -898,6 +898,7 @@
     "properties": {
      "category": {
       "default": "",
+      "description": "Exact category name: 'Web development', 'Data analysis', 'AI/ML', 'Data science', 'Developer', 'Marketing', '3D' or 'Other'. Leave empty to search all",
       "maxLength": 60,
       "title": "Category",
       "type": "string"
@@ -918,7 +919,7 @@
      },
      "since": {
       "default": "",
-      "description": "ISO timestamp; only jobs published after it",
+      "description": "ISO timestamp; only jobs published after it. Leave empty unless the user gives a date",
       "maxLength": 40,
       "title": "Since",
       "type": "string"

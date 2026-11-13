@@ -57,8 +57,12 @@ def search_evidence(
     filters: tools.Filters | None = None,
     ctx: Context | None = None,
 ) -> tools.EvidenceList:
-    """Find portfolio evidence (case studies, code, READMEs, reviews, CV) proving one requirement.
-    Each result has type, source, date and (for proposals) outcome, plus a portfolio:// URI."""
+    """Search the freelancer's OWN portfolio for evidence about one skill or requirement: case studies,
+    code, READMEs, client reviews of the freelancer, CV and past proposals. Put the skill or topic in
+    `requirement`; narrow with `filters`: types (e.g. ["code"] for code only, ["review"] for what clients
+    said, ["proposal"] for past proposals), outcome ("won" / "replied" / "ignored", proposals only) and
+    client_industry (e.g. "healthcare"). Each result has type, source, date and (for proposals) outcome,
+    plus a portfolio:// URI."""
     persona, c = _persona(ctx)
     res = tools.search_evidence(persona, requirement, k, filters)
     _log(c, "search_evidence", {"requirement": requirement, "k": k}, [r.evidence_id for r in res.results])

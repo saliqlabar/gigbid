@@ -223,12 +223,16 @@ DryRun = Annotated[bool, Field(description="Preview only: return the payload and
 @mcp.tool(annotations=READ)
 async def search_jobs(
     query: Annotated[str, Field(max_length=200, description="Space-separated keywords, all must match")] = "",
-    category: Annotated[str, Field(max_length=60)] = "",
-    since: Annotated[str, Field(max_length=40, description="ISO timestamp; only jobs published after it")] = "",
+    category: Annotated[str, Field(max_length=60, description=(
+        "Exact category name: 'Web development', 'Data analysis', 'AI/ML', 'Data science', 'Developer', "
+        "'Marketing', '3D' or 'Other'. Leave empty to search all"))] = "",
+    since: Annotated[str, Field(max_length=40, description=(
+        "ISO timestamp; only jobs published after it. Leave empty unless the user gives a date"))] = "",
     limit: Annotated[int, Field(ge=1, le=50)] = 20,
     ctx: Context | None = None,
 ) -> JobList:
-    """Search open jobs on the marketplace, newest first."""
+    """Search open jobs on the marketplace (always newest first, so 'latest' needs no extra argument).
+    Use `query` for keywords and `category` for a job category; only set what the user asked for."""
     async def fn(c):
         jobs = await port().search_jobs(query, category, since, limit)
         return {"jobs": jobs, "count": len(jobs)}
@@ -238,14 +242,17 @@ async def search_jobs(
 
 @mcp.tool(annotations=READ)
 async def get_job(job_id: Annotated[str, Field(min_length=1, max_length=64)], ctx: Context | None = None) -> Job:
-    """Get one job post with budget, skills, Connects cost and screening questions."""
+    """Get one job post by job_id: title, description, budget, skills, Connects cost and screening questions.
+    Use it for any question about a single job, e.g. its budget or screening questions."""
     return Job.model_validate(await _run(ctx, "get_job", {"job_id": job_id}, lambda c: port().get_job(job_id)))
 
 
 @mcp.tool(annotations=READ)
 async def get_client_history(client_id: Annotated[str, Field(min_length=1, max_length=64)],
                              ctx: Context | None = None) -> ClientHistory:
-    """Get a client's public history: spend, rating, reviews, payment verification, hire rate."""
+    """Get a marketplace CLIENT's history by client_id (cl_...): total spend, average rating, reviews other
+    freelancers left about that client, payment verification, hire rate. Not for the freelancer's own reviews;
+    those are portfolio evidence (portfolio.search_evidence with types=[review])."""
     return ClientHistory.model_validate(await _run(ctx, "get_client_history", {"client_id": client_id},
                                                    lambda c: port().get_client_history(client_id)))
 
@@ -346,7 +353,9 @@ async def submit_proposal(
     dry_run: DryRun = False,
     ctx: Context | None = None,
 ) -> WriteResult:
-    """Submit an approved proposal draft. Spends Connects exactly once per idempotency_key.
+    """Submit an approved proposal draft (proposal_id = prop_...). Spends Connects exactly once per
+    idempotency_key. To find out what submitting would cost WITHOUT submitting, call this with dry_run=true:
+    it returns the Connects cost and balance and sends nothing.
     In live Upwork mode this returns 'awaiting_user_confirmation': the user confirms on Upwork."""
     args = locals_args(proposal_id=proposal_id, idempotency_key=idempotency_key, dry_run=dry_run)
 

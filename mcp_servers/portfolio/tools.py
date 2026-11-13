@@ -18,7 +18,7 @@ class Filters(BaseModel):
     project: str | None = Field(None, max_length=40, description="Only evidence from this project id, e.g. p03")
     since: str | None = Field(None, max_length=10, description="Only evidence dated on/after YYYY-MM-DD")
     outcome: Literal["won", "replied", "ignored"] | None = Field(None, description="Proposals with this outcome")
-    client_industry: str | None = Field(None, max_length=60)
+    client_industry: str | None = Field(None, max_length=60, description="Only work for clients in this industry, e.g. healthcare")
 
 
 class Evidence(BaseModel):

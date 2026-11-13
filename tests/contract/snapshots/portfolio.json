@@ -312,6 +312,7 @@
          }
         ],
         "default": null,
+        "description": "Only work for clients in this industry, e.g. healthcare",
         "title": "Client Industry"
        },
        "outcome": {
