@@ -54,6 +54,10 @@ async def verify_many(texts: list[str], evidence: dict[str, str]) -> list[Verifi
         cited = [e for e in citations(s) if e in evidence]
         ids = [e for e in (c.evidence_ids if c else []) if e in evidence] or cited
         clean = CITE.sub(lambda m: m.group(0) if m.group(1) in evidence else "", s)
+        if status in ("supported", "partly_supported") and not ids:
+            # a claim cannot be (partly) supported by nothing: small verifier models say "partly" when they
+            # find no evidence (seen on job_00411: "managed IP rotation ..."), so this rule is deterministic.
+            status = "unsupported"
         if status == "unsupported":
             results[ti].claims.append(ClaimCheck(claim=s, status=status, evidence_ids=ids, note=c.note if c else "",
                                                  action="removed"))
