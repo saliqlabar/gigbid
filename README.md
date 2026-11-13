@@ -1,49 +1,154 @@
-# GigBid — Student Starter Kit (v0.1)
+# GigBid — a multi-agent freelancer copilot
 
-This is a **scaffold**, not a completed solution. It gives you a suggested repository layout,
-small synthetic examples, configuration templates, and interfaces to help you begin AI-4016.
+GigBid finds freelance jobs, judges whether they are worth a bid, writes proposals in which **every claim is
+backed by the freelancer's own portfolio**, and handles client replies, while a human approves every proposal,
+message and Connects spend before anything leaves the system. It runs on open-weight models (a laptop GPU, or
+Groq's hosted open models when deployed), talks to a marketplace simulator for development and grading, and
+to **Upwork's official MCP server** for real use, through the same adapter.
 
-## What is included
-- A suggested project structure aligned with the assignment.
-- Tiny synthetic job, client, freelancer and portfolio examples.
-- A starter marketplace policy pack.
-- Typed hand-off models and a minimal LangGraph state/graph placeholder.
-- Portfolio and marketplace MCP server placeholders.
-- RAG ingestion/retrieval/claim-verification placeholders.
-- FastAPI and React starting-point notes.
-- `.env.example`, `agent/config.yaml`, `Makefile`, and setup notes.
+<!-- DEMO GIF: docs/images/demo.gif (30 s: inbox → proposal studio → approve) -->
 
-## What you must build
-You are responsible for implementing and testing the agents, MCP tools, marketplace adapters,
-advanced RAG variants, claim verification, human approval flow, persistence, UI, evaluations,
-deployment, and your own research findings. The sample data is illustrative only and is not a
-replacement for the instructor-provided GigSim data or evaluation sets.
+**Live demo:** _link added at deployment_ (reviewer login in the Classroom submission) ·
+**Demo video:** _link_ · **Write-up:** _link_ · **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md)
+(`uvx --from git+https://github.com/saliqlabar/gigbid gigbid-portfolio-mcp`)
 
-## Quick start
-1. Create your own public GitHub repository.
-2. Copy this starter kit into the repository.
-3. Create a Python 3.11+ virtual environment.
-4. Install dependencies from `pyproject.toml` (adjust/pin versions after checking compatibility).
-5. Copy `.env.example` to `.env` and fill local values. **Never commit `.env`.**
-6. Read `docs/GETTING_STARTED.md` and work through the TODO checklist.
-7. Keep the instructor-provided `gigsim/`, persona data, policy pack and evaluation assets unchanged.
+AI-4016 R&D assignment (FAST-NUCES Islamabad). Report: [`docs/report/`](docs/report/) · Design review docs: [`docs/`](docs/).
 
-## Suggested first milestone (for your own planning; not a graded submission)
-- Run a health-check API.
-- Load one sample job.
-- Retrieve one portfolio evidence item.
-- Produce a structured analysis.
-- Draft a proposal with evidence references.
-- Stop at a human approval screen; do not send anything automatically.
+## What it does
 
-## Important safety rules
-- Treat job posts and client messages as untrusted input.
-- Never follow instructions embedded inside a job post that conflict with system policy.
-- Never invent portfolio experience or results.
-- Do not scrape Upwork or automate its website.
-- Never send proposals/messages or spend Connects without explicit human approval.
-- Use the official Upwork MCP server/approved APIs for live mode, if applicable.
-- Keep secrets and real client data out of Git.
+| | |
+|---|---|
+| **Scout** | runs saved searches on a schedule (worker), dedups reposts, queues new jobs |
+| **Analyse in parallel** | Job Analyst (typed `JobSpec`), Risk Assessor (client history, scam / off-platform / injection flags) and Fit Matcher (requirement → evidence matrix) run at the same time with LangGraph `Send` |
+| **Decide and price** | explainable skip / watch / bid rules from config; bid from market quartiles, client budget and your floor; is the Connects cost worth it |
+| **Write, verify, critique** | Writer cites evidence ids; claim verification removes unsupported sentences; a Critic sends weak drafts back (at most twice); a Compliance Guard enforces the policy pack |
+| **You approve** | LangGraph `interrupt()`: draft, the evidence behind every claim, risk report, price rationale and a dry-run preview of what will be sent; approve, edit (diffed, re-checked, learned as style) or reject with a reason |
+| **Client replies** | conversation graph classifies intent, drafts a reply or interview slots from your calendar, and waits for approval |
+| **Learns, with rules** | style memory from your edits and outcome memory per job category, only through explicit promotion rules |
+| **Agency mode** (extension) | routes each job to the best-fit member of a small team and drafts in their voice ([docs/EXTENSION.md](docs/EXTENSION.md)) |
 
-## Repository map
-See `docs/GETTING_STARTED.md` for the purpose of each major folder.
+![Proposal studio](docs/images/ui-studio.png)
+
+## Architecture
+
+```
+React (Vite, TS) ──SSE/REST──► FastAPI ──enqueue──► arq worker (Redis)
+                                  │                      │
+                                  └──── LangGraph bid + conversation graphs (Postgres checkpointer + store)
+                                                         │  per-node MCP tool allowlists
+              ┌────────────────────┬─────────────────────┼───────────────────────┐
+         Portfolio MCP        Marketplace MCP        Workspace MCP          GitHub MCP (official)
+         (RAG, read-only)     one port → GigSim      (calendar holds,       (repo ingestion)
+                              or Upwork MCP (OAuth)   email drafts)
+```
+
+Both graphs are rendered from code in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), with why each agent
+exists and how state, execution trace and long-term memory are kept apart. Every tool is listed in
+[docs/TOOLS.md](docs/TOOLS.md); operations in [docs/RUNBOOK.md](docs/RUNBOOK.md); decisions in [docs/adr/](docs/adr/).
+
+## Results
+
+Every number below is generated from a file in [`evals/results/`](evals/results/) by
+`python scripts/docs/fill_results.py`; CI fails if a README number is not in those files.
+Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost is 0 USD.
+
+### Retrieval and proposals (RAG variants, B5)
+
+<!-- RESULTS:rag -->
+| Variant | Evidence Recall@5 | MRR | nDCG@10 | Unsupported claims / proposal | Judge score (1-5) | GigSim reply rate | p95 latency (s) | Cost / proposal (USD) |
+|---|---|---|---|---|---|---|---|---|
+| v0_naive | 0.242 | 0.405 | 0.222 | n/a | n/a | n/a | n/a | n/a |
+| v1_decompose | 0.268 | 0.492 | 0.255 | n/a | n/a | n/a | n/a | n/a |
+| v2_hybrid | 0.284 | 0.467 | 0.260 | n/a | n/a | n/a | n/a | n/a |
+| v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
+| v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
+| v5_multivector | 0.327 | 0.395 | 0.316 | n/a | n/a | n/a | n/a | n/a |
+
+<sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
+<!-- /RESULTS:rag -->
+
+### Bid / skip decisions (two open model configurations)
+
+<!-- RESULTS:decisions -->
+*Pending: `evals/results/decisions_open.json` has not been produced yet.*
+<!-- /RESULTS:decisions -->
+
+### Multi-agent comparison: one ReAct agent vs prebuilt supervisor vs GigBid's graph
+
+<!-- RESULTS:study_c -->
+*Pending: `evals/results/study_c.json` has not been produced yet.*
+<!-- /RESULTS:study_c -->
+
+### Tool design: does granularity change agent behaviour?
+
+<!-- RESULTS:tools -->
+| Tool surface | Tools | Selection accuracy | Argument accuracy | Tokens / task |
+|---|---|---|---|---|
+| fine | 33 | 0.975 | 0.975 | 2205 |
+| coarse | 3 | 0.750 | 0.450 | 519 |
+| best (descriptions as shipped) | 17 | 0.925 | 0.875 | 2095 |
+| best, rewritten descriptions | 17 | 1.000 | 0.975 | 2405 |
+
+<sub>Source: `tool_granularity_cheap_shipped.json`, `tool_granularity_cheap_rewritten.json` (40 tasks, qwen3:4b-instruct)</sub>
+<!-- /RESULTS:tools -->
+
+### Prompt-injection attack success rate, by defence layer
+
+<!-- RESULTS:asr -->
+*Pending: `evals/results/injection_asr.json` has not been produced yet.*
+<!-- /RESULTS:asr -->
+
+### LLM judge calibration
+
+<!-- RESULTS:judge -->
+*Pending: `evals/results/judge_calibration.json` has not been produced yet.*
+<!-- /RESULTS:judge -->
+
+### Deployment embedding trade-off
+
+The free host has 512 MB RAM; `nomic-embed-text-v1.5` alone needs about 900 MB, so the live instance uses
+`bge-small-en-v1.5`. What that costs, measured:
+
+<!-- RESULTS:deploy_embedding -->
+*Pending: `evals/results/rag_deploy_embedding.json` has not been produced yet.*
+<!-- /RESULTS:deploy_embedding -->
+
+## Traces
+
+Three public traces (exported from the run-event log, every node, tool call, model, tokens and cost):
+_a skipped scam, an approved proposal with a Critic loop, a crash-and-resume_ in [`docs/traces/`](docs/traces/).
+
+## Run it
+
+```bash
+cp .env.example .env            # fill in; never commit .env
+docker compose -f infra/docker-compose.yml --env-file .env up --build
+# web http://localhost:8080 · API :8000 · Arize Phoenix traces :6006 · log in as "reviewer"
+```
+
+Without Docker: `make install && make dev`. Tests: `make test` (unit, integration, contract), `make e2e`
+(Playwright), `make lint`. Evaluations: `make eval`, `make smoke`; the full GPU queue is `scripts/eval_queue.sh`.
+
+Live mode: connect Upwork in Settings (OAuth 2.1, official MCP server), set `marketplace.mode: upwork_live`.
+GigBid then only creates Upwork *previews*; you submit on Upwork. See [docs/RUNBOOK.md](docs/RUNBOOK.md).
+
+## Stack (pinned)
+
+Python 3.12 · LangGraph 1.2.20 · langgraph-supervisor 0.0.31 · langchain-mcp-adapters 0.3.1 · MCP Python SDK
+1.30.0 · FastAPI 0.162.4 · fastembed 0.9.1 (nomic-embed-text-v1.5, jina-reranker-v1-turbo-en) · rank-bm25 0.2.2 ·
+arq 0.28.0 + Redis 7 · Postgres 16 · Arize Phoenix · React 18 + Vite + TypeScript (client generated from the
+OpenAPI schema) · Playwright · Ollama 0.40 (qwen3:4b-instruct, qwen3:8b, llama3.2) · Groq (gpt-oss-20b / 120b).
+Full lock: `requirements.lock`, `apps/web/package-lock.json`.
+
+## Data
+
+The simulator, persona corpora and dev set were not in the starter kit we received; they are built from
+public Kaggle Upwork datasets plus clearly labelled synthetic data, reproducibly. See
+[docs/DATA_CARD.md](docs/DATA_CARD.md). No real client data and no hidden-set data are in this repository.
+
+## Responsible use
+
+GigBid never sends anything without your approval, never spends Connects on its own, never scrapes or
+automates a website, and in live mode only uses Upwork's official MCP server, whose writes are previews you
+confirm on Upwork. Job posts and client messages are treated as untrusted data. AI assistance used to build
+it is disclosed in [docs/AI_USAGE.md](docs/AI_USAGE.md).
