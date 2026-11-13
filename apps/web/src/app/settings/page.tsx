@@ -28,6 +28,14 @@ export default function SettingsPage({ me, onChange }: { me: Me; onChange: (m: M
         <p className="small muted">There is no auto-send setting: every proposal, message and Connects spend needs your approval.</p>
       </section>
       <section className="card">
+        <h2>Agency mode</h2>
+        <label>
+          <input type="checkbox" checked={!!s.agency_mode} onChange={(e) => setS({ ...s, agency_mode: e.target.checked })} />{" "}
+          Route each job to the best-fit team member (AI/ML, full-stack, data analyst) and draft in their voice
+        </label>
+        <p className="small muted">The job detail page shows each member's fit score and why the job went to them.</p>
+      </section>
+      <section className="card">
         <h2>Budgets</h2>
         <div className="grid three">
           <div><label htmlFor="wc">Weekly Connects budget</label><input id="wc" type="number" min={0} value={s.weekly_connects_budget ?? 0} onChange={(e) => setS({ ...s, weekly_connects_budget: Number(e.target.value) })} /></div>

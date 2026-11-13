@@ -43,6 +43,7 @@ class BidState(TypedDict, total=False):
     client: dict[str, Any]
     policy: dict[str, Any]
     profile: dict[str, Any]
+    agency_route: dict[str, Any]          # X1: which team member drafts this job and why
     # parallel analyses (each branch writes its own key; `analyses` merges with a reducer)
     job_spec: dict[str, Any]
     risk_report: dict[str, Any]

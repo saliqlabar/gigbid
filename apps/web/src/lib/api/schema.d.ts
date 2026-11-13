@@ -719,6 +719,10 @@ export interface components {
             }[];
             /** Pending Approval */
             pending_approval: boolean;
+            /** Agency Route */
+            agency_route?: {
+                [key: string]: unknown;
+            } | null;
         };
         /** LoginIn */
         LoginIn: {
@@ -912,6 +916,12 @@ export interface components {
              * @enum {string}
              */
             marketplace: "gigsim" | "upwork_live";
+            /**
+             * Agency Mode
+             * @description X1: route each job to the best-fit team member
+             * @default false
+             */
+            agency_mode: boolean;
         };
         /** StatusOut */
         StatusOut: {

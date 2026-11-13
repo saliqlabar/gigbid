@@ -88,8 +88,23 @@ async def start_bid(graph, job: dict, user_id: str, persona: str, thread_id: str
         return await _drive(graph, None, cfg, thread_id, user_id) if snap.next and not snap.tasks[0].interrupts \
             else {"thread_id": thread_id, "status": "exists", "state": snap.values,
                   "interrupts": [i.value for t in snap.tasks for i in (t.interrupts or [])]}
+    route = None
+    if persona == "agency":                 # X1: pick the best-fit team member first (agent/agency.py)
+        from agent.agency import route_job
+        if "title" not in job:              # the worker queues bare ids; routing needs the post's skills
+            from agent.mcp_client import ToolLayer
+            job = {**await ToolLayer(user_id, "agency", trace_id).call("scout", "marketplace.get_job",
+                                                                         {"job_id": job["job_id"]}), **job}
+        r = await route_job(job, user_id, trace_id)
+        route = r.model_dump()
+        trace.emit("agency", "route", route, thread_id, trace_id)
+        if r.member is None:
+            return {"thread_id": thread_id, "status": "skipped", "state": {"agency_route": route}, "interrupts": []}
+        persona = r.member
     inp = {"thread_id": thread_id, "user_id": user_id, "persona": persona, "trace_id": trace_id, "job": job,
            "profile": profile_for(persona), "status": "analysing", "revisions": 0}
+    if route:
+        inp["agency_route"] = route
     if client:
         inp["client"] = client
     trace.emit("graph", "start", {"job_id": job["job_id"]}, thread_id, trace_id)

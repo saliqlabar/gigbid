@@ -45,6 +45,19 @@ export default function JobPage() {
       </div>
       {d.errors.length > 0 && <div className="note blocked" role="alert">{d.errors.join(" · ")}</div>}
 
+      {d.agency_route && (
+        <section className="card">
+          <h2>Agency routing: {(d.agency_route as any).member ?? "no member fits"}</h2>
+          <p className="small muted">{(d.agency_route as any).reason}</p>
+          <table>
+            <thead><tr><th>Member</th><th>Fit</th><th>Strong matches</th><th>Missing</th></tr></thead>
+            <tbody>{((d.agency_route as any).ranking ?? []).map((m: any) => (
+              <tr key={m.member}><td>{m.member}</td><td>{pct(m.fit)}</td><td>{m.matched.join(", ") || "–"}</td><td>{m.missing.join(", ") || "–"}</td></tr>
+            ))}</tbody>
+          </table>
+        </section>
+      )}
+
       <section className="card">
         <h2>Decision: {decision.action ?? "pending"}</h2>
         <p className="small muted">Rule: <code>{decision.rule ?? "–"}</code> (thresholds live in agent/config.yaml)</p>

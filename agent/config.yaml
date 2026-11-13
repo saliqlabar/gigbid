@@ -131,6 +131,10 @@ risk:                          # Risk Assessor score = w_scam*scam_likelihood + 
   high_flag_floor: 0.75        # a high-severity scam/off-platform/free-work flag forces at least this score
   scam_threshold: 0.6
 
+agency:                        # X1 agency mode: route each job to the best-fit team member (agent/agency.py)
+  members: [ai_ml, fullstack, data_analyst]
+  min_fit_to_route: 0.2        # below this for every member -> no one is a fit; the job is skipped
+
 memory:                        # promotion rules (agent/memory/promotion_rules.py)
   style_window: 5              # look at the last 5 edits ...
   style_min_support: 3         # ... a style signal must appear in at least 3 of them

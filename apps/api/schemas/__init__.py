@@ -31,6 +31,7 @@ class Settings(BaseModel):
     saved_searches: list[SavedSearch] = []
     filters: dict[str, Any] = {}
     marketplace: Literal["gigsim", "upwork_live"] = "gigsim"
+    agency_mode: bool = Field(False, description="X1: route each job to the best-fit team member")
 
 
 class Me(BaseModel):
@@ -85,6 +86,7 @@ class JobDetail(BaseModel):
     errors: list[str]
     usage: list[dict[str, Any]]
     pending_approval: bool
+    agency_route: dict[str, Any] | None = None
 
 
 class ApprovalIn(BaseModel):

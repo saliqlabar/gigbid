@@ -56,7 +56,7 @@ async def detail(thread_id: str, request: Request, user: dict = CurrentUser):
                      fit_report=s.get("fit_report"), evidence=s.get("evidence", []), decision=s.get("decision"),
                      price_quote=s.get("price_quote"), errors=s.get("errors", []),
                      usage=[{k: u[k] for k in ("node", "latency_s", "tokens", "cost_usd")} for u in s.get("usage", [])],
-                     pending_approval=pending)
+                     pending_approval=pending, agency_route=s.get("agency_route"))
 
 
 @router.post("/scout")

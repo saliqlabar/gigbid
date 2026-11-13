@@ -110,7 +110,8 @@ async def analyse_job(ctx, user_id: str, job_id: str, duplicate_of: str | None =
     u = get_user(user_id)
     job = {"job_id": job_id, "duplicate_of": duplicate_of}
     tid = bid_thread_id(user_id, job_id)
-    res = await start_bid(bid, job, user_id, u["persona"], thread_id=tid)
+    persona = "agency" if u["settings"].get("agency_mode") else u["persona"]
+    res = await start_bid(bid, job, user_id, persona, thread_id=tid)
     st = res["state"]
     if u["settings"].get("autonomy") == "auto_skip_low_fit" and res["status"] == "skipped" and \
             (st.get("decision") or {}).get("rule") in ("watch_fit_score", "duplicate"):

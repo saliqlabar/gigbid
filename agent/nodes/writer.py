@@ -45,6 +45,14 @@ async def screening_evidence(state: dict, tools: ToolLayer) -> list[dict]:
     return out
 
 
+def voice_line(profile: dict) -> str:
+    """Whose voice the letter is in (X1 agency mode routes each job to one team member)."""
+    if not profile.get("headline"):
+        return ""
+    return (f"You are writing as {profile.get('display_name', 'the freelancer')}, {profile['headline']} "
+            f"({profile.get('years', '?')} years). Write in their voice and claim only their evidence.")
+
+
 async def write(state: dict, tools: ToolLayer, memory: dict) -> tuple[ProposalDraft, list[dict]]:
     extra = await screening_evidence(state, tools) if not state.get("proposal_draft") else []
     st = {**state, "evidence": state.get("evidence", []) + extra}
@@ -70,7 +78,8 @@ async def write(state: dict, tools: ToolLayer, memory: dict) -> tuple[ProposalDr
         "price": f"{price.get('amount')} USD ({price.get('bid_type')})",
         "evidence": format_evidence(pack),
         "questions": "\n".join(f"- {q}" for q in spec.get("screening_questions", [])) or "(none)",
-        "revision_note": revision_note}, _WriterOut, temperature=0.4)
+        "revision_note": revision_note,
+        "voice": voice_line(state.get("profile") or {})}, _WriterOut, temperature=0.4)
     draft = ProposalDraft(job_id=state["job"]["job_id"], cover_letter=out.cover_letter,
                           screening_answers=out.screening_answers, revision=int(state.get("revisions", 0)))
     from rag.verify import citations

@@ -2481,6 +2481,18 @@
      "pending_approval": {
       "type": "boolean",
       "title": "Pending Approval"
+     },
+     "agency_route": {
+      "anyOf": [
+       {
+        "additionalProperties": true,
+        "type": "object"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Agency Route"
      }
     },
     "type": "object",
@@ -2984,6 +2996,12 @@
       ],
       "title": "Marketplace",
       "default": "gigsim"
+     },
+     "agency_mode": {
+      "type": "boolean",
+      "title": "Agency Mode",
+      "description": "X1: route each job to the best-fit team member",
+      "default": false
      }
     },
     "type": "object",
