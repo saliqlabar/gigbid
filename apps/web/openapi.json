@@ -248,7 +248,7 @@
      "auth"
     ],
     "summary": "Upwork Start",
-    "description": "Begins the official Upwork MCP OAuth 2.1 flow. Live mode is optional and never graded.",
+    "description": "Begins the official Upwork MCP OAuth 2.1 flow. Returns the Upwork authorize URL to open, or\nconnected=true when stored tokens are still valid. Live mode is optional and never graded.",
     "operationId": "upwork_start_api_auth_upwork_start_get",
     "parameters": [
      {
@@ -269,6 +269,68 @@
        "type": "string",
        "default": "",
        "title": "Gigbid Session"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/auth/upwork/callback": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Upwork Callback",
+    "description": "Upwork redirects the browser here; the code goes back to the waiting SDK flow (matched by state).",
+    "operationId": "upwork_callback_api_auth_upwork_callback_get",
+    "parameters": [
+     {
+      "name": "code",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "default": "",
+       "title": "Code"
+      }
+     },
+     {
+      "name": "state",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "default": "",
+       "title": "State"
+      }
+     },
+     {
+      "name": "error",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "default": "",
+       "title": "Error"
       }
      }
     ],

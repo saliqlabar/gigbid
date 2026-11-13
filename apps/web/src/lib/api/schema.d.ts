@@ -115,9 +115,30 @@ export interface paths {
         };
         /**
          * Upwork Start
-         * @description Begins the official Upwork MCP OAuth 2.1 flow. Live mode is optional and never graded.
+         * @description Begins the official Upwork MCP OAuth 2.1 flow. Returns the Upwork authorize URL to open, or
+         *     connected=true when stored tokens are still valid. Live mode is optional and never graded.
          */
         get: operations["upwork_start_api_auth_upwork_start_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/auth/upwork/callback": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Upwork Callback
+         * @description Upwork redirects the browser here; the code goes back to the waiting SDK flow (matched by state).
+         */
+        get: operations["upwork_callback_api_auth_upwork_callback_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1156,6 +1177,39 @@ export interface operations {
             cookie?: {
                 gigbid_session?: string;
             };
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    upwork_callback_api_auth_upwork_callback_get: {
+        parameters: {
+            query?: {
+                code?: string;
+                state?: string;
+                error?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
         requestBody?: never;
         responses: {

@@ -27,7 +27,7 @@ class UpworkLiveAdapter:
     name = "upwork_live"
 
     def __init__(self, user_id: str, tool_map: dict[str, str], url: str = UPWORK_MCP_URL,
-                 redirect_uri: str = "http://localhost:8000/auth/upwork/callback"):
+                 redirect_uri: str = "http://localhost:8000/api/auth/upwork/callback"):
         self.user_id = user_id
         self.tool_map = tool_map
         self.url = url
@@ -41,7 +41,7 @@ class UpworkLiveAdapter:
                    tool_map=cfg.get("upwork_tools", {}),
                    url=os.getenv("UPWORK_MCP_URL", UPWORK_MCP_URL),
                    redirect_uri=os.getenv("UPWORK_OAUTH_REDIRECT_URI",
-                                          "http://localhost:8000/auth/upwork/callback"))
+                                          "http://localhost:8000/api/auth/upwork/callback"))
 
     def _oauth(self):
         from mcp.client.auth import OAuthClientProvider
