@@ -27,7 +27,7 @@ models:
   prices:
     "groq:openai/gpt-oss-20b": [0.075, 0.30]
     "groq:openai/gpt-oss-120b": [0.15, 0.60]
-    "groq:llama-3.1-8b-instant": [0.05, 0.08]
+    "groq:qwen/qwen3.8-27b": [0.80, 4.00]     # console.groq.com/docs/models, checked 2026-11-14
   profiles:
     open:                      # required profile, fully local (RTX 4060 8 GB via Ollama)
       cheap:  {provider: ollama, model: "qwen3:4b-instruct"}
@@ -44,7 +44,7 @@ models:
     open_hosted:               # deployed link: open-weight models through a hosted provider (no GPU on free hosts)
       cheap:  {provider: groq, model: "openai/gpt-oss-20b", reasoning_effort: low}
       strong: {provider: groq, model: "openai/gpt-oss-120b", reasoning_effort: low}
-      fallback: {provider: groq, model: "llama-3.1-8b-instant"}
+      fallback: {provider: groq, model: "qwen/qwen3.8-27b"}
   # Node -> tier. Cheap, frequent nodes use the small model; Writer, Critic, Liaison the strongest.
   nodes:
     scout: cheap
