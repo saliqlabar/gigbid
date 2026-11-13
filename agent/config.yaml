@@ -32,6 +32,10 @@ models:
       cheap:  {provider: ollama, model: "qwen3:4b-instruct"}
       strong: {provider: ollama, model: "qwen3:8b", think: false}
       fallback: {provider: ollama, model: "llama3.2"}
+    open_alt:                  # second open configuration compared on the dev set (model choice by measurement)
+      cheap:  {provider: ollama, model: "llama3.2"}
+      strong: {provider: ollama, model: "qwen3:8b", think: false}
+      fallback: {provider: ollama, model: "qwen3:4b-instruct"}
     test:                      # CI / Playwright only: scripted fake model (agent/testing/fake_llm.py)
       cheap:  {provider: fake, model: scripted}
       strong: {provider: fake, model: scripted}
@@ -108,6 +112,11 @@ tools:
     liaison_sender: [marketplace.send_message, workspace.create_interview_hold, workspace.create_email_draft]
     api: [marketplace.list_proposals, marketplace.list_events, marketplace.list_messages,
           marketplace.marketplace_status, marketplace.get_connects_balance]
+    # R&D question C baselines (evals/runners/study_c.py): read tools only; the harness submits after "approval"
+    baseline_react: [marketplace.get_job, marketplace.get_client_history, marketplace.get_market_stats,
+                     marketplace.get_policy, portfolio.search_evidence, portfolio.get_case_study]
+    baseline_risk: [marketplace.get_client_history]
+    baseline_fit: [portfolio.search_evidence]
     worker: [marketplace.list_events, marketplace.list_messages, marketplace.list_proposals,
              marketplace.marketplace_status, marketplace.get_connects_balance]
 
