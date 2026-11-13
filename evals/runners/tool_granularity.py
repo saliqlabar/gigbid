@@ -264,6 +264,7 @@ async def main(a) -> None:
     from agent.llm import model_for
     spec = model_for("tool_study", a.model_tier)
     surfaces = {"fine": FINE, "coarse": COARSE, "best": await best_tools()}
+    surfaces = {k: v for k, v in surfaces.items() if k in a.surfaces}
     results, detail = {}, []
     for name, tools in surfaces.items():
         sel = arg = 0
@@ -296,11 +297,14 @@ async def main(a) -> None:
                          "argument_accuracy": round(arg / len(TASKS), 3), "tokens_per_task": round(sum(toks) / len(toks)),
                          "latency_p50_s": round(percentile(lat, .5), 2)}
         print(name, results[name], flush=True)
-    write_result(f"tool_granularity_{a.model_tier}", {"model": spec["model"], "provider": spec["provider"],
+    write_result(f"tool_granularity_{a.model_tier}{'_' + a.label if a.label else ''}", {
+                 "model": spec["model"], "provider": spec["provider"], "label": a.label,
                                                        "results": results, "detail": detail})
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--model-tier", default="cheap", choices=["cheap", "strong"])
+    ap.add_argument("--surfaces", nargs="*", default=["fine", "coarse", "best"])
+    ap.add_argument("--label", default="", help="suffix for the results file, e.g. shipped / rewritten")
     asyncio.run(main(ap.parse_args()))

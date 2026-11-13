@@ -1,0 +1,1621 @@
+{
+  "provenance": {
+    "commit": "d64b3ba",
+    "generated_at": "2026-11-13T21:42:57.207028+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "model": "qwen3:4b-instruct",
+  "provider": "ollama",
+  "label": "shipped",
+  "results": {
+    "fine": {
+      "tools": 33,
+      "tasks": 40,
+      "tool_selection_accuracy": 0.975,
+      "argument_accuracy": 0.975,
+      "tokens_per_task": 2205,
+      "latency_p50_s": 0.61
+    },
+    "coarse": {
+      "tools": 3,
+      "tasks": 40,
+      "tool_selection_accuracy": 0.75,
+      "argument_accuracy": 0.45,
+      "tokens_per_task": 519,
+      "latency_p50_s": 0.74
+    },
+    "best": {
+      "tools": 17,
+      "tasks": 40,
+      "tool_selection_accuracy": 0.925,
+      "argument_accuracy": 0.875,
+      "tokens_per_task": 2095,
+      "latency_p50_s": 0.65
+    }
+  },
+  "detail": [
+    {
+      "surface": "fine",
+      "task": "Find new jobs about Shopify inventory sync.",
+      "intent": "search_jobs",
+      "got": "search_jobs_by_keyword",
+      "got_args": {
+        "query": "Shopify inventory sync"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2185
+    },
+    {
+      "surface": "fine",
+      "task": "Show me the latest data analysis jobs.",
+      "intent": "search_jobs",
+      "got": "search_jobs_by_category",
+      "got_args": {
+        "category": "data analysis"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2183
+    },
+    {
+      "surface": "fine",
+      "task": "Search the job feed for 'power bi dashboard' work.",
+      "intent": "search_jobs",
+      "got": "search_jobs_by_keyword",
+      "got_args": {
+        "query": "power bi dashboard"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2188
+    },
+    {
+      "surface": "fine",
+      "task": "Open job job_00281 so I can read the whole post.",
+      "intent": "get_job",
+      "got": "get_job_description",
+      "got_args": {
+        "job_id": "job_00281"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2197
+    },
+    {
+      "surface": "fine",
+      "task": "What is the budget of job job_00470?",
+      "intent": "get_job",
+      "got": "get_job_budget",
+      "got_args": {
+        "job_id": "job_00470"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2194
+    },
+    {
+      "surface": "fine",
+      "task": "Which screening questions does job job_00327 ask?",
+      "intent": "get_job",
+      "got": "get_job_screening_questions",
+      "got_args": {
+        "job_id": "job_00327"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2196
+    },
+    {
+      "surface": "fine",
+      "task": "Is client cl_e9820ba5af trustworthy? Check their history.",
+      "intent": "get_client_history",
+      "got": "get_client_history",
+      "got_args": {
+        "client_id": "cl_e9820ba5af"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2199
+    },
+    {
+      "surface": "fine",
+      "task": "How much has client cl_bfc0c55210 spent on the platform?",
+      "intent": "get_client_history",
+      "got": "get_client_spend",
+      "got_args": {
+        "client_id": "cl_bfc0c55210"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2203
+    },
+    {
+      "surface": "fine",
+      "task": "What is the average rating of client cl_4c1f0d2a77?",
+      "intent": "get_client_history",
+      "got": "get_client_rating",
+      "got_args": {
+        "client_id": "cl_4c1f0d2a77"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2205
+    },
+    {
+      "surface": "fine",
+      "task": "How many Connects do I have left?",
+      "intent": "get_connects_balance",
+      "got": "get_connects_balance",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2179
+    },
+    {
+      "surface": "fine",
+      "task": "Can I afford to bid this week? Check my Connects.",
+      "intent": "get_connects_balance",
+      "got": "get_connects_balance",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2183
+    },
+    {
+      "surface": "fine",
+      "task": "What do web development jobs usually pay?",
+      "intent": "get_market_stats",
+      "got": "get_hourly_rate_stats",
+      "got_args": {
+        "category": "web development"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2184
+    },
+    {
+      "surface": "fine",
+      "task": "Give me price statistics for AI/ML jobs.",
+      "intent": "get_market_stats",
+      "got": "get_fixed_price_stats",
+      "got_args": {
+        "category": "AI/ML"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2186
+    },
+    {
+      "surface": "fine",
+      "task": "What are the current platform rules for proposals?",
+      "intent": "get_policy",
+      "got": "get_policy_rules",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2178
+    },
+    {
+      "surface": "fine",
+      "task": "Has the marketplace changed its Connects surcharge? Check the policy.",
+      "intent": "get_policy",
+      "got": "get_policy_rules",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2183
+    },
+    {
+      "surface": "fine",
+      "task": "Show my conversation thr_85487ef041.",
+      "intent": "list_messages",
+      "got": "get_thread",
+      "got_args": {
+        "thread_id": "thr_85487ef041"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2198
+    },
+    {
+      "surface": "fine",
+      "task": "Did any client message me? List my threads.",
+      "intent": "list_messages",
+      "got": "list_threads",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2178
+    },
+    {
+      "surface": "fine",
+      "task": "List all my proposals and their status.",
+      "intent": "list_proposals",
+      "got": "list_proposals",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2177
+    },
+    {
+      "surface": "fine",
+      "task": "Preview (do not send) a fixed-price $400 proposal for job_00281 with this letter: 'You need a fast booking portal; I built one for a clinic and can start with a plan.' Use key draft-0001.",
+      "intent": "create_proposal_draft",
+      "got": "preview_proposal",
+      "got_args": {
+        "job_id": "job_00281",
+        "cover_letter": "You need a fast booking portal; I built one for a clinic and can start with a plan.",
+        "bid_amount": 400,
+        "bid_type": "fixed"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2277
+    },
+    {
+      "surface": "fine",
+      "task": "Create a proposal draft for job_00470 bidding 30 per hour with idempotency key draft-0002 and the letter 'Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe.'",
+      "intent": "create_proposal_draft",
+      "got": "create_proposal_draft",
+      "got_args": {
+        "job_id": "job_00470",
+        "cover_letter": "Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe.",
+        "bid_amount": 30,
+        "idempotency_key": "draft-0002",
+        "bid_type": "hourly"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2291
+    },
+    {
+      "surface": "fine",
+      "task": "I approved it: submit proposal prop_b22e1dbba5 using idempotency key submit-0001.",
+      "intent": "submit_proposal",
+      "got": "submit_proposal",
+      "got_args": {
+        "proposal_id": "prop_b22e1dbba5",
+        "idempotency_key": "submit-0001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2225
+    },
+    {
+      "surface": "fine",
+      "task": "How many Connects would submitting prop_85487ef041 cost? Don't submit, just preview (key submit-0002).",
+      "intent": "submit_proposal",
+      "got": "preview_submission_cost",
+      "got_args": {
+        "proposal_id": "prop_85487ef041"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2218
+    },
+    {
+      "surface": "fine",
+      "task": "Send 'Tuesday 10:00 works for me.' in thread thr_85487ef041 (key msg-00000001).",
+      "intent": "send_message",
+      "got": "send_message",
+      "got_args": {
+        "thread_id": "thr_85487ef041",
+        "text": "Tuesday 10:00 works for me.",
+        "idempotency_key": "msg-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2256
+    },
+    {
+      "surface": "fine",
+      "task": "Reply in thread thr_1234567890 with 'Thanks, I can share a plan tomorrow.' using key msg-00000002.",
+      "intent": "send_message",
+      "got": "send_message",
+      "got_args": {
+        "thread_id": "thr_1234567890",
+        "text": "Thanks, I can share a plan tomorrow.",
+        "idempotency_key": "msg-00000002"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2255
+    },
+    {
+      "surface": "fine",
+      "task": "Find portfolio evidence that I have used Celery for background jobs.",
+      "intent": "search_evidence",
+      "got": "search_case_studies",
+      "got_args": {
+        "query": "Celery background jobs"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2190
+    },
+    {
+      "surface": "fine",
+      "task": "Do I have experience with Stripe subscriptions? Search my portfolio.",
+      "intent": "search_evidence",
+      "got": "search_case_studies",
+      "got_args": {
+        "query": "Stripe subscriptions"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2187
+    },
+    {
+      "surface": "fine",
+      "task": "Search my code (not case studies) for WebSocket usage.",
+      "intent": "search_evidence",
+      "got": "search_code",
+      "got_args": {
+        "query": "WebSocket"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2184
+    },
+    {
+      "surface": "fine",
+      "task": "Find my past proposals that WON for SaaS dashboard jobs.",
+      "intent": "search_evidence",
+      "got": "search_winning_proposals",
+      "got_args": {
+        "query": "SaaS dashboard"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2189
+    },
+    {
+      "surface": "fine",
+      "task": "What did clients say about my work? Search reviews mentioning communication.",
+      "intent": "search_evidence",
+      "got": "search_reviews",
+      "got_args": {
+        "query": "communication"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2185
+    },
+    {
+      "surface": "fine",
+      "task": "Have I done React work for a healthcare client?",
+      "intent": "search_evidence",
+      "got": "search_case_studies",
+      "got_args": {
+        "query": "React healthcare"
+      },
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 2185
+    },
+    {
+      "surface": "fine",
+      "task": "Open the full case study p04.",
+      "intent": "get_case_study",
+      "got": "get_case_study",
+      "got_args": {
+        "case_id": "p04"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2185
+    },
+    {
+      "surface": "fine",
+      "task": "Show me case study p13 in full.",
+      "intent": "get_case_study",
+      "got": "get_case_study",
+      "got_args": {
+        "case_id": "p13"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2186
+    },
+    {
+      "surface": "fine",
+      "task": "Which skills does my portfolio show the most?",
+      "intent": "list_skills",
+      "got": "list_skills",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2177
+    },
+    {
+      "surface": "fine",
+      "task": "List every skill in my portfolio with project counts.",
+      "intent": "list_skills",
+      "got": "list_skills",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2178
+    },
+    {
+      "surface": "fine",
+      "task": "When am I free for a 30-minute interview this week?",
+      "intent": "get_free_slots",
+      "got": "get_free_slots",
+      "got_args": {
+        "days_ahead": 7
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2189
+    },
+    {
+      "surface": "fine",
+      "task": "Find three free interview slots in the next 3 days.",
+      "intent": "get_free_slots",
+      "got": "get_free_slots",
+      "got_args": {
+        "days_ahead": 3
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2187
+    },
+    {
+      "surface": "fine",
+      "task": "Hold 2026-11-12T10:00:00+05:00 for an interview titled 'Interview: clinic portal' (key hold-00000001).",
+      "intent": "create_interview_hold",
+      "got": "create_interview_hold",
+      "got_args": {
+        "start": "2026-11-12T10:00:00+05:00",
+        "title": "Interview: clinic portal",
+        "idempotency_key": "hold-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2276
+    },
+    {
+      "surface": "fine",
+      "task": "Put a tentative 45-minute hold at 2026-11-13T14:00:00+05:00 called 'Call with Acme' using key hold-00000002.",
+      "intent": "create_interview_hold",
+      "got": "create_interview_hold",
+      "got_args": {
+        "start": "2026-11-13T14:00:00+05:00",
+        "title": "Call with Acme",
+        "idempotency_key": "hold-00000002",
+        "duration_minutes": 45
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2289
+    },
+    {
+      "surface": "fine",
+      "task": "Draft (don't send) an email to client@acme.com with subject 'Interview' saying 'See you Tuesday.' key mail-00000001.",
+      "intent": "create_email_draft",
+      "got": "create_email_draft",
+      "got_args": {
+        "to": "client@acme.com",
+        "subject": "Interview",
+        "body": "See you Tuesday.",
+        "idempotency_key": "mail-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2247
+    },
+    {
+      "surface": "fine",
+      "task": "Save an email draft to hr@example.org titled 'Availability' with body 'I am free Thursday.' key mail-00000002.",
+      "intent": "create_email_draft",
+      "got": "create_email_draft",
+      "got_args": {
+        "to": "hr@example.org",
+        "subject": "Availability",
+        "body": "I am free Thursday.",
+        "idempotency_key": "mail-00000002"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2241
+    },
+    {
+      "surface": "coarse",
+      "task": "Find new jobs about Shopify inventory sync.",
+      "intent": "search_jobs",
+      "got": "marketplace",
+      "got_args": {
+        "action": "search_jobs",
+        "params": {
+          "query": "Shopify inventory sync"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 497
+    },
+    {
+      "surface": "coarse",
+      "task": "Show me the latest data analysis jobs.",
+      "intent": "search_jobs",
+      "got": "marketplace",
+      "got_args": {
+        "action": "search_jobs",
+        "params": {
+          "query": "data analysis",
+          "sort": "newest"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 502
+    },
+    {
+      "surface": "coarse",
+      "task": "Search the job feed for 'power bi dashboard' work.",
+      "intent": "search_jobs",
+      "got": "marketplace",
+      "got_args": {
+        "action": "search_jobs",
+        "params": {
+          "query": "power bi dashboard"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 500
+    },
+    {
+      "surface": "coarse",
+      "task": "Open job job_00281 so I can read the whole post.",
+      "intent": "get_job",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_job",
+        "params": {
+          "job_id": "job_00281"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 510
+    },
+    {
+      "surface": "coarse",
+      "task": "What is the budget of job job_00470?",
+      "intent": "get_job",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 519
+    },
+    {
+      "surface": "coarse",
+      "task": "Which screening questions does job job_00327 ask?",
+      "intent": "get_job",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 530
+    },
+    {
+      "surface": "coarse",
+      "task": "Is client cl_e9820ba5af trustworthy? Check their history.",
+      "intent": "get_client_history",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_client_history",
+        "params": {
+          "client_id": "cl_e9820ba5af"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 513
+    },
+    {
+      "surface": "coarse",
+      "task": "How much has client cl_bfc0c55210 spent on the platform?",
+      "intent": "get_client_history",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_client_history",
+        "params": {
+          "client_id": "cl_bfc0c55210"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 516
+    },
+    {
+      "surface": "coarse",
+      "task": "What is the average rating of client cl_4c1f0d2a77?",
+      "intent": "get_client_history",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 507
+    },
+    {
+      "surface": "coarse",
+      "task": "How many Connects do I have left?",
+      "intent": "get_connects_balance",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_connects_balance"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 487
+    },
+    {
+      "surface": "coarse",
+      "task": "Can I afford to bid this week? Check my Connects.",
+      "intent": "get_connects_balance",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_connects_balance"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 491
+    },
+    {
+      "surface": "coarse",
+      "task": "What do web development jobs usually pay?",
+      "intent": "get_market_stats",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_market_stats",
+        "params": {
+          "category": "web development"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 496
+    },
+    {
+      "surface": "coarse",
+      "task": "Give me price statistics for AI/ML jobs.",
+      "intent": "get_market_stats",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_market_stats",
+        "params": {
+          "category": "AI/ML"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 499
+    },
+    {
+      "surface": "coarse",
+      "task": "What are the current platform rules for proposals?",
+      "intent": "get_policy",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_policy",
+        "params": {
+          "policy_area": "proposals"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 498
+    },
+    {
+      "surface": "coarse",
+      "task": "Has the marketplace changed its Connects surcharge? Check the policy.",
+      "intent": "get_policy",
+      "got": "marketplace",
+      "got_args": {
+        "action": "get_policy"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 490
+    },
+    {
+      "surface": "coarse",
+      "task": "Show my conversation thr_85487ef041.",
+      "intent": "list_messages",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 513
+    },
+    {
+      "surface": "coarse",
+      "task": "Did any client message me? List my threads.",
+      "intent": "list_messages",
+      "got": "marketplace",
+      "got_args": {
+        "action": "list_messages"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 486
+    },
+    {
+      "surface": "coarse",
+      "task": "List all my proposals and their status.",
+      "intent": "list_proposals",
+      "got": "marketplace",
+      "got_args": {
+        "action": "list_proposals"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 485
+    },
+    {
+      "surface": "coarse",
+      "task": "Preview (do not send) a fixed-price $400 proposal for job_00281 with this letter: 'You need a fast booking portal; I built one for a clinic and can start with a plan.' Use key draft-0001.",
+      "intent": "create_proposal_draft",
+      "got": "marketplace",
+      "got_args": {
+        "action": "create_proposal_draft",
+        "params": {
+          "amount": 400,
+          "draft_id": "draft-0001",
+          "job_id": "job_00281",
+          "message": "You need a fast booking portal; I built one for a clinic and can start with a plan."
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 595
+    },
+    {
+      "surface": "coarse",
+      "task": "Create a proposal draft for job_00470 bidding 30 per hour with idempotency key draft-0002 and the letter 'Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe.'",
+      "intent": "create_proposal_draft",
+      "got": "marketplace",
+      "got_args": {
+        "action": "create_proposal_draft",
+        "params": {
+          "bid": "30",
+          "idempotency_key": "draft-0002",
+          "job_id": "job_00470",
+          "message": "Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe."
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 596
+    },
+    {
+      "surface": "coarse",
+      "task": "I approved it: submit proposal prop_b22e1dbba5 using idempotency key submit-0001.",
+      "intent": "submit_proposal",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 535
+    },
+    {
+      "surface": "coarse",
+      "task": "How many Connects would submitting prop_85487ef041 cost? Don't submit, just preview (key submit-0002).",
+      "intent": "submit_proposal",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 558
+    },
+    {
+      "surface": "coarse",
+      "task": "Send 'Tuesday 10:00 works for me.' in thread thr_85487ef041 (key msg-00000001).",
+      "intent": "send_message",
+      "got": "marketplace",
+      "got_args": {
+        "action": "list_messages",
+        "params": {
+          "message_id": "msg-00000001",
+          "thread_id": "thr_85487ef041"
+        }
+      },
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 552
+    },
+    {
+      "surface": "coarse",
+      "task": "Reply in thread thr_1234567890 with 'Thanks, I can share a plan tomorrow.' using key msg-00000002.",
+      "intent": "send_message",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 540
+    },
+    {
+      "surface": "coarse",
+      "task": "Find portfolio evidence that I have used Celery for background jobs.",
+      "intent": "search_evidence",
+      "got": "portfolio",
+      "got_args": {
+        "action": "search_evidence",
+        "params": {
+          "client_industry": "tech",
+          "outcome": "success",
+          "types": [
+            "background_jobs"
+          ]
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 514
+    },
+    {
+      "surface": "coarse",
+      "task": "Do I have experience with Stripe subscriptions? Search my portfolio.",
+      "intent": "search_evidence",
+      "got": "portfolio",
+      "got_args": {
+        "action": "search_evidence",
+        "params": {
+          "filters": {
+            "skill": "Stripe subscriptions"
+          },
+          "type": "experience"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 508
+    },
+    {
+      "surface": "coarse",
+      "task": "Search my code (not case studies) for WebSocket usage.",
+      "intent": "search_evidence",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 521
+    },
+    {
+      "surface": "coarse",
+      "task": "Find my past proposals that WON for SaaS dashboard jobs.",
+      "intent": "search_evidence",
+      "got": "marketplace",
+      "got_args": {
+        "action": "list_proposals",
+        "params": {
+          "job_type": "SaaS dashboard",
+          "outcome": "won"
+        }
+      },
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 508
+    },
+    {
+      "surface": "coarse",
+      "task": "What did clients say about my work? Search reviews mentioning communication.",
+      "intent": "search_evidence",
+      "got": "portfolio",
+      "got_args": {
+        "action": "search_evidence",
+        "params": {
+          "client_industry": "all",
+          "filters": {
+            "mentions": "communication"
+          },
+          "outcome": "positive",
+          "type": "review"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 522
+    },
+    {
+      "surface": "coarse",
+      "task": "Have I done React work for a healthcare client?",
+      "intent": "search_evidence",
+      "got": "portfolio",
+      "got_args": {
+        "action": "search_evidence",
+        "params": {
+          "client_industry": "healthcare",
+          "type": "react"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 505
+    },
+    {
+      "surface": "coarse",
+      "task": "Open the full case study p04.",
+      "intent": "get_case_study",
+      "got": "portfolio",
+      "got_args": {
+        "action": "get_case_study",
+        "params": {
+          "case_study_id": "p04"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 499
+    },
+    {
+      "surface": "coarse",
+      "task": "Show me case study p13 in full.",
+      "intent": "get_case_study",
+      "got": "portfolio",
+      "got_args": {
+        "action": "get_case_study",
+        "params": {
+          "case_study_id": "p13"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 500
+    },
+    {
+      "surface": "coarse",
+      "task": "Which skills does my portfolio show the most?",
+      "intent": "list_skills",
+      "got": "portfolio",
+      "got_args": {
+        "action": "list_skills"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 484
+    },
+    {
+      "surface": "coarse",
+      "task": "List every skill in my portfolio with project counts.",
+      "intent": "list_skills",
+      "got": "portfolio",
+      "got_args": {
+        "action": "list_skills",
+        "params": {
+          "with_project_counts": true
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 496
+    },
+    {
+      "surface": "coarse",
+      "task": "When am I free for a 30-minute interview this week?",
+      "intent": "get_free_slots",
+      "got": "workspace",
+      "got_args": {
+        "action": "get_free_slots",
+        "params": {
+          "duration": "30 minutes",
+          "week": "this week"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 509
+    },
+    {
+      "surface": "coarse",
+      "task": "Find three free interview slots in the next 3 days.",
+      "intent": "get_free_slots",
+      "got": "workspace",
+      "got_args": {
+        "action": "get_free_slots",
+        "params": {
+          "days": 3,
+          "type": "interview"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 505
+    },
+    {
+      "surface": "coarse",
+      "task": "Hold 2026-11-12T10:00:00+05:00 for an interview titled 'Interview: clinic portal' (key hold-00000001).",
+      "intent": "create_interview_hold",
+      "got": "workspace",
+      "got_args": {
+        "action": "create_interview_hold",
+        "params": {
+          "hold_id": "key-00000001",
+          "timestamp": "2026-11-12T10:00:00+05:00",
+          "title": "Interview: clinic portal"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 586
+    },
+    {
+      "surface": "coarse",
+      "task": "Put a tentative 45-minute hold at 2026-11-13T14:00:00+05:00 called 'Call with Acme' using key hold-00000002.",
+      "intent": "create_interview_hold",
+      "got": "workspace",
+      "got_args": {
+        "action": "create_interview_hold",
+        "params": {
+          "duration": "45",
+          "hold_key": "hold-00000002",
+          "name": "Call with Acme",
+          "time": "2026-11-13T14:00:00+05:00"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 598
+    },
+    {
+      "surface": "coarse",
+      "task": "Draft (don't send) an email to client@acme.com with subject 'Interview' saying 'See you Tuesday.' key mail-00000001.",
+      "intent": "create_email_draft",
+      "got": "workspace",
+      "got_args": {
+        "action": "create_email_draft",
+        "params": {
+          "body": "See you Tuesday.",
+          "key": "mail-00000001",
+          "subject": "Interview",
+          "to": "client@acme.com"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 556
+    },
+    {
+      "surface": "coarse",
+      "task": "Save an email draft to hr@example.org titled 'Availability' with body 'I am free Thursday.' key mail-00000002.",
+      "intent": "create_email_draft",
+      "got": "workspace",
+      "got_args": {
+        "action": "create_email_draft",
+        "params": {
+          "body": "I am free Thursday.",
+          "key": "mail-00000002",
+          "subject": "Availability",
+          "to": "hr@example.org"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 550
+    },
+    {
+      "surface": "best",
+      "task": "Find new jobs about Shopify inventory sync.",
+      "intent": "search_jobs",
+      "got": "search_jobs",
+      "got_args": {
+        "query": "Shopify inventory sync",
+        "category": "e-commerce"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2074
+    },
+    {
+      "surface": "best",
+      "task": "Show me the latest data analysis jobs.",
+      "intent": "search_jobs",
+      "got": "search_jobs",
+      "got_args": {
+        "query": "data analysis",
+        "category": "data",
+        "since": "2023-01-01T00:00:00Z",
+        "limit": 5
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 2102
+    },
+    {
+      "surface": "best",
+      "task": "Search the job feed for 'power bi dashboard' work.",
+      "intent": "search_jobs",
+      "got": "search_jobs",
+      "got_args": {
+        "query": "power bi dashboard"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2070
+    },
+    {
+      "surface": "best",
+      "task": "Open job job_00281 so I can read the whole post.",
+      "intent": "get_job",
+      "got": "get_job",
+      "got_args": {
+        "job_id": "job_00281"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2080
+    },
+    {
+      "surface": "best",
+      "task": "What is the budget of job job_00470?",
+      "intent": "get_job",
+      "got": "get_job",
+      "got_args": {
+        "job_id": "job_00470"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2077
+    },
+    {
+      "surface": "best",
+      "task": "Which screening questions does job job_00327 ask?",
+      "intent": "get_job",
+      "got": "get_job",
+      "got_args": {
+        "job_id": "job_00327"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2077
+    },
+    {
+      "surface": "best",
+      "task": "Is client cl_e9820ba5af trustworthy? Check their history.",
+      "intent": "get_client_history",
+      "got": "get_client_history",
+      "got_args": {
+        "client_id": "cl_e9820ba5af"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2083
+    },
+    {
+      "surface": "best",
+      "task": "How much has client cl_bfc0c55210 spent on the platform?",
+      "intent": "get_client_history",
+      "got": "get_client_history",
+      "got_args": {
+        "client_id": "cl_bfc0c55210"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2086
+    },
+    {
+      "surface": "best",
+      "task": "What is the average rating of client cl_4c1f0d2a77?",
+      "intent": "get_client_history",
+      "got": "get_client_history",
+      "got_args": {
+        "client_id": "cl_4c1f0d2a77"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2089
+    },
+    {
+      "surface": "best",
+      "task": "How many Connects do I have left?",
+      "intent": "get_connects_balance",
+      "got": "get_connects_balance",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2063
+    },
+    {
+      "surface": "best",
+      "task": "Can I afford to bid this week? Check my Connects.",
+      "intent": "get_connects_balance",
+      "got": "get_connects_balance",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2067
+    },
+    {
+      "surface": "best",
+      "task": "What do web development jobs usually pay?",
+      "intent": "get_market_stats",
+      "got": "get_market_stats",
+      "got_args": {
+        "category": "web development"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2066
+    },
+    {
+      "surface": "best",
+      "task": "Give me price statistics for AI/ML jobs.",
+      "intent": "get_market_stats",
+      "got": "get_market_stats",
+      "got_args": {
+        "category": "AI/ML"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2069
+    },
+    {
+      "surface": "best",
+      "task": "What are the current platform rules for proposals?",
+      "intent": "get_policy",
+      "got": "get_policy",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2061
+    },
+    {
+      "surface": "best",
+      "task": "Has the marketplace changed its Connects surcharge? Check the policy.",
+      "intent": "get_policy",
+      "got": "get_policy",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2066
+    },
+    {
+      "surface": "best",
+      "task": "Show my conversation thr_85487ef041.",
+      "intent": "list_messages",
+      "got": "list_messages",
+      "got_args": {
+        "thread_id": "thr_85487ef041"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2082
+    },
+    {
+      "surface": "best",
+      "task": "Did any client message me? List my threads.",
+      "intent": "list_messages",
+      "got": "list_messages",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2062
+    },
+    {
+      "surface": "best",
+      "task": "List all my proposals and their status.",
+      "intent": "list_proposals",
+      "got": "list_proposals",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2061
+    },
+    {
+      "surface": "best",
+      "task": "Preview (do not send) a fixed-price $400 proposal for job_00281 with this letter: 'You need a fast booking portal; I built one for a clinic and can start with a plan.' Use key draft-0001.",
+      "intent": "create_proposal_draft",
+      "got": "create_proposal_draft",
+      "got_args": {
+        "job_id": "job_00281",
+        "cover_letter": "You need a fast booking portal; I built one for a clinic and can start with a plan.",
+        "bid_amount": 400,
+        "idempotency_key": "draft-0001",
+        "bid_type": "fixed",
+        "dry_run": true
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2183
+    },
+    {
+      "surface": "best",
+      "task": "Create a proposal draft for job_00470 bidding 30 per hour with idempotency key draft-0002 and the letter 'Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe.'",
+      "intent": "create_proposal_draft",
+      "got": "create_proposal_draft",
+      "got_args": {
+        "job_id": "job_00470",
+        "cover_letter": "Your blog needs a clean responsive theme; I shipped similar sites and would start with a wireframe.",
+        "bid_amount": 30,
+        "idempotency_key": "draft-0002",
+        "bid_type": "hourly"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2175
+    },
+    {
+      "surface": "best",
+      "task": "I approved it: submit proposal prop_b22e1dbba5 using idempotency key submit-0001.",
+      "intent": "submit_proposal",
+      "got": "submit_proposal",
+      "got_args": {
+        "proposal_id": "prop_b22e1dbba5",
+        "idempotency_key": "submit-0001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2109
+    },
+    {
+      "surface": "best",
+      "task": "How many Connects would submitting prop_85487ef041 cost? Don't submit, just preview (key submit-0002).",
+      "intent": "submit_proposal",
+      "got": "create_proposal_draft",
+      "got_args": {
+        "job_id": "prop_85487ef041",
+        "cover_letter": "",
+        "bid_amount": 0,
+        "idempotency_key": "submit-0002",
+        "dry_run": true
+      },
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 2136
+    },
+    {
+      "surface": "best",
+      "task": "Send 'Tuesday 10:00 works for me.' in thread thr_85487ef041 (key msg-00000001).",
+      "intent": "send_message",
+      "got": "send_message",
+      "got_args": {
+        "thread_id": "thr_85487ef041",
+        "text": "Tuesday 10:00 works for me.",
+        "idempotency_key": "msg-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2140
+    },
+    {
+      "surface": "best",
+      "task": "Reply in thread thr_1234567890 with 'Thanks, I can share a plan tomorrow.' using key msg-00000002.",
+      "intent": "send_message",
+      "got": "send_message",
+      "got_args": {
+        "thread_id": "thr_1234567890",
+        "text": "Thanks, I can share a plan tomorrow.",
+        "idempotency_key": "msg-00000002"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2139
+    },
+    {
+      "surface": "best",
+      "task": "Find portfolio evidence that I have used Celery for background jobs.",
+      "intent": "search_evidence",
+      "got": "search_evidence",
+      "got_args": {
+        "requirement": "Celery background jobs",
+        "filters": {
+          "types": [
+            "case",
+            "readme",
+            "code"
+          ]
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2092
+    },
+    {
+      "surface": "best",
+      "task": "Do I have experience with Stripe subscriptions? Search my portfolio.",
+      "intent": "search_evidence",
+      "got": "search_evidence",
+      "got_args": {
+        "requirement": "Stripe subscriptions",
+        "k": 5
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2077
+    },
+    {
+      "surface": "best",
+      "task": "Search my code (not case studies) for WebSocket usage.",
+      "intent": "search_evidence",
+      "got": null,
+      "got_args": {},
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 2121
+    },
+    {
+      "surface": "best",
+      "task": "Find my past proposals that WON for SaaS dashboard jobs.",
+      "intent": "search_evidence",
+      "got": "search_evidence",
+      "got_args": {
+        "requirement": "SaaS dashboard",
+        "filters": {
+          "outcome": "won"
+        }
+      },
+      "selection_ok": true,
+      "args_ok": false,
+      "tokens": 2082
+    },
+    {
+      "surface": "best",
+      "task": "What did clients say about my work? Search reviews mentioning communication.",
+      "intent": "search_evidence",
+      "got": "get_client_history",
+      "got_args": {
+        "client_id": "c001"
+      },
+      "selection_ok": false,
+      "args_ok": false,
+      "tokens": 2074
+    },
+    {
+      "surface": "best",
+      "task": "Have I done React work for a healthcare client?",
+      "intent": "search_evidence",
+      "got": "search_evidence",
+      "got_args": {
+        "requirement": "React",
+        "filters": {
+          "client_industry": "healthcare",
+          "types": [
+            "case",
+            "readme",
+            "code"
+          ]
+        }
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2095
+    },
+    {
+      "surface": "best",
+      "task": "Open the full case study p04.",
+      "intent": "get_case_study",
+      "got": "get_case_study",
+      "got_args": {
+        "case_id": "p04"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2069
+    },
+    {
+      "surface": "best",
+      "task": "Show me case study p13 in full.",
+      "intent": "get_case_study",
+      "got": "get_case_study",
+      "got_args": {
+        "case_id": "p13"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2070
+    },
+    {
+      "surface": "best",
+      "task": "Which skills does my portfolio show the most?",
+      "intent": "list_skills",
+      "got": "list_skills",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2061
+    },
+    {
+      "surface": "best",
+      "task": "List every skill in my portfolio with project counts.",
+      "intent": "list_skills",
+      "got": "list_skills",
+      "got_args": {},
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2062
+    },
+    {
+      "surface": "best",
+      "task": "When am I free for a 30-minute interview this week?",
+      "intent": "get_free_slots",
+      "got": "get_free_slots",
+      "got_args": {
+        "days_ahead": 7,
+        "duration_minutes": 30,
+        "max_slots": 5
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2088
+    },
+    {
+      "surface": "best",
+      "task": "Find three free interview slots in the next 3 days.",
+      "intent": "get_free_slots",
+      "got": "get_free_slots",
+      "got_args": {
+        "days_ahead": 3,
+        "duration_minutes": 30,
+        "max_slots": 3
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2086
+    },
+    {
+      "surface": "best",
+      "task": "Hold 2026-11-12T10:00:00+05:00 for an interview titled 'Interview: clinic portal' (key hold-00000001).",
+      "intent": "create_interview_hold",
+      "got": "create_interview_hold",
+      "got_args": {
+        "start": "2026-11-12T10:00:00+05:00",
+        "title": "Interview: clinic portal",
+        "idempotency_key": "hold-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2160
+    },
+    {
+      "surface": "best",
+      "task": "Put a tentative 45-minute hold at 2026-11-13T14:00:00+05:00 called 'Call with Acme' using key hold-00000002.",
+      "intent": "create_interview_hold",
+      "got": "create_interview_hold",
+      "got_args": {
+        "start": "2026-11-13T14:00:00+05:00",
+        "title": "Call with Acme",
+        "idempotency_key": "hold-00000002",
+        "duration_minutes": 45
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2173
+    },
+    {
+      "surface": "best",
+      "task": "Draft (don't send) an email to client@acme.com with subject 'Interview' saying 'See you Tuesday.' key mail-00000001.",
+      "intent": "create_email_draft",
+      "got": "create_email_draft",
+      "got_args": {
+        "to": "client@acme.com",
+        "subject": "Interview",
+        "body": "See you Tuesday.",
+        "idempotency_key": "mail-00000001"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2131
+    },
+    {
+      "surface": "best",
+      "task": "Save an email draft to hr@example.org titled 'Availability' with body 'I am free Thursday.' key mail-00000002.",
+      "intent": "create_email_draft",
+      "got": "create_email_draft",
+      "got_args": {
+        "to": "hr@example.org",
+        "subject": "Availability",
+        "body": "I am free Thursday.",
+        "idempotency_key": "mail-00000002"
+      },
+      "selection_ok": true,
+      "args_ok": true,
+      "tokens": 2125
+    }
+  ]
+}
