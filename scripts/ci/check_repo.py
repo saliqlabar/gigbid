@@ -88,6 +88,7 @@ def check_readme_numbers():
         return
     text = readme.read_text()
     blob = " ".join(p.read_text(errors="ignore") for p in (ROOT / "evals" / "results").glob("*") if p.is_file())
+    values = {float(x) for x in re.findall(r"-?\d+\.\d+|\b\d+\b", blob)}
     in_results = False
     for line in text.splitlines():
         if line.startswith("#"):
@@ -95,8 +96,15 @@ def check_readme_numbers():
             continue
         if in_results and line.startswith("|") and "---" not in line:
             for n in NUM.findall(line):
-                if n not in blob and n.rstrip("0").rstrip(".") not in blob:
+                if n not in blob and n.rstrip("0").rstrip(".") not in blob and not _rounds_from(n, values):
                     errors.append(f"README number {n} not found in evals/results/: {line.strip()[:80]}")
+
+
+def _rounds_from(n: str, values: set[float]) -> bool:
+    """A README number may be a rounding of a results value, or of that value x100 (a percentage)."""
+    d = len(n.split(".")[1]) if "." in n else 0
+    v = float(n)
+    return any(round(x, d) == v or round(100 * x, d) == v for x in values)
 
 
 if __name__ == "__main__":
