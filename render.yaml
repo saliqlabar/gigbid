@@ -1,0 +1,26 @@
+# Render blueprint for the public GigBid instance (free plan, one container; see infra/docker/render.Dockerfile).
+# Secrets marked sync:false are entered in the Render dashboard, never committed.
+services:
+  - type: web
+    name: gigbid
+    runtime: docker
+    plan: free
+    dockerfilePath: infra/docker/render.Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: REVIEWER_PASSWORD
+        sync: false
+      - key: APP_SECRET_KEY
+        generateValue: true
+      - key: GIGSIM_API_TOKENS
+        sync: false
+      - key: GIGSIM_API_TOKEN
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://gigbid.onrender.com
+      - key: APP_ENV
+        value: production
