@@ -257,7 +257,7 @@ metric except MRR, costs about 3 s per search on CPU, and the outcome run shows 
 But the report does **not** claim it improves outcomes: the gain that could be measured is in retrieval, and the
 step that protects the proposal is claim verification. The ablation below shows the reranker should come out (better recall, 3 s
 faster). It is still on in the submitted build only because every proposal and outcome number in this report was
-measured with it; turning it off is one flag (`rerank: false` in the V5 config) and is the first change I would
+measured with it; turning it off is one flag (`rerank=False` in the V5 preset, `rag/variants/v5_multivector.py`) and is the first change I would
 make after submission.
 
 **What ships.** _One-paragraph decision, written after the outcome runs._
