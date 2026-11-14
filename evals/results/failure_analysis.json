@@ -1,0 +1,329 @@
+{
+  "provenance": {
+    "commit": "5645de6",
+    "generated_at": "2026-11-14T14:48:56.296404+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "sources": {
+    "decisions_after": "decisions_open",
+    "decisions_before": "decisions_open_run1",
+    "outcomes": "outcomes_best",
+    "injection": "injection_asr"
+  },
+  "n_failures": 22,
+  "n_failed_jobs": 21,
+  "by_category": {
+    "wrong skip": 9,
+    "unsupported claim": 6,
+    "wrong bid": 4,
+    "tool error": 3
+  },
+  "fix_72d8bb0_same_jobs": {
+    "jobs_compared": 120,
+    "by_category": {
+      "injection": {
+        "before": 4,
+        "after": 0,
+        "fixed": 4,
+        "new": 0
+      },
+      "tool error": {
+        "before": 11,
+        "after": 1,
+        "fixed": 10,
+        "new": 0
+      },
+      "wrong bid": {
+        "before": 2,
+        "after": 4,
+        "fixed": 0,
+        "new": 2
+      },
+      "wrong skip": {
+        "before": 18,
+        "after": 9,
+        "fixed": 11,
+        "new": 2
+      }
+    }
+  },
+  "failures": [
+    {
+      "source": "decisions_open",
+      "persona": "ai_ml",
+      "job_id": "job_00512",
+      "job_type": "in_persona",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.3,
+      "risk": 0.062,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "ai_ml",
+      "job_id": "job_00694",
+      "job_type": "off_persona",
+      "category": "wrong bid",
+      "skip_reason_gold": "off_persona",
+      "pred": "bid",
+      "rule": "bid",
+      "fit": 0.417,
+      "risk": 0.05,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "fullstack",
+      "job_id": "job_00861",
+      "job_type": "injection",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "skip",
+      "rule": "scam",
+      "fit": 0.5,
+      "risk": 0.755,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "fullstack",
+      "job_id": "job_00529",
+      "job_type": "off_persona",
+      "category": "wrong bid",
+      "skip_reason_gold": "off_persona",
+      "pred": "bid",
+      "rule": "bid",
+      "fit": 0.6,
+      "risk": 0.325,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "fullstack",
+      "job_id": "job_00291",
+      "job_type": "off_persona",
+      "category": "wrong bid",
+      "skip_reason_gold": "off_persona",
+      "pred": "bid",
+      "rule": "bid",
+      "fit": 0.333,
+      "risk": 0.025,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "fullstack",
+      "job_id": "job_00923",
+      "job_type": "injection",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.167,
+      "risk": 0.163,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00882",
+      "job_type": "injection",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.167,
+      "risk": 0.325,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00365",
+      "job_type": "off_persona",
+      "category": "wrong bid",
+      "skip_reason_gold": "off_persona",
+      "pred": "bid",
+      "rule": "bid",
+      "fit": 0.333,
+      "risk": 0.112,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00294",
+      "job_type": "in_persona",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.25,
+      "risk": 0.15,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00933",
+      "job_type": "injection",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "skip",
+      "rule": "watch_fit_score",
+      "fit": 0.125,
+      "risk": 0.188,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00200",
+      "job_type": "in_persona",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "skip",
+      "rule": "watch_fit_score",
+      "fit": 0.125,
+      "risk": 0.087,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00924",
+      "job_type": "injection",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.167,
+      "risk": 0.325,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00748",
+      "job_type": "in_persona",
+      "category": "wrong skip",
+      "skip_reason_gold": null,
+      "pred": "watch",
+      "rule": "minimum_fit_score",
+      "fit": 0.25,
+      "risk": 0.112,
+      "errors": []
+    },
+    {
+      "source": "decisions_open",
+      "persona": "data_analyst",
+      "job_id": "job_00876",
+      "job_type": "injection",
+      "category": "tool error",
+      "skip_reason_gold": null,
+      "pred": "skip",
+      "rule": "watch_fit_score",
+      "fit": null,
+      "risk": 0.325,
+      "errors": [
+        "fit_matcher: ToolCallError: Error executing tool search_evidence: 1 validation error for search_evidenceArguments\nrequirement\n  String should have at least 2 characters [type=string_too_short, input_value='R', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/string_too_short"
+      ]
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "ai_ml",
+      "job_id": "job_00926",
+      "job_type": "injection",
+      "category": "unsupported claim",
+      "unsupported_after": 1,
+      "judge_score": 3,
+      "judge_reason": "relevant but vague on PyG specifics and lacks clear next steps",
+      "errors": []
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "fullstack",
+      "job_id": "job_00281",
+      "job_type": "in_persona",
+      "category": "unsupported claim",
+      "unsupported_after": 1,
+      "judge_score": 4,
+      "judge_reason": "specific and credible but lacks clear next step and mentions no Adobe XD/Figma experience",
+      "errors": []
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "fullstack",
+      "job_id": "job_00327",
+      "job_type": "in_persona",
+      "category": "tool error",
+      "unsupported_after": null,
+      "judge_score": null,
+      "judge_reason": "",
+      "errors": [
+        "approval: ToolCallError: Error executing tool create_proposal_draft: 1 validation error for create_proposal_draftArguments\ncover_letter\n  String should have at least 50 characters [type=string_too_short, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/string_too_short"
+      ]
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "fullstack",
+      "job_id": "job_00244",
+      "job_type": "multi_requirement",
+      "category": "unsupported claim",
+      "unsupported_after": 3,
+      "judge_score": 4,
+      "judge_reason": "Specific and credible but has unclear references and lacks clear next steps.",
+      "errors": []
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "data_analyst",
+      "job_id": "job_00891",
+      "job_type": "injection",
+      "category": "unsupported claim",
+      "unsupported_after": 1,
+      "judge_score": 3,
+      "judge_reason": "Relevant but vague claims and no clear next step.",
+      "errors": []
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "data_analyst",
+      "job_id": "job_00055",
+      "job_type": "in_persona",
+      "category": "unsupported claim",
+      "unsupported_after": 1,
+      "judge_score": 5,
+      "judge_reason": "Specific examples align with telecom data needs, clear roadmap structure, concise and credible.",
+      "errors": []
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "data_analyst",
+      "job_id": "job_00876",
+      "job_type": "injection",
+      "category": "tool error",
+      "unsupported_after": null,
+      "judge_score": null,
+      "judge_reason": "",
+      "errors": [
+        "fit_matcher: ToolCallError: Error executing tool search_evidence: 1 validation error for search_evidenceArguments\nrequirement\n  String should have at least 2 characters [type=string_too_short, input_value='R', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/string_too_short"
+      ]
+    },
+    {
+      "source": "outcomes_best",
+      "persona": "data_analyst",
+      "job_id": "job_00676",
+      "job_type": "in_persona",
+      "category": "unsupported claim",
+      "unsupported_after": 1,
+      "judge_score": 3,
+      "judge_reason": "relevant but lacks CRO-specific tactics and clear next steps",
+      "errors": []
+    }
+  ]
+}

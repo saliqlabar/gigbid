@@ -173,7 +173,7 @@ def block_change_request() -> str:
         return pending("evals/results/change_request.json")
     p, c, e = d["pricing"], d["compliance"], d["code_edit"]
     rows = [["GigSim served policy 1.1 unchanged", d["served_unchanged"]],
-            ["Code commit / files", f"`{e['commit']}` · " + "; ".join(x.strip() for x in e["files"][:-1])],
+            ["Code commit / files", f"`{e['commit']}` · " + ", ".join(x.split("|")[0].strip() for x in e["files"][:-1])],
             ["Bids re-priced (from `" + p["source"] + "`)", p["bids"]],
             ["Connects spent, policy 1.0 → 1.1", f"{p['connects_spent_v10']} → {p['connects_spent_v11']}"],
             ["Hourly bids raised to the $10/h minimum", f"{p['hourly_bids_raised_to_minimum']} of {p['hourly_bids']}"],

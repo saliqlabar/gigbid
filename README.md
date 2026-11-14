@@ -63,7 +63,6 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
 | v5_multivector | 0.327 | 0.395 | 0.316 | 0.889 | 3.67 | 22.2% | 359.8 | 0.0000 |
-| v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
 <!-- /RESULTS:rag -->
@@ -130,6 +129,7 @@ The free host has 512 MB RAM; `nomic-embed-text-v1.5` alone needs about 900 MB, 
 | Variant | R@5 nomic-embed (eval) | R@5 bge-small (deploy) | nDCG@10 nomic | nDCG@10 bge-small |
 |---|---|---|---|---|
 | v0_naive | 0.242 | 0.264 | 0.222 | 0.244 |
+| v5_multivector | 0.327 | 0.339 | 0.316 | 0.306 |
 
 <sub>Source: `rag_variants.json` vs `rag_deploy_embedding.json`</sub>
 <!-- /RESULTS:deploy_embedding -->

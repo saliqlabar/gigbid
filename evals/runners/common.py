@@ -71,3 +71,16 @@ def write_result(name: str, payload: dict) -> Path:
     p = RESULTS / f"{name}.json"
     p.write_text(json.dumps({"provenance": provenance(), **payload}, indent=2))
     return p
+
+
+def read_detail(path: Path) -> list[dict]:
+    """Rows of a *_detail.jsonl file, keeping the last row per job. Runners append when a run is resumed after a
+    crash, so a job can appear more than once; the last row is the one that finished."""
+    if not path.exists():
+        return []
+    out: dict[tuple, dict] = {}
+    for line in path.read_text().splitlines():
+        if line.strip():
+            r = json.loads(line)
+            out[(r.get("persona"), r.get("job_id"), r.get("system"), r.get("level"))] = r
+    return list(out.values())

@@ -24,12 +24,12 @@ import json
 import re
 from collections import Counter, defaultdict
 
-from evals.runners.common import RESULTS, write_result
+from evals.runners.common import RESULTS, read_detail, write_result
 
 
 def rows(name: str) -> list[dict]:
     p = RESULTS / f"{name}_detail.jsonl"
-    return [json.loads(x) for x in p.read_text().splitlines() if x.strip()] if p.exists() else []
+    return read_detail(p)
 
 
 def decision_failures(r: dict) -> list[str]:

@@ -26,7 +26,7 @@ from agent.nodes.compliance import check
 from agent.nodes.pricing import quote
 from agent.runner import profile_for
 from agent.settings import ROOT
-from evals.runners.common import RESULTS, write_result
+from evals.runners.common import RESULTS, read_detail, write_result
 
 HERE = Path(__file__).parent
 SEED = ROOT / "gigsim" / "seed"
@@ -84,8 +84,7 @@ def main(decisions: str, letters: list[str]) -> None:
     stats_cache: dict[str, dict] = {}
 
     priced = []
-    for line in (RESULTS / f"{decisions}_detail.jsonl").read_text().splitlines():
-        r = json.loads(line)
+    for r in read_detail(RESULTS / f"{decisions}_detail.jsonl"):
         if r.get("pred") != "bid" or not r.get("price"):
             continue
         job = by_id[r["job_id"]]
@@ -103,8 +102,7 @@ def main(decisions: str, letters: list[str]) -> None:
         p = RESULTS / f"{src}_detail.jsonl"
         if not p.exists():
             continue
-        for line in p.read_text().splitlines():
-            r = json.loads(line)
+        for r in read_detail(p):
             if r.get("cover_letter"):
                 a, b = check(r["cover_letter"], v10), check(r["cover_letter"], v11)
                 checked.append({"source": src, "job_id": r["job_id"], "words": len(r["cover_letter"].split()),

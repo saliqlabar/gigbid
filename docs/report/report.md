@@ -158,7 +158,6 @@ verification (what the verifier removed) and after (an independent second verifi
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
 | v5_multivector | 0.327 | 0.395 | 0.316 | 0.889 | 3.67 | 22.2% | 359.8 | 0.0000 |
-| v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
 <!-- /RESULTS:rag -->
@@ -183,9 +182,14 @@ The live deployment cannot hold nomic-embed in 512 MB, so it uses bge-small; the
 | Variant | R@5 nomic-embed (eval) | R@5 bge-small (deploy) | nDCG@10 nomic | nDCG@10 bge-small |
 |---|---|---|---|---|
 | v0_naive | 0.242 | 0.264 | 0.222 | 0.244 |
+| v5_multivector | 0.327 | 0.339 | 0.316 | 0.306 |
 
 <sub>Source: `rag_variants.json` vs `rag_deploy_embedding.json`</sub>
 <!-- /RESULTS:deploy_embedding -->
+
+The smaller embedding model did **not** cost recall on this set: V5's Recall@5 is 0.339 with bge-small against
+0.327 with nomic-embed (nDCG@10 0.306 vs 0.316). So the deployment's model is not a downgrade here, though the
+difference in either direction is small.
 
 **Analysis — retrieval (exploratory, no hypothesis written in advance).**
 
@@ -303,8 +307,27 @@ folder whose `policy.yaml` is version 1.1, every bid the decision eval made is r
 `quote()` under both policies, and every drafted letter is re-checked by the production Compliance Guard.
 
 <!-- RESULTS:change_request -->
-*Pending: `evals/results/change_request.json` has not been produced yet.*
+|  | Value |
+|---|---|
+| GigSim served policy 1.1 unchanged | True |
+| Code commit / files | `7e5dd68` · agent/nodes/pricing.py, evals/change_request/policy_v1_1.yaml, tests/integration/test_change_request.py |
+| Bids re-priced (from `decisions_open_detail.jsonl`) | 45 |
+| Connects spent, policy 1.0 → 1.1 | 202 → 292 |
+| Hourly bids raised to the $10/h minimum | 0 of 35 |
+| Mean expected value per bid (USD), 1.0 → 1.1 | 283.24 → 282.94 |
+| Bids no longer worth the Connects | 0 |
+| Drafted letters re-checked | 18 |
+| Blocked by Compliance Guard, 1.0 → 1.1 | 0 → 0 |
+| Newly blocked by the 300-word limit | 0 |
+
+<sub>Source: `evals/results/change_request.json`</sub>
 <!-- /RESULTS:change_request -->
+
+Read plainly: the surcharge is the only rule that bit. All 45 bids still went ahead, but they cost 90 more Connects
+(2 each), and the mean expected value per bid fell by only $0.30, so no bid stopped being worth its Connects. The
+$10/h floor raised none of the 35 hourly bids, because the personas' rates are well above it; it is tested in
+`tests/integration/test_change_request.py` rather than shown by this data. No drafted letter was over 300 words
+(the Writer is already asked for 250), so the new limit blocked nothing.
 
 **What it says about the design.** Treating the platform's rules as data fetched at run time, not constants in
 prompts or code, meant the change request was a config change plus one new pricing rule. Its weak spot: a rule of
@@ -347,7 +370,14 @@ signatures (`system:`, `assistant:`) to detection, and (3) lowers the bid thresh
 on the run-1 sample. The table compares the same jobs before and after that commit.
 
 <!-- RESULTS:failures -->
-*Pending: `evals/results/failure_analysis.json` has not been produced yet.*
+| Category | Failures (final runs) | Decision failures before fix | After fix (same jobs) | Fixed |
+|---|---|---|---|---|
+| wrong skip | 9 | 18 | 9 | 11 |
+| unsupported claim | 6 | n/a | n/a | n/a |
+| wrong bid | 4 | 2 | 4 | 0 |
+| tool error | 3 | 11 | 1 | 10 |
+
+<sub>Source: `evals/results/failure_analysis.json` (22 failures on 21 jobs; fix comparison on 120 jobs common to both decision runs)</sub>
 <!-- /RESULTS:failures -->
 
 **Did the fix work?** Run 1 had 11 jobs that failed for infrastructure reasons, not decisions (Ollama was
@@ -358,8 +388,30 @@ two detail files: bid precision 0.931 → 0.925, bid recall **0.600 → 0.822**,
 caveat: the new 0.33 threshold was tuned on this same sample, so part of the recall gain is fitting the sample;
 a fresh sample would likely show less.
 
-**Analysis.** _Ten representative failures with the fix tried and whether it worked, from
-`failure_analysis.json` (GPU queue)._
+**Representative failures** (job ids from `failure_analysis.json`; 22 failures on 21 jobs in the final runs).
+
+| Job | Category | What happened | Fix / status |
+|---|---|---|---|
+| ai_ml `job_00512` | wrong skip | fit 0.30, just under the 0.33 bid threshold → watch | threshold edge; left as is (user setting) |
+| data_analyst `job_00200` | wrong skip | in-persona job, Fit Matcher scored 0.125 → skip | not fixed; the data_analyst pattern in section 10 |
+| fullstack `job_00861` | wrong skip | injection job, risk 0.755 → skipped as scam | arguably right: the post did try to manipulate the bidder |
+| data_analyst `job_00882`, `00924`, `00933`, fullstack `00923` | wrong skip | injection jobs watched/skipped on low fit (0.125–0.167) | not fixed, see below |
+| fullstack `job_00291`, data_analyst `job_00365` | wrong bid | off-persona jobs at fit exactly 0.333 → bid | **caused by the fix**: the threshold moved to 0.33 |
+| ai_ml `job_00694`, fullstack `00529` | wrong bid | off-persona jobs at fit 0.42 and 0.60 | Fit Matcher over-scores partial overlap |
+| data_analyst `job_00876` | tool error | skill tag "R" rejected by `search_evidence` (min length 2), Fit Matcher crashed | **fixed** `56c1168` + regression test |
+| fullstack `job_00327` | tool error | an empty cover letter reached `approval`; `create_proposal_draft`'s schema (≥ 50 chars) rejected it | failed safe (nothing sent); root cause not traced |
+| fullstack `job_00244` | unsupported claim | 3 unsupported claims left after verification on a multi-requirement job | not fixed |
+| data_analyst `job_00055` | unsupported claim | judge gave 5/5 to a letter with 1 unsupported claim | shows the judge does not check grounding |
+
+**Analysis.** The fix in `72d8bb0` did what it was for: wrong skips 18 → 9 and tool errors 11 → 1 on the same jobs
+(most of run 1's tool errors were the Ollama memory crashes). Its cost is visible too: wrong bids 2 → 4, and two
+of the four are off-persona jobs sitting at exactly the new 0.33 threshold. The largest remaining group is wrong
+skips, and 5 of the 9 are injection jobs, although injection jobs are 24 of the 120 sampled. A plausible cause is
+that stripping the injected lines also removes requirement text, so the Fit Matcher sees less to match; I did not
+test this. Two failures came from schema validation on MCP tools: once a too-strict schema broke a correct job
+("R"), once a correct schema stopped a broken one (empty letter). Separately, the decision step failed *open* when
+the Risk Assessor crashed (with llama3.2, 0 of 12 scams caught and 4 bid on); `1458c02` makes it fail closed
+(watch + needs attention), and the before/after is in section 10.
 
 ## 9. Safety and platform respect
 
@@ -525,9 +577,6 @@ See `docs/AI_USAGE.md`.
 | v5_multivector | ai_ml | 83 | 0.292 | 0.291 | 0.340 | 0.246 |
 | v5_multivector | fullstack | 92 | 0.315 | 0.314 | 0.309 | 0.347 |
 | v5_multivector | data_analyst | 109 | 0.374 | 0.344 | 0.375 | 0.367 |
-| v8_corrective | ai_ml | 83 | 0.007 | 0.007 | 0.015 | 0.000 |
-| v8_corrective | fullstack | 92 | 0.024 | 0.022 | 0.016 | 0.067 |
-| v8_corrective | data_analyst | 109 | 0.079 | 0.065 | 0.070 | 0.122 |
 
 <sub>Source: `evals/results/rag_variants.json` (`personas.*.recall@5_by_job_type`)</sub>
 <!-- /RESULTS:rag_personas -->
