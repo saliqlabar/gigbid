@@ -371,11 +371,36 @@ belongs to member P (scams excluded). Metric: routing accuracy per member, confu
 Baseline: the obvious cheap rule, job category → member.
 
 <!-- RESULTS:agency -->
-*Pending: `evals/results/agency_eval.json` has not been produced yet.*
+|  | Accuracy (45 jobs) |
+|---|---|
+| Agency routing (Fit Matcher per member) | 71.1% |
+| Category rule baseline | 100.0% |
+|   ai_ml: routing / category rule | 86.7% / 100.0% |
+|   fullstack: routing / category rule | 80.0% / 100.0% |
+|   data_analyst: routing / category rule | 46.7% / 100.0% |
+
+<sub>Source: `evals/results/agency_eval.json`</sub>
+
+Confusion (gold → routed): `{"ai_ml->data_analyst": 1, "ai_ml->ai_ml": 13, "ai_ml->fullstack": 1, "fullstack->fullstack": 12, "fullstack->ai_ml": 2, "fullstack->data_analyst": 1, "data_analyst->data_analyst": 7, "data_analyst->ai_ml": 4, "data_analyst->fullstack": 4}` · routing p95 25.5 s
 <!-- /RESULTS:agency -->
 
+**Result: on this data the extension loses to the cheap rule** (71.1% vs 100%). The 100% is built into the
+evaluation, not earned: every *bid* job in a persona's dev set has that persona's category (AI/ML 83 of 83, Web
+development 92 of 92, Data analysis 109 of 109), so "category → member" is correct by construction. The
+synthetic dev sets have no cross-category jobs (a dashboard job filed under Web development, an ML job filed under
+Data analysis), which is exactly where routing by evidence could beat routing by category. So this evaluation
+can show the router's errors but not its benefit.
+
+The errors are informative anyway: 8 of the 15 data_analyst jobs were routed to another member (4 to ai_ml,
+4 to fullstack). That is the same weakness as section 10: the Fit Matcher under-scores this persona's jobs, and in
+a three-way comparison a low score loses. Routing costs three Fit Matcher runs per job (p95 25.5 s).
+
+**What I would change.** Use the category rule by default and fall back to evidence routing only when the
+category is missing, shared by several members, or the category's member has fit below the floor. A fair test
+needs a labelled set of cross-category jobs, which I did not build.
+
 **Limit.** A job two members could both do well counts as a miss for whichever was not labelled, so accuracy is a
-lower bound on usefulness; routing triples the cheap-model cost of the fit step.
+lower bound on usefulness.
 
 ## 8. Failure analysis
 

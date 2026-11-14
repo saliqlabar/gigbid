@@ -1,0 +1,57 @@
+{
+  "provenance": {
+    "commit": "f164db5",
+    "generated_at": "2026-11-14T16:01:56.624144+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "per_persona": 15,
+  "jobs": 45,
+  "routing_accuracy": 0.7111,
+  "naive_category_accuracy": 1.0,
+  "by_member": {
+    "ai_ml": {
+      "routing": 0.8667,
+      "naive": 1.0
+    },
+    "fullstack": {
+      "routing": 0.8,
+      "naive": 1.0
+    },
+    "data_analyst": {
+      "routing": 0.4667,
+      "naive": 1.0
+    }
+  },
+  "by_category": {
+    "AI/ML": {
+      "n": 15,
+      "routing": 0.8667,
+      "naive": 1.0
+    },
+    "Data analysis": {
+      "n": 15,
+      "routing": 0.4667,
+      "naive": 1.0
+    },
+    "Web development": {
+      "n": 15,
+      "routing": 0.8,
+      "naive": 1.0
+    }
+  },
+  "confusion": {
+    "ai_ml->data_analyst": 1,
+    "ai_ml->ai_ml": 13,
+    "ai_ml->fullstack": 1,
+    "fullstack->fullstack": 12,
+    "fullstack->ai_ml": 2,
+    "fullstack->data_analyst": 1,
+    "data_analyst->data_analyst": 7,
+    "data_analyst->ai_ml": 4,
+    "data_analyst->fullstack": 4
+  },
+  "latency_p50_s": 17.55,
+  "latency_p95_s": 25.53,
+  "detail_file": "evals/results/agency_eval_detail.jsonl"
+}
