@@ -412,7 +412,7 @@
      "requirement": {
       "description": "One job requirement, e.g. 'Celery background jobs'",
       "maxLength": 500,
-      "minLength": 2,
+      "minLength": 1,
       "title": "Requirement",
       "type": "string"
      }

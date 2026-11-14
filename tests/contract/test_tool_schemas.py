@@ -37,3 +37,10 @@ async def test_schema_snapshot(name, mod):
     expected = json.loads(path.read_text())
     assert current == json.loads(json.dumps(current, sort_keys=True))
     assert current == expected, f"{name} MCP tool surface changed; if intended run UPDATE_SNAPSHOTS=1"
+
+
+async def test_single_letter_skill_is_a_valid_requirement():
+    # Regression: the skill tag "R" (the language) crashed the Fit Matcher when requirement had min_length=2.
+    async with connect(portfolio.mcp._mcp_server) as c:
+        res = await c.call_tool("search_evidence", {"requirement": "R", "k": 1})
+    assert not res.isError, res.content

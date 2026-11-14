@@ -51,7 +51,7 @@ def _log(c, tool: str, args: dict, result, ok: bool = True) -> None:
 
 @mcp.tool(annotations=RO)
 def search_evidence(
-    requirement: Annotated[str, Field(min_length=2, max_length=500,
+    requirement: Annotated[str, Field(min_length=1, max_length=500,
                                       description="One job requirement, e.g. 'Celery background jobs'")],
     k: Annotated[int, Field(ge=1, le=20)] = 5,
     filters: tools.Filters | None = None,
