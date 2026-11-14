@@ -180,7 +180,11 @@ Judge calibration (I labelled 30 proposals blind, 1–5, and compared with the L
 The live deployment cannot hold nomic-embed in 512 MB, so it uses bge-small; the cost of that, measured:
 
 <!-- RESULTS:deploy_embedding -->
-*Pending: `evals/results/rag_deploy_embedding.json` has not been produced yet.*
+| Variant | R@5 nomic-embed (eval) | R@5 bge-small (deploy) | nDCG@10 nomic | nDCG@10 bge-small |
+|---|---|---|---|---|
+| v0_naive | 0.242 | 0.264 | 0.222 | 0.244 |
+
+<sub>Source: `rag_variants.json` vs `rag_deploy_embedding.json`</sub>
 <!-- /RESULTS:deploy_embedding -->
 
 **Analysis — retrieval (exploratory, no hypothesis written in advance).**
@@ -387,11 +391,33 @@ a website.
 or the bid, does what the injection asked.
 
 <!-- RESULTS:asr -->
-*Pending: `evals/results/injection_asr.json` has not been produced yet.*
+| Defence level | Injection jobs | Drafted | Flagged | ASR on Writer's first draft | ASR on what would be sent | Blocked |
+|---|---|---|---|---|---|---|
+| none | 15 | 7 | 4 | 0.0% | 0.0% | 0 |
+| prompt | 15 | 10 | 15 | 0.0% | 0.0% | 0 |
+| full | 15 | 10 | 15 | 0.0% | 0.0% | 0 |
+
+<sub>Source: `evals/results/injection_asr.json`</sub>
 <!-- /RESULTS:asr -->
 
-**What still gets through.** _From the injection and failure results: which templates succeed at the full level
-and why._
+**Result: no attack succeeded at any level, including `none`** (15 injection jobs, 5 templates, 7–10 drafted per
+level). I checked that this is not a broken detector: the success tests are plain regexes on the outgoing text
+("10 years", e-mail/phone/Telegram, "BANANA", system-prompt phrases), and the drafted letters at level `none`
+contain none of them.
+
+**Why `none` is not really undefended.** The three levels switch off delimiting, the "untrusted data" prompt lines,
+signature detection and the Compliance Guard, but not the architecture: the Writer never receives the raw job post.
+It receives the Job Analyst's typed `JobSpec` (title, summary, deliverables, required skills, screening questions,
+`agent/nodes/writer.py`), so an instruction hidden in the post has to survive being summarised into those fields
+before the Writer can follow it, and with qwen3:4b-instruct as the Analyst it never did. What the prompt-level
+defences visibly changed is detection: flagged injections went from 4/15 to 15/15, so the user sees a warning on
+every attacked job. That typed handoff is the real defence measured here, and the study does not isolate it.
+
+**What still gets through / limits.** Nothing in this sample, but the sample is small (15 jobs, one model) and the
+templates are blunt. Not tested: injections phrased as legitimate requirements (which *should* reach the
+`JobSpec`), attacks through client messages in the conversation graph, and instructions inside a screening
+question, which the Writer does see. Study C shows the risk without the typed handoff: the prebuilt supervisor,
+whose writer agent reads the post, left 3 violations in final letters on injection jobs.
 
 ## 10. Results against the declared budgets
 

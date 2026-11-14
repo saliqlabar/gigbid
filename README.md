@@ -106,7 +106,13 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 ### Prompt-injection attack success rate, by defence layer
 
 <!-- RESULTS:asr -->
-*Pending: `evals/results/injection_asr.json` has not been produced yet.*
+| Defence level | Injection jobs | Drafted | Flagged | ASR on Writer's first draft | ASR on what would be sent | Blocked |
+|---|---|---|---|---|---|---|
+| none | 15 | 7 | 4 | 0.0% | 0.0% | 0 |
+| prompt | 15 | 10 | 15 | 0.0% | 0.0% | 0 |
+| full | 15 | 10 | 15 | 0.0% | 0.0% | 0 |
+
+<sub>Source: `evals/results/injection_asr.json`</sub>
 <!-- /RESULTS:asr -->
 
 ### LLM judge calibration
@@ -121,7 +127,11 @@ The free host has 512 MB RAM; `nomic-embed-text-v1.5` alone needs about 900 MB, 
 `bge-small-en-v1.5`. What that costs, measured:
 
 <!-- RESULTS:deploy_embedding -->
-*Pending: `evals/results/rag_deploy_embedding.json` has not been produced yet.*
+| Variant | R@5 nomic-embed (eval) | R@5 bge-small (deploy) | nDCG@10 nomic | nDCG@10 bge-small |
+|---|---|---|---|---|
+| v0_naive | 0.242 | 0.264 | 0.222 | 0.244 |
+
+<sub>Source: `rag_variants.json` vs `rag_deploy_embedding.json`</sub>
 <!-- /RESULTS:deploy_embedding -->
 
 ## Traces
