@@ -15,6 +15,7 @@ import asyncio
 import csv
 import json
 import random
+from pathlib import Path
 from collections import Counter
 
 from evals.runners.common import DEV, RESULTS, job_text, read_detail, seed_jobs, write_result
@@ -85,13 +86,40 @@ async def score() -> None:
     print(f"kappa={kappa(me, jd)} weighted={kappa(me, jd, 'quadratic')} exact={exact:.2f}")
 
 
+def label() -> None:
+    """Terminal helper: shows one item at a time, asks for a 1-5 score (and an optional note), saves after each."""
+    import textwrap
+    rows = list(csv.DictReader(LABELS.open()))
+    fields = list(rows[0].keys())
+    todo = [r for r in rows if not r["my_score"].strip()]
+    print((Path(__file__).parents[2] / "agent/prompts/judge.md").read_text().split("The proposal and job")[0]
+          .split("---")[-1].strip(), "\n")
+    for r in todo:
+        done = sum(1 for x in rows if x["my_score"].strip())
+        print("=" * 100, f"\n{r['item_id']}  ({done}/{len(rows)} scored)   JOB: {r['job_title']}\n")
+        print(textwrap.fill(r["job_post"], 100), "\n\n--- PROPOSAL ---\n")
+        print("\n".join(textwrap.fill(par, 100) for par in r["proposal"].splitlines()), "\n")
+        while (sc := input("score 1-5 (q = save and quit): ").strip()) not in {"1", "2", "3", "4", "5", "q"}:
+            pass
+        if sc == "q":
+            break
+        r["my_score"], r["my_note"] = sc, input("note (optional, Enter to skip): ").strip()
+        with LABELS.open("w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            w.writerows(rows)
+    print(f"{sum(1 for x in rows if x['my_score'].strip())}/{len(rows)} scored, saved to {LABELS}")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=["prepare", "score"])
+    ap.add_argument("step", choices=["prepare", "label", "score"])
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--sources", nargs="*", default=["outcomes_v0", "outcomes_best", "study_c"])
     a = ap.parse_args()
     if a.step == "prepare":
         prepare(a.n, a.sources)
+    elif a.step == "label":
+        label()
     else:
         asyncio.run(score())
