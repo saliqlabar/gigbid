@@ -17,7 +17,7 @@ import json
 import random
 from collections import Counter
 
-from evals.runners.common import DEV, RESULTS, job_text, seed_jobs, write_result
+from evals.runners.common import DEV, RESULTS, job_text, read_detail, seed_jobs, write_result
 
 LABELS = DEV / "judge_labels.csv"
 
@@ -25,24 +25,23 @@ LABELS = DEV / "judge_labels.csv"
 def prepare(n: int, sources: list[str]) -> None:
     pool = []
     for src in sources:
-        for line in (RESULTS / f"{src}_detail.jsonl").read_text().splitlines():
-            r = json.loads(line)
+        for r in read_detail(RESULTS / f"{src}_detail.jsonl"):     # last row per job (runs can be resumed)
             if r.get("cover_letter"):
-                pool.append({"item_id": f"{src}:{r['job_id']}", "job_id": r["job_id"], "letter": r["cover_letter"]})
-    seen, uniq = set(), []
-    for r in pool:                                   # one letter per (source, job)
-        if r["item_id"] not in seen:
-            seen.add(r["item_id"])
-            uniq.append(r)
+                origin = f"{src}:{r['system']}:{r['job_id']}" if r.get("system") else f"{src}:{r['job_id']}"
+                pool.append({"origin": origin, "job_id": r["job_id"], "letter": r["cover_letter"]})
+    uniq = list({r["origin"]: r for r in pool}.values())
     rng = random.Random(4016)
     rng.shuffle(uniq)
     rows = uniq[:n]
+    # blind: the CSV only shows a neutral id; which system/variant wrote each letter is kept in a separate key file
+    key = {f"item_{i:02d}": r["origin"] for i, r in enumerate(rows, 1)}
+    LABELS.with_name("judge_labels_key.json").write_text(json.dumps(key, indent=1))
     with LABELS.open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["item_id", "job_id", "job_title", "job_post", "proposal", "my_score", "my_note"])
-        for r in rows:
+        for (iid, _), r in zip(key.items(), rows):
             j = seed_jobs()[r["job_id"]]
-            w.writerow([r["item_id"], r["job_id"], j["title"], j["description"][:1500], r["letter"], "", ""])
+            w.writerow([iid, r["job_id"], j["title"], j["description"][:1500], r["letter"], "", ""])
     print(f"wrote {len(rows)} items to {LABELS}; fill my_score (1-5) using agent/prompts/judge.md's rubric")
 
 
@@ -90,7 +89,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=["prepare", "score"])
     ap.add_argument("--n", type=int, default=30)
-    ap.add_argument("--sources", nargs="*", default=["outcomes_v0", "outcomes_best"])
+    ap.add_argument("--sources", nargs="*", default=["outcomes_v0", "outcomes_best", "study_c"])
     a = ap.parse_args()
     if a.step == "prepare":
         prepare(a.n, a.sources)

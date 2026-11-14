@@ -74,6 +74,7 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 | Model configuration | Jobs | Bid F1 | Bid P | Bid R | Scam P | Scam R | Price in fair band | p50 s / job | p95 s / job | Tokens / job |
 |---|---|---|---|---|---|---|---|---|---|---|
 | open (qwen3:4b-instruct cheap) | 120 | 0.854 | 0.911 | 0.804 | 0.960 | 1.000 | 100.0% | 34.2 | 51.2 | 2813 |
+| open_alt (llama3.2 cheap) | 60 | 0.744 | 0.941 | 0.615 | 0.000 | 0.000 | 100.0% | 16.8 | 53.5 | 3096 |
 
 <sub>Source: `decisions_open.json`, `decisions_open_alt.json` (stratified dev sample; RTX 4060 8 GB, local Ollama, 0 USD)</sub>
 <!-- /RESULTS:decisions -->

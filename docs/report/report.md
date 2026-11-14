@@ -187,7 +187,9 @@ Ablation of the best retrieval variant (one component removed at a time):
   (0.314 vs 0.316), and removes about 3 s of CPU per search. The jina-turbo reranker's scores separate relevant
   from irrelevant chunks poorly here, the same weakness that broke V8.
 
-Judge calibration (I labelled 30 proposals blind, 1–5, and compared with the LLM judge):
+Judge calibration (I labelled 30 proposals blind, 1–5, and compared with the LLM judge; the 30 are drawn from
+both outcome runs and all three Study C systems, and the CSV shows only a neutral id, with the source kept in
+`evals/datasets/judge_labels_key.json`):
 
 <!-- RESULTS:judge -->
 *Pending: `evals/results/judge_calibration.json` has not been produced yet.*
@@ -544,6 +546,7 @@ against the budgets declared in section 1, without excuses.
 | Model configuration | Jobs | Bid F1 | Bid P | Bid R | Scam P | Scam R | Price in fair band | p50 s / job | p95 s / job | Tokens / job |
 |---|---|---|---|---|---|---|---|---|---|---|
 | open (qwen3:4b-instruct cheap) | 120 | 0.854 | 0.911 | 0.804 | 0.960 | 1.000 | 100.0% | 34.2 | 51.2 | 2813 |
+| open_alt (llama3.2 cheap) | 60 | 0.744 | 0.941 | 0.615 | 0.000 | 0.000 | 100.0% | 16.8 | 53.5 | 3096 |
 
 <sub>Source: `decisions_open.json`, `decisions_open_alt.json` (stratified dev sample; RTX 4060 8 GB, local Ollama, 0 USD)</sub>
 <!-- /RESULTS:decisions -->
@@ -577,6 +580,17 @@ data_analyst (bid recall 0.667 against 0.923 for ai_ml): all 7 of its missed bid
 0.25, below the 0.33 bid threshold. None was lost to the budget or scam rules. So the Fit Matcher under-scores
 jobs that the labelling rules count as in-persona for this persona; lowering the threshold further would trade
 precision for them, which is why the fix in section 8 stopped at 0.33.
+
+**Model choice, and a safety bug it exposed.** The second open configuration (llama3.2 as the cheap model) caught
+**no** scams. On 12 of its 60 jobs, exactly the risky ones, llama3.2 returned risk-flag kinds outside the schema,
+the Risk Assessor failed validation, and `decide` received an empty risk report. Before the fix, an empty report
+meant "no risk", so the scam veto silently disappeared: **4 of the 12 scams were bid on**
+(`decisions_open_alt_before_fix.json`). Commit `1458c02` makes `decide` fail closed: a missing risk report gives
+*watch* with status `needs_attention` and the reason "risk check failed; review this job yourself", with two unit
+tests. Rerun on the same 60 jobs: scams bid on **4 → 0** (11 now wait for the user, 1 is skipped on fit), and bid
+precision rises from 0.800 to 0.941 because no risky job is bid on blind. Scam *recall* stays 0 because the model
+still cannot fill in the risk schema, so the qwen3:4b-instruct configuration ships. The fix matters for
+the shipped model too: it had 1 crashed job in 120.
 
 **Budgets.** *Missed:* local p95 per job analysed is 51.2 s against 45 s declared. The miss is not caused by
 bidding more: in the final run even skipped jobs had a median of 32.7 s (22.6 s in run 1), so the whole pipeline
