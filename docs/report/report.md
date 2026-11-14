@@ -335,6 +335,14 @@ against the budgets declared in section 1, without excuses.
 *Pending: `evals/results/decisions_open.json` has not been produced yet.*
 <!-- /RESULTS:decisions -->
 
+**One optimisation that helped: skipping early.** The deterministic `decide` node runs before the Writer, so a
+job that is skipped or watched never pays for drafting, verification, critique and compliance, which are where
+most of a proposal's time and tokens go. Measured on the decision run:
+
+<!-- RESULTS:optimisation -->
+*Pending: `evals/results/decisions_open.json + outcomes_best.json` has not been produced yet.*
+<!-- /RESULTS:optimisation -->
+
 _Discussion of budgets met and missed._
 
 ## Appendix A — reproducing every table

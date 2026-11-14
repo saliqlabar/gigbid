@@ -220,7 +220,27 @@ def block_budgets() -> str:
                  "(local) and `decisions_hosted.json`, `outcomes_hosted.json` (hosted, n/a if not run)")
 
 
-BLOCKS = {"rag_personas": block_rag_personas, "ablation": block_ablation, "change_request": block_change_request,
+def block_optimisation() -> str:
+    d, o = load("decisions_open"), load("outcomes_best")
+    det = RES / "decisions_open_detail.jsonl"
+    if not (d and o and det.exists()):
+        return pending("evals/results/decisions_open.json + outcomes_best.json")
+    rows_ = [json.loads(x) for x in det.read_text().splitlines() if x.strip()]
+    stop = [r for r in rows_ if r.get("pred") in ("skip", "watch")]
+    go = [r for r in rows_ if r.get("pred") == "bid"]
+    mean = lambda xs: sum(xs) / len(xs) if xs else None
+    a_stop, a_go = mean([r["latency_s"] for r in stop]), mean([r["latency_s"] for r in go])
+    full = o["overall"].get("latency_mean_s") or o["overall"].get("latency_p50_s")
+    n = len(rows_)
+    saved = (len(stop) * (full - a_stop)) if (full and a_stop is not None) else None
+    rows = [["Jobs analysed", n], ["Stopped at decide (skip or watch)", f"{len(stop)} ({f(len(stop) / n, pct=True)})"],
+            ["Mean s per job that stopped at decide", f(a_stop, 1)], ["Mean s to decide on a job that went on to bid", f(a_go, 1)],
+            ["p50 s for a full proposal (outcomes_best)", f(full, 1)],
+            ["GPU time saved on this sample by not drafting stopped jobs (s)", f(saved, 0) if saved is not None else "n/a"]]
+    return table(["Skipping early", "Value"], rows, "`decisions_open_detail.jsonl` (per-job latency) and `outcomes_best.json`")
+
+
+BLOCKS = {"optimisation": block_optimisation, "rag_personas": block_rag_personas, "ablation": block_ablation, "change_request": block_change_request,
           "failures": block_failures, "budgets": block_budgets, "rag": block_rag, "tools": block_tools, "decisions": block_decisions, "study_c": block_study_c,
           "asr": block_asr, "agency": block_agency, "deploy_embedding": block_deploy_embedding, "judge": block_judge}
 
