@@ -74,6 +74,11 @@ budgets:
   max_graph_steps: 30
   max_revisions: 2
   max_tokens_per_job: 40000   # declared token budget per job thread (R8)
+  # Declared latency / cost budgets (E5), set 2026-11-14 before the final eval runs. Local = open profile on an
+  # RTX 4060 8 GB laptop (0 USD); hosted = open_hosted profile on Groq (what the live URL and hidden run use).
+  declared:
+    local:  {p95_s_per_job_analysed: 45, p95_s_per_proposal: 420, usd_per_job_analysed: 0.0, usd_per_proposal: 0.0}
+    hosted: {p95_s_per_job_analysed: 10, p95_s_per_proposal: 60, usd_per_job_analysed: 0.002, usd_per_proposal: 0.01}
 
 thresholds:                    # decision node (agent/nodes/decide.py)
   minimum_fit_score: 0.33      # >= this -> bid; tuned on the dev sample (F1 0.73 -> 0.79 at 0.40 -> 0.33, decisions_open run 1)

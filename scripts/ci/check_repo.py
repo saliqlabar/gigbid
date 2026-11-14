@@ -3,7 +3,7 @@
 1. No secrets in the repo (key-shaped strings, .env files).
 2. Nothing under gigsim/ changed since it was frozen (hash manifest gigsim/FROZEN.sha256).
 3. Every prompt lives in agent/prompts/ (no prompt-like string literals in Python under agent/ or rag/).
-4. Every number in README.md's results sections appears in a file under evals/results/.
+4. Every number in README.md's results sections and in docs/report tables appears in a file under evals/results/.
 Exit code 1 on any violation.
 """
 from __future__ import annotations
@@ -83,21 +83,26 @@ NUM = re.compile(r"(?<![\w.])(\d+\.\d+|\d{2,})(?![\w.])")
 
 
 def check_readme_numbers():
-    readme = ROOT / "README.md"
-    if not readme.exists():
-        return
-    text = readme.read_text()
+    """README results tables and every table in the report. Declared budgets come from agent/config.yaml."""
     blob = " ".join(p.read_text(errors="ignore") for p in (ROOT / "evals" / "results").glob("*") if p.is_file())
+    blob += " " + (ROOT / "agent" / "config.yaml").read_text()
     values = {float(x) for x in re.findall(r"-?\d+\.\d+|\b\d+\b", blob)}
-    in_results = False
+    docs = [(ROOT / "README.md", False), *((p, True) for p in sorted((ROOT / "docs" / "report").glob("*.md")))]
+    for path, all_tables in docs:
+        if path.exists():
+            _check_numbers(path, path.read_text(), blob, values, all_tables)
+
+
+def _check_numbers(path, text, blob, values, all_tables):
+    in_results = all_tables
     for line in text.splitlines():
         if line.startswith("#"):
-            in_results = bool(re.search(r"(?i)result|benchmark|comparison|budget", line))
+            in_results = all_tables or bool(re.search(r"(?i)result|benchmark|comparison|budget", line))
             continue
         if in_results and line.startswith("|") and "---" not in line:
             for n in NUM.findall(line):
                 if n not in blob and n.rstrip("0").rstrip(".") not in blob and not _rounds_from(n, values):
-                    errors.append(f"README number {n} not found in evals/results/: {line.strip()[:80]}")
+                    errors.append(f"{path.name} number {n} not found in evals/results/: {line.strip()[:80]}")
 
 
 def _rounds_from(n: str, values: set[float]) -> bool:

@@ -145,7 +145,83 @@ def block_judge() -> str:
             f"blind (judge {d['judge_model']}). <sub>Source: `evals/results/judge_calibration.json`</sub>")
 
 
-BLOCKS = {"rag": block_rag, "tools": block_tools, "decisions": block_decisions, "study_c": block_study_c,
+def block_rag_personas() -> str:
+    d = load("rag_variants")
+    if not d:
+        return pending("evals/results/rag_variants.json")
+    rows = []
+    for v, r in d["results"].items():
+        for p, pr in r["personas"].items():
+            jt = pr.get("recall@5_by_job_type", {})
+            rows.append([v, p, pr["n"], f(pr["recall@5"]), f(pr["ndcg@10"]),
+                         f(jt.get("1-3 requirements", {}).get("recall@5")), f(jt.get("4+ requirements", {}).get("recall@5"))])
+    return table(["Variant", "Persona", "Jobs", "R@5", "nDCG@10", "R@5, 1-3 requirements", "R@5, 4+ requirements"], rows,
+                 "`evals/results/rag_variants.json` (`personas.*.recall@5_by_job_type`)")
+
+
+def block_ablation() -> str:
+    d = load("rag_ablation")
+    if not d:
+        return pending("evals/results/rag_ablation.json")
+    rows = [[v, f(r["overall"]["recall@5"]), f(r["overall"]["mrr"]), f(r["overall"]["ndcg@10"])] for v, r in d["results"].items()]
+    return table(["Configuration", "R@5", "MRR", "nDCG@10"], rows, "`evals/results/rag_ablation.json`")
+
+
+def block_change_request() -> str:
+    d = load("change_request")
+    if not d:
+        return pending("evals/results/change_request.json")
+    p, c, e = d["pricing"], d["compliance"], d["code_edit"]
+    rows = [["GigSim served policy 1.1 unchanged", d["served_unchanged"]],
+            ["Code commit / files", f"`{e['commit']}` · " + "; ".join(x.strip() for x in e["files"][:-1])],
+            ["Bids re-priced (from `" + p["source"] + "`)", p["bids"]],
+            ["Connects spent, policy 1.0 → 1.1", f"{p['connects_spent_v10']} → {p['connects_spent_v11']}"],
+            ["Hourly bids raised to the $10/h minimum", f"{p['hourly_bids_raised_to_minimum']} of {p['hourly_bids']}"],
+            ["Mean expected value per bid (USD), 1.0 → 1.1", f"{f(p['mean_ev_v10'], 2)} → {f(p['mean_ev_v11'], 2)}"],
+            ["Bids no longer worth the Connects", p["flipped_to_not_worth_it"]],
+            ["Drafted letters re-checked", c["letters"]],
+            ["Blocked by Compliance Guard, 1.0 → 1.1", f"{c['blocked_v10']} → {c['blocked_v11']}"],
+            ["Newly blocked by the 300-word limit", c["newly_blocked_by_300_word_limit"]]]
+    return table(["", "Value"], rows, "`evals/results/change_request.json`")
+
+
+def block_failures() -> str:
+    d = load("failure_analysis")
+    if not d:
+        return pending("evals/results/failure_analysis.json")
+    fx = d["fix_72d8bb0_same_jobs"]
+    rows = [[k, n, fx["by_category"].get(k, {}).get("before", "n/a"), fx["by_category"].get(k, {}).get("after", "n/a"),
+             fx["by_category"].get(k, {}).get("fixed", "n/a")] for k, n in d["by_category"].items()]
+    return table(["Category", "Failures (final runs)", "Decision failures before fix", "After fix (same jobs)", "Fixed"], rows,
+                 f"`evals/results/failure_analysis.json` ({d['n_failures']} failures on {d['n_failed_jobs']} jobs; "
+                 f"fix comparison on {fx['jobs_compared']} jobs common to both decision runs)")
+
+
+def block_budgets() -> str:
+    import yaml
+    decl = yaml.safe_load((ROOT / "agent" / "config.yaml").read_text())["budgets"]["declared"]
+    rows = []
+    for env, dec_name, out_name in (("local", "decisions_open", "outcomes_best"), ("hosted", "decisions_hosted", "outcomes_hosted")):
+        d, o, b = load(dec_name), load(out_name), decl[env]
+        dj = d["overall"] if d else {}
+        oj = o["overall"] if o else {}
+        def chk(m, lim):
+            return "n/a" if m is None else ("met" if m <= lim else "**missed**")
+        rows.append([env, "p95 s per job analysed", b["p95_s_per_job_analysed"], f(dj.get("latency_p95_s"), 1),
+                     chk(dj.get("latency_p95_s"), b["p95_s_per_job_analysed"])])
+        rows.append([env, "p95 s per proposal", b["p95_s_per_proposal"], f(oj.get("latency_p95_s"), 1),
+                     chk(oj.get("latency_p95_s"), b["p95_s_per_proposal"])])
+        rows.append([env, "USD per job analysed", b["usd_per_job_analysed"], f(dj.get("usd_per_job"), 4),
+                     chk(dj.get("usd_per_job"), b["usd_per_job_analysed"])])
+        rows.append([env, "USD per proposal", b["usd_per_proposal"], f(oj.get("usd_per_proposal"), 4),
+                     chk(oj.get("usd_per_proposal"), b["usd_per_proposal"])])
+    return table(["Environment", "Budget", "Declared", "Measured", "Status"], rows,
+                 "declared in `agent/config.yaml → budgets.declared`; measured from `decisions_open.json`, `outcomes_best.json` "
+                 "(local) and `decisions_hosted.json`, `outcomes_hosted.json` (hosted, n/a if not run)")
+
+
+BLOCKS = {"rag_personas": block_rag_personas, "ablation": block_ablation, "change_request": block_change_request,
+          "failures": block_failures, "budgets": block_budgets, "rag": block_rag, "tools": block_tools, "decisions": block_decisions, "study_c": block_study_c,
           "asr": block_asr, "agency": block_agency, "deploy_embedding": block_deploy_embedding, "judge": block_judge}
 
 
@@ -163,6 +239,6 @@ def fill(path: Path) -> int:
 
 
 if __name__ == "__main__":
-    for p in [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]:
+    for p in [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md")), *sorted((ROOT / "docs" / "report").glob("*.md"))]:
         if (k := fill(p)):
             print(f"{p.relative_to(ROOT)}: {k} block(s)")
