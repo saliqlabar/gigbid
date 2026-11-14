@@ -158,6 +158,7 @@ verification (what the verifier removed) and after (an independent second verifi
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
 | v5_multivector | 0.327 | 0.395 | 0.316 | 0.889 | 3.67 | 22.2% | 359.8 | 0.0000 |
+| v8_corrective | 0.271 | 0.342 | 0.274 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
 <!-- /RESULTS:rag -->
@@ -209,8 +210,12 @@ difference in either direction is small.
 * *V8 corrective retrieval* first scored Recall@5 0.037 (`rag_v8_uncalibrated.json`), which is a bug, not a
   result: its relevance thresholds (0.0 / −3.0) were set for a bge reranker, but the shipped jina-turbo reranker
   scores almost every chunk below 0, so the grader called every set "weak" and rewrote good queries into worse
-  ones. The calibrated rerun is reported above once `rag_eval` has rerun it; the uncalibrated file is kept because
-  it is the failure analysis for this component.
+  ones. I calibrated the threshold on the reranker's scores for gold vs other chunks
+  (`rag_v8_calibration.json`): the best cut, −3.6, keeps 99.8% of gold chunks but also 98.2% of the rest, so the
+  jina scores barely separate relevant from irrelevant. Rerun with it, V8 reaches Recall@5 0.271, **below V5
+  (0.327)**, at about twice the p95 latency (up to 6 s). By design V8 returns no evidence for a requirement that is
+  still ungrounded after its rewrite, so it trades recall for not handing the Writer weak evidence; on this
+  metric that trade loses. V8 is **not** shipped. The uncalibrated file is kept as this component's failure.
 * *Absolute recall is low* (best 0.327). Part of that is the evaluation: gold evidence is rule-derived from the
   synthetic portfolios (section 1), so a project that genuinely shows a skill but was not tagged for it counts as
   a miss. The comparison between variants is fairer than the absolute number.
@@ -577,6 +582,9 @@ See `docs/AI_USAGE.md`.
 | v5_multivector | ai_ml | 83 | 0.292 | 0.291 | 0.340 | 0.246 |
 | v5_multivector | fullstack | 92 | 0.315 | 0.314 | 0.309 | 0.347 |
 | v5_multivector | data_analyst | 109 | 0.374 | 0.344 | 0.375 | 0.367 |
+| v8_corrective | ai_ml | 83 | 0.255 | 0.266 | 0.270 | 0.242 |
+| v8_corrective | fullstack | 92 | 0.267 | 0.285 | 0.275 | 0.227 |
+| v8_corrective | data_analyst | 109 | 0.292 | 0.271 | 0.301 | 0.244 |
 
 <sub>Source: `evals/results/rag_variants.json` (`personas.*.recall@5_by_job_type`)</sub>
 <!-- /RESULTS:rag_personas -->

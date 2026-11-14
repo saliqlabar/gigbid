@@ -68,7 +68,7 @@ rag:
   variant: v0_naive            # set from evals/results/rag_variants.json (R6)
   embedding_model: nomic-ai/nomic-embed-text-v1.5
   reranker_model: jinaai/jina-reranker-v1-turbo-en   # bge-reranker-v2-m3 = 3.3-3.9 s per 20 docs on CPU
-  corrective: {relevant: 0.0, weak: -3.0, max_rewrites: 1}
+  corrective: {relevant: -3.6, weak: -4.6, max_rewrites: 1}
 
 budgets:
   max_graph_steps: 30
