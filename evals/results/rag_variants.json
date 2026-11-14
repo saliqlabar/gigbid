@@ -1,0 +1,531 @@
+{
+  "provenance": {
+    "commit": "940d534",
+    "generated_at": "2026-11-14T09:48:34.346951+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "requirements_source": "jobspec",
+  "limit_per_persona": "all",
+  "metric_note": "macro-average over personas; gold = dev set gold_evidence",
+  "results": {
+    "v0_naive": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": false,
+        "hybrid": false,
+        "rerank": false,
+        "outcome_boost": false,
+        "multivector": false,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.1711,
+          "mrr": 0.3436,
+          "ndcg@10": 0.1672,
+          "latency_p50_s": 0.0002,
+          "latency_p95_s": 0.0003,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.135
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2047
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.229,
+          "mrr": 0.3885,
+          "ndcg@10": 0.2276,
+          "latency_p50_s": 0.0002,
+          "latency_p95_s": 0.0004,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.2346
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.2
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3254,
+          "mrr": 0.4832,
+          "ndcg@10": 0.2718,
+          "latency_p50_s": 0.0002,
+          "latency_p95_s": 0.0005,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.3444
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3216
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.2418,
+        "mrr": 0.4051,
+        "ndcg@10": 0.2222
+      }
+    },
+    "v1_decompose": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": false,
+        "rerank": false,
+        "outcome_boost": false,
+        "multivector": false,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.2313,
+          "mrr": 0.4356,
+          "ndcg@10": 0.2095,
+          "latency_p50_s": 0.0018,
+          "latency_p95_s": 0.0028,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.23
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2326
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.2312,
+          "mrr": 0.5587,
+          "ndcg@10": 0.2484,
+          "latency_p50_s": 0.0017,
+          "latency_p95_s": 0.0032,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.2372
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.2
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3425,
+          "mrr": 0.4807,
+          "ndcg@10": 0.3072,
+          "latency_p50_s": 0.0017,
+          "latency_p95_s": 0.0025,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.4222
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3267
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.2683,
+        "mrr": 0.4917,
+        "ndcg@10": 0.255
+      }
+    },
+    "v2_hybrid": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": true,
+        "rerank": false,
+        "outcome_boost": false,
+        "multivector": false,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.2506,
+          "mrr": 0.4278,
+          "ndcg@10": 0.2261,
+          "latency_p50_s": 0.0028,
+          "latency_p95_s": 0.0049,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.265
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2372
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.2529,
+          "mrr": 0.4827,
+          "ndcg@10": 0.2395,
+          "latency_p50_s": 0.0033,
+          "latency_p95_s": 0.005,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.2554
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.24
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3498,
+          "mrr": 0.4914,
+          "ndcg@10": 0.3129,
+          "latency_p50_s": 0.0028,
+          "latency_p95_s": 0.0043,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.3778
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3443
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.2844,
+        "mrr": 0.4673,
+        "ndcg@10": 0.2595
+      }
+    },
+    "v3_rerank": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": true,
+        "rerank": true,
+        "outcome_boost": false,
+        "multivector": false,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.2699,
+          "mrr": 0.4794,
+          "ndcg@10": 0.2407,
+          "latency_p50_s": 3.2092,
+          "latency_p95_s": 4.1257,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.28
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2605
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.2312,
+          "mrr": 0.4843,
+          "ndcg@10": 0.249,
+          "latency_p50_s": 2.9676,
+          "latency_p95_s": 3.2762,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.2346
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.2133
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3297,
+          "mrr": 0.4864,
+          "ndcg@10": 0.3034,
+          "latency_p50_s": 2.402,
+          "latency_p95_s": 2.8065,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.3111
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3333
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.2769,
+        "mrr": 0.4834,
+        "ndcg@10": 0.2644
+      }
+    },
+    "v4_outcome": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": true,
+        "rerank": true,
+        "outcome_boost": true,
+        "multivector": false,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.2361,
+          "mrr": 0.3967,
+          "ndcg@10": 0.2092,
+          "latency_p50_s": 2.6406,
+          "latency_p95_s": 2.8857,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.27
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2047
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.2377,
+          "mrr": 0.4248,
+          "ndcg@10": 0.236,
+          "latency_p50_s": 2.5109,
+          "latency_p95_s": 2.785,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.2346
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.2533
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3535,
+          "mrr": 0.5492,
+          "ndcg@10": 0.3323,
+          "latency_p50_s": 2.4937,
+          "latency_p95_s": 2.7538,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.3556
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3531
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.2758,
+        "mrr": 0.4569,
+        "ndcg@10": 0.2592
+      }
+    },
+    "v5_multivector": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": true,
+        "rerank": true,
+        "outcome_boost": false,
+        "multivector": true,
+        "corrective": false,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.2916,
+          "mrr": 0.381,
+          "ndcg@10": 0.2907,
+          "latency_p50_s": 2.8,
+          "latency_p95_s": 3.1053,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.34
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.2465
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.3152,
+          "mrr": 0.3936,
+          "ndcg@10": 0.3143,
+          "latency_p50_s": 2.587,
+          "latency_p95_s": 2.804,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.3091
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.3467
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.3737,
+          "mrr": 0.4104,
+          "ndcg@10": 0.3435,
+          "latency_p50_s": 2.4812,
+          "latency_p95_s": 2.7282,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.3667
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.3751
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.3268,
+        "mrr": 0.395,
+        "ndcg@10": 0.3162
+      }
+    },
+    "v8_corrective": {
+      "flags": {
+        "chunking": "fixed",
+        "decompose": true,
+        "hybrid": true,
+        "rerank": true,
+        "outcome_boost": false,
+        "multivector": true,
+        "corrective": true,
+        "top_chunks": 40,
+        "rerank_top": 20
+      },
+      "personas": {
+        "ai_ml": {
+          "n": 83,
+          "recall@5": 0.0072,
+          "mrr": 0.012,
+          "ndcg@10": 0.0069,
+          "latency_p50_s": 15.1859,
+          "latency_p95_s": 19.65,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 40,
+              "recall@5": 0.015
+            },
+            "4+ requirements": {
+              "n": 43,
+              "recall@5": 0.0
+            }
+          }
+        },
+        "fullstack": {
+          "n": 92,
+          "recall@5": 0.0239,
+          "mrr": 0.0276,
+          "ndcg@10": 0.022,
+          "latency_p50_s": 15.6151,
+          "latency_p95_s": 19.5828,
+          "recall@5_by_job_type": {
+            "1-3 requirements": {
+              "n": 77,
+              "recall@5": 0.0156
+            },
+            "4+ requirements": {
+              "n": 15,
+              "recall@5": 0.0667
+            }
+          }
+        },
+        "data_analyst": {
+          "n": 109,
+          "recall@5": 0.0789,
+          "mrr": 0.1032,
+          "ndcg@10": 0.0649,
+          "latency_p50_s": 15.6752,
+          "latency_p95_s": 20.8431,
+          "recall@5_by_job_type": {
+            "4+ requirements": {
+              "n": 18,
+              "recall@5": 0.1222
+            },
+            "1-3 requirements": {
+              "n": 91,
+              "recall@5": 0.0703
+            }
+          }
+        }
+      },
+      "overall": {
+        "recall@5": 0.0367,
+        "mrr": 0.0476,
+        "ndcg@10": 0.0313
+      }
+    }
+  }
+}

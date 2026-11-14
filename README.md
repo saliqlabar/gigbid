@@ -63,6 +63,7 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
 | v5_multivector | 0.327 | 0.395 | 0.316 | n/a | n/a | n/a | n/a | n/a |
+| v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
 <!-- /RESULTS:rag -->
@@ -70,7 +71,11 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 ### Bid / skip decisions (two open model configurations)
 
 <!-- RESULTS:decisions -->
-*Pending: `evals/results/decisions_open.json` has not been produced yet.*
+| Model configuration | Jobs | Bid F1 | Bid P | Bid R | Scam P | Scam R | Price in fair band | p50 s / job | p95 s / job | Tokens / job |
+|---|---|---|---|---|---|---|---|---|---|---|
+| open (qwen3:4b-instruct cheap) | 120 | 0.854 | 0.911 | 0.804 | 0.960 | 1.000 | 100.0% | 34.2 | 51.2 | 2813 |
+
+<sub>Source: `decisions_open.json`, `decisions_open_alt.json` (stratified dev sample; RTX 4060 8 GB, local Ollama, 0 USD)</sub>
 <!-- /RESULTS:decisions -->
 
 ### Multi-agent comparison: one ReAct agent vs prebuilt supervisor vs GigBid's graph

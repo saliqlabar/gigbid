@@ -158,6 +158,7 @@ verification (what the verifier removed) and after (an independent second verifi
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
 | v5_multivector | 0.327 | 0.395 | 0.316 | n/a | n/a | n/a | n/a | n/a |
+| v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
 <!-- /RESULTS:rag -->
@@ -182,8 +183,31 @@ The live deployment cannot hold nomic-embed in 512 MB, so it uses bge-small; the
 *Pending: `evals/results/rag_deploy_embedding.json` has not been produced yet.*
 <!-- /RESULTS:deploy_embedding -->
 
-**Analysis.** _To be completed from the results above (H-B1, H-B2, where retrieval gains did not reach the reply
-rate and why)._
+**Analysis — retrieval (exploratory, no hypothesis written in advance).**
+
+* *Each component, in the order added.* Decomposition (V1) is the clearest single gain: Recall@5 0.242 → 0.268 and
+  MRR 0.405 → 0.492, because a post with five requirements gets five queries instead of one blurred one. Hybrid
+  BM25 (V2) adds a little Recall@5 (0.284) but loses some MRR. The cross-encoder (V3) and the
+  outcome boost (V4) did **not** improve Recall@5 over V2, and V3 raised p95 retrieval latency from about 0.005 s to
+  about 4 s on the laptop CPU. Multi-vector indexing (V5) is the only large gain, Recall@5 0.327 and the best
+  nDCG@10 (0.316), and it is better for every persona (Appendix C).
+* *Why V5 wins on recall but has the lowest MRR (0.395).* Indexing each project as case study, README and code
+  separately gives a project three chances to match a requirement, so more of the gold projects appear somewhere
+  in the top five. The lower MRR means the first-ranked project is more often not a gold one; my untested guess
+  is that the per-project merge lets broad README chunks win first place. For proposals this trade is acceptable: the Writer reads the top five, and missing a project costs more than ranking it third.
+* *The brief's example claim does not hold here.* On jobs with four or more requirements (76 jobs), decomposition
+  plus hybrid (V2) raises Recall@5 from 0.250 to 0.285 (macro over personas), **3.5 points, not 15**. Even V5 only
+  reaches 0.320 (+7 points).
+* *V8 corrective retrieval* first scored Recall@5 0.037 (`rag_v8_uncalibrated.json`), which is a bug, not a
+  result: its relevance thresholds (0.0 / −3.0) were set for a bge reranker, but the shipped jina-turbo reranker
+  scores almost every chunk below 0, so the grader called every set "weak" and rewrote good queries into worse
+  ones. The calibrated rerun is reported above once `rag_eval` has rerun it; the uncalibrated file is kept because
+  it is the failure analysis for this component.
+* *Absolute recall is low* (best 0.327). Part of that is the evaluation: gold evidence is rule-derived from the
+  synthetic portfolios (section 1), so a project that genuinely shows a skill but was not tagged for it counts as
+  a miss. The comparison between variants is fairer than the absolute number.
+
+**Analysis — proposals (H-B1, H-B2).** _Pending `outcomes_v0.json` / `outcomes_best.json` (GPU queue)._
 
 **What ships.** _One-paragraph decision, written after the outcome runs._
 
@@ -271,8 +295,16 @@ on the run-1 sample. The table compares the same jobs before and after that comm
 *Pending: `evals/results/failure_analysis.json` has not been produced yet.*
 <!-- /RESULTS:failures -->
 
+**Did the fix work?** Run 1 had 11 jobs that failed for infrastructure reasons, not decisions (Ollama was
+killed by the WSL memory limit, `LLMUnavailable: all models failed`; fixed by raising the WSL limit, not by code).
+To keep those out of the comparison, the 109 jobs that completed cleanly in **both** runs were compared from the
+two detail files: bid precision 0.931 → 0.925, bid recall **0.600 → 0.822**, and planted injections flagged
+**16/20 → 20/20**. So the fix bought about 22 points of bid recall for under 1 point of precision. The honest
+caveat: the new 0.33 threshold was tuned on this same sample, so part of the recall gain is fitting the sample;
+a fresh sample would likely show less.
+
 **Analysis.** _Ten representative failures with the fix tried and whether it worked, from
-`failure_analysis.json`._
+`failure_analysis.json` (GPU queue)._
 
 ## 9. Safety and platform respect
 
@@ -319,9 +351,9 @@ against the budgets declared in section 1, without excuses.
 <!-- RESULTS:budgets -->
 | Environment | Budget | Declared | Measured | Status |
 |---|---|---|---|---|
-| local | p95 s per job analysed | 45 | n/a | n/a |
+| local | p95 s per job analysed | 45 | 51.2 | **missed** |
 | local | p95 s per proposal | 420 | n/a | n/a |
-| local | USD per job analysed | 0.0 | n/a | n/a |
+| local | USD per job analysed | 0.0 | 0.0000 | met |
 | local | USD per proposal | 0.0 | n/a | n/a |
 | hosted | p95 s per job analysed | 10 | n/a | n/a |
 | hosted | p95 s per proposal | 60 | n/a | n/a |
@@ -332,7 +364,11 @@ against the budgets declared in section 1, without excuses.
 <!-- /RESULTS:budgets -->
 
 <!-- RESULTS:decisions -->
-*Pending: `evals/results/decisions_open.json` has not been produced yet.*
+| Model configuration | Jobs | Bid F1 | Bid P | Bid R | Scam P | Scam R | Price in fair band | p50 s / job | p95 s / job | Tokens / job |
+|---|---|---|---|---|---|---|---|---|---|---|
+| open (qwen3:4b-instruct cheap) | 120 | 0.854 | 0.911 | 0.804 | 0.960 | 1.000 | 100.0% | 34.2 | 51.2 | 2813 |
+
+<sub>Source: `decisions_open.json`, `decisions_open_alt.json` (stratified dev sample; RTX 4060 8 GB, local Ollama, 0 USD)</sub>
 <!-- /RESULTS:decisions -->
 
 **One optimisation that helped: skipping early.** The deterministic `decide` node runs before the Writer, so a
@@ -343,7 +379,22 @@ most of a proposal's time and tokens go. Measured on the decision run:
 *Pending: `evals/results/decisions_open.json + outcomes_best.json` has not been produced yet.*
 <!-- /RESULTS:optimisation -->
 
-_Discussion of budgets met and missed._
+**Decisions.** On 120 stratified dev jobs (40 per persona) GigBid bid on 45, skipped 63 and watched 12: bid F1
+0.854 (precision 0.911, recall 0.804), every scam caught (recall 1.000, precision 0.960: one legitimate job was
+flagged), every planted injection detected, and every price inside the fair band. The weak persona is
+data_analyst (bid recall 0.667 against 0.923 for ai_ml): all 7 of its missed bids were stopped by the fit rules
+(4 watched under `minimum_fit_score`, 3 skipped under `watch_fit_score`), with Fit Matcher scores between 0 and
+0.25, below the 0.33 bid threshold. None was lost to the budget or scam rules. So the Fit Matcher under-scores
+jobs that the labelling rules count as in-persona for this persona; lowering the threshold further would trade
+precision for them, which is why the fix in section 8 stopped at 0.33.
+
+**Budgets.** *Missed:* local p95 per job analysed is 51.2 s against 45 s declared. The miss is not caused by
+bidding more: in the final run even skipped jobs had a median of 32.7 s (22.6 s in run 1), so the whole pipeline
+was slower. Run 1 and the final run used the same models and jobs; the final run was made after the WSL memory
+change and the extra injection-stripping step, and I did not isolate which of the two (or GPU contention) is
+responsible. *Met:* 0 USD per job locally. *Not measured:* the proposal budgets (pending `outcomes_best.json`)
+and every hosted budget, because there is no hosted deployment (section 10 opening) and the Groq decision run was
+not made; these are reported as n/a rather than estimated.
 
 ## Appendix A — reproducing every table
 
@@ -384,6 +435,9 @@ See `docs/AI_USAGE.md`.
 | v5_multivector | ai_ml | 83 | 0.292 | 0.291 | 0.340 | 0.246 |
 | v5_multivector | fullstack | 92 | 0.315 | 0.314 | 0.309 | 0.347 |
 | v5_multivector | data_analyst | 109 | 0.374 | 0.344 | 0.375 | 0.367 |
+| v8_corrective | ai_ml | 83 | 0.007 | 0.007 | 0.015 | 0.000 |
+| v8_corrective | fullstack | 92 | 0.024 | 0.022 | 0.016 | 0.067 |
+| v8_corrective | data_analyst | 109 | 0.079 | 0.065 | 0.070 | 0.122 |
 
 <sub>Source: `evals/results/rag_variants.json` (`personas.*.recall@5_by_job_type`)</sub>
 <!-- /RESULTS:rag_personas -->
