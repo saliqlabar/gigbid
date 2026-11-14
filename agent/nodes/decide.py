@@ -15,6 +15,9 @@ def decide_rules(job: dict, spec: dict, risk: dict, fit: dict, profile: dict, du
     floor_fixed = float(profile.get("minimum_project_budget_usd", 0))
     if duplicate_of:
         return BidDecision(action="skip", reasons=[f"near-duplicate of {duplicate_of}"], rule="duplicate")
+    if not risk:  # fail closed: a crashed Risk Assessor must not silently remove the scam veto
+        return BidDecision(action="watch", reasons=["risk check failed; review this job yourself"],
+                           rule="risk_unavailable")
     if risk.get("scam"):
         return BidDecision(action="skip", reasons=["likely scam: " + (risk.get("explanation") or "")], rule="scam")
     if risk.get("score", 0) >= t["maximum_risk_score"]:
@@ -43,4 +46,6 @@ async def decide(state: dict, tools: ToolLayer) -> dict:
     d = decide_rules(state["job"], state.get("job_spec") or {}, state.get("risk_report") or {},
                      state.get("fit_report") or {}, state.get("profile") or {}, state["job"].get("duplicate_of"))
     status = {"bid": "drafting", "watch": "watching", "skip": "skipped"}[d.action]
+    if d.rule == "risk_unavailable":
+        status = "needs_attention"
     return {"decision": d.model_dump(), "status": status}
