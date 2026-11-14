@@ -168,8 +168,24 @@ Recall@5 by persona and by job type (1–3 vs 4+ requirements) for every variant
 Ablation of the best retrieval variant (one component removed at a time):
 
 <!-- RESULTS:ablation -->
-*Pending: `evals/results/rag_ablation.json` has not been produced yet.*
+| Configuration | R@5 | MRR | nDCG@10 |
+|---|---|---|---|
+| v5_multivector | 0.327 | 0.395 | 0.316 |
+| v5_multivector - decompose | 0.241 | 0.296 | 0.217 |
+| v5_multivector - hybrid | 0.316 | 0.394 | 0.301 |
+| v5_multivector - rerank | 0.355 | 0.389 | 0.314 |
+| v5_multivector - multivector | 0.277 | 0.483 | 0.264 |
+
+<sub>Source: `evals/results/rag_ablation.json`</sub>
 <!-- /RESULTS:ablation -->
+
+* *Decomposition carries the most weight*: removing it drops Recall@5 by 8.6 points (0.327 → 0.241).
+* *Multi-vector* is the second: without it Recall@5 falls to 0.277, but MRR **rises** to 0.483, which confirms the
+  trade described above (more gold projects in the top five, but less often in first place).
+* *Hybrid BM25* adds about 1 point.
+* *The reranker does not earn its place*: removing it **raises** Recall@5 to 0.355, leaves nDCG@10 almost unchanged
+  (0.314 vs 0.316), and removes about 3 s of CPU per search. The jina-turbo reranker's scores separate relevant
+  from irrelevant chunks poorly here, the same weakness that broke V8.
 
 Judge calibration (I labelled 30 proposals blind, 1–5, and compared with the LLM judge):
 
@@ -239,8 +255,10 @@ difference in either direction is small.
 **What ships.** V5 multi-vector stays as the production retriever: it is the clear winner on every retrieval
 metric except MRR, costs about 3 s per search on CPU, and the outcome run shows no downside after verification.
 But the report does **not** claim it improves outcomes: the gain that could be measured is in retrieval, and the
-step that protects the proposal is claim verification. The reranker (V3) is kept only because V5 is built on it;
-the ablation below shows what removing it costs.
+step that protects the proposal is claim verification. The ablation below shows the reranker should come out (better recall, 3 s
+faster). It is still on in the submitted build only because every proposal and outcome number in this report was
+measured with it; turning it off is one flag (`rerank: false` in the V5 config) and is the first change I would
+make after submission.
 
 **What ships.** _One-paragraph decision, written after the outcome runs._
 
