@@ -1,0 +1,12 @@
+{
+ "source": [
+  "decisions_open_detail.jsonl",
+  "outcomes_best.json"
+ ],
+ "jobs": 120,
+ "stopped": 75,
+ "mean_s_stopped": 34.7,
+ "mean_s_to_decide_bid": 36.5,
+ "full_proposal_p50_s": 341.9,
+ "gpu_s_saved": 23045
+}

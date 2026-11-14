@@ -57,12 +57,12 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 <!-- RESULTS:rag -->
 | Variant | Evidence Recall@5 | MRR | nDCG@10 | Unsupported claims / proposal | Judge score (1-5) | GigSim reply rate | p95 latency (s) | Cost / proposal (USD) |
 |---|---|---|---|---|---|---|---|---|
-| v0_naive | 0.242 | 0.405 | 0.222 | n/a | n/a | n/a | n/a | n/a |
+| v0_naive | 0.242 | 0.405 | 0.222 | 0.889 | 3.89 | 22.2% | 548.1 | 0.0000 |
 | v1_decompose | 0.268 | 0.492 | 0.255 | n/a | n/a | n/a | n/a | n/a |
 | v2_hybrid | 0.284 | 0.467 | 0.260 | n/a | n/a | n/a | n/a | n/a |
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
-| v5_multivector | 0.327 | 0.395 | 0.316 | n/a | n/a | n/a | n/a | n/a |
+| v5_multivector | 0.327 | 0.395 | 0.316 | 0.889 | 3.67 | 22.2% | 359.8 | 0.0000 |
 | v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
@@ -81,7 +81,13 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 ### Multi-agent comparison: one ReAct agent vs prebuilt supervisor vs GigBid's graph
 
 <!-- RESULTS:study_c -->
-*Pending: `evals/results/study_c.json` has not been produced yet.*
+| System | Jobs | Failed | Bid/skip acc. | Bid F1 | Scam recall | Scams bid on | Unsupported / proposal | Violations left | Violations caught | Reply rate | Tokens / job | p95 s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| react | 49 | 0 | 0.653 | 0.514 | 1.000 | 0 | 2.000 | 0 | 0 | 0.0% | 2049 | 21.7 |
+| supervisor | 49 | 0 | 0.735 | 0.649 | 1.000 | 0 | 2.571 | 3 | 0 | 7.1% | 1743 | 38.2 |
+| graph | 49 | 0 | 0.837 | 0.809 | 1.000 | 0 | 0.737 | 0 | 0 | 17.6% | 8716 | 229.4 |
+
+<sub>Source: `evals/results/study_c.json` (same 50 dev jobs; baselines on qwen3:8b)</sub>
 <!-- /RESULTS:study_c -->
 
 ### Tool design: does granularity change agent behaviour?

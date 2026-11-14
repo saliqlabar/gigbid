@@ -1,0 +1,307 @@
+{
+  "provenance": {
+    "commit": "96269e9",
+    "generated_at": "2026-11-14T09:59:31.593361+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "profile": "open_alt",
+  "models": {
+    "cheap": "llama3.2",
+    "strong": "qwen3:8b"
+  },
+  "hardware": "RTX 4060 Laptop 8 GB, WSL2 (local Ollama)",
+  "per_persona_sample": 20,
+  "overall": {
+    "n": 60,
+    "completed": 60,
+    "bid_precision": 0.8,
+    "bid_recall": 0.6154,
+    "bid_f1": 0.6957,
+    "accuracy": 0.7667,
+    "scam_precision": 0.0,
+    "scam_recall": 0.0,
+    "scam_f1": 0.0,
+    "scam_n": 12,
+    "injection_detected_rate": 1.0,
+    "injection_n": 12,
+    "price_in_band": 1.0,
+    "priced_n": 16,
+    "latency_p50_s": 15.71,
+    "latency_p95_s": 62.43,
+    "tokens_per_job": 2974,
+    "usd_per_job": 0.0,
+    "pred_actions": {
+      "bid": 20,
+      "skip": 32,
+      "watch": 8
+    },
+    "rules": {
+      "bid": 20,
+      "minimum_hourly_ratio": 6,
+      "watch_fit_score": 14,
+      "minimum_fit_score": 8,
+      "scam": 2,
+      "minimum_project_budget": 10
+    }
+  },
+  "by_persona": {
+    "ai_ml": {
+      "n": 20,
+      "completed": 20,
+      "bid_precision": 0.75,
+      "bid_recall": 0.8571,
+      "bid_f1": 0.8,
+      "accuracy": 0.85,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 4,
+      "injection_detected_rate": 1.0,
+      "injection_n": 4,
+      "price_in_band": 1.0,
+      "priced_n": 6,
+      "latency_p50_s": 16.44,
+      "latency_p95_s": 60.59,
+      "tokens_per_job": 2861,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "bid": 8,
+        "skip": 8,
+        "watch": 4
+      },
+      "rules": {
+        "bid": 8,
+        "minimum_hourly_ratio": 3,
+        "watch_fit_score": 2,
+        "minimum_fit_score": 4,
+        "scam": 1,
+        "minimum_project_budget": 2
+      }
+    },
+    "fullstack": {
+      "n": 20,
+      "completed": 20,
+      "bid_precision": 0.7778,
+      "bid_recall": 0.7778,
+      "bid_f1": 0.7778,
+      "accuracy": 0.8,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 4,
+      "injection_detected_rate": 1.0,
+      "injection_n": 4,
+      "price_in_band": 1.0,
+      "priced_n": 7,
+      "latency_p50_s": 14.05,
+      "latency_p95_s": 264.92,
+      "tokens_per_job": 2976,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "skip": 9,
+        "bid": 9,
+        "watch": 2
+      },
+      "rules": {
+        "watch_fit_score": 3,
+        "bid": 9,
+        "minimum_project_budget": 4,
+        "minimum_fit_score": 2,
+        "scam": 1,
+        "minimum_hourly_ratio": 1
+      }
+    },
+    "data_analyst": {
+      "n": 20,
+      "completed": 20,
+      "bid_precision": 1.0,
+      "bid_recall": 0.3,
+      "bid_f1": 0.4615,
+      "accuracy": 0.65,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 4,
+      "injection_detected_rate": 1.0,
+      "injection_n": 4,
+      "price_in_band": 1.0,
+      "priced_n": 3,
+      "latency_p50_s": 16.31,
+      "latency_p95_s": 34.46,
+      "tokens_per_job": 3086,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "bid": 3,
+        "watch": 2,
+        "skip": 15
+      },
+      "rules": {
+        "bid": 3,
+        "minimum_fit_score": 2,
+        "minimum_project_budget": 4,
+        "watch_fit_score": 9,
+        "minimum_hourly_ratio": 2
+      }
+    }
+  },
+  "by_job_type": {
+    "in_persona": {
+      "n": 12,
+      "completed": 12,
+      "bid_precision": 1.0,
+      "bid_recall": 0.5556,
+      "bid_f1": 0.7143,
+      "accuracy": 0.6667,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 0,
+      "injection_detected_rate": null,
+      "injection_n": 0,
+      "price_in_band": 1.0,
+      "priced_n": 5,
+      "latency_p50_s": 16.31,
+      "latency_p95_s": 34.65,
+      "tokens_per_job": 2574,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "bid": 5,
+        "watch": 1,
+        "skip": 6
+      },
+      "rules": {
+        "bid": 5,
+        "minimum_fit_score": 1,
+        "scam": 1,
+        "minimum_project_budget": 2,
+        "watch_fit_score": 3
+      }
+    },
+    "injection": {
+      "n": 12,
+      "completed": 12,
+      "bid_precision": 1.0,
+      "bid_recall": 0.5,
+      "bid_f1": 0.6667,
+      "accuracy": 0.5833,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 0,
+      "injection_detected_rate": 1.0,
+      "injection_n": 12,
+      "price_in_band": 1.0,
+      "priced_n": 5,
+      "latency_p50_s": 19.06,
+      "latency_p95_s": 62.43,
+      "tokens_per_job": 2630,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "skip": 4,
+        "bid": 5,
+        "watch": 3
+      },
+      "rules": {
+        "minimum_hourly_ratio": 1,
+        "bid": 5,
+        "minimum_fit_score": 3,
+        "watch_fit_score": 3
+      }
+    },
+    "multi_requirement": {
+      "n": 12,
+      "completed": 12,
+      "bid_precision": 1.0,
+      "bid_recall": 0.8571,
+      "bid_f1": 0.9231,
+      "accuracy": 0.9167,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 0,
+      "injection_detected_rate": null,
+      "injection_n": 0,
+      "price_in_band": 1.0,
+      "priced_n": 6,
+      "latency_p50_s": 13.38,
+      "latency_p95_s": 60.59,
+      "tokens_per_job": 3136,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "bid": 6,
+        "skip": 5,
+        "watch": 1
+      },
+      "rules": {
+        "bid": 6,
+        "minimum_project_budget": 5,
+        "minimum_fit_score": 1
+      }
+    },
+    "off_persona": {
+      "n": 12,
+      "completed": 12,
+      "bid_precision": 0.0,
+      "bid_recall": 0.0,
+      "bid_f1": 0.0,
+      "accuracy": 1.0,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 0,
+      "injection_detected_rate": null,
+      "injection_n": 0,
+      "price_in_band": null,
+      "priced_n": 0,
+      "latency_p50_s": 12.44,
+      "latency_p95_s": 14.34,
+      "tokens_per_job": 2517,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "skip": 10,
+        "watch": 2
+      },
+      "rules": {
+        "watch_fit_score": 5,
+        "minimum_fit_score": 2,
+        "minimum_hourly_ratio": 2,
+        "minimum_project_budget": 2,
+        "scam": 1
+      }
+    },
+    "scam": {
+      "n": 12,
+      "completed": 12,
+      "bid_precision": 0.0,
+      "bid_recall": 0.0,
+      "bid_f1": 0.0,
+      "accuracy": 0.6667,
+      "scam_precision": 0.0,
+      "scam_recall": 0.0,
+      "scam_f1": 0.0,
+      "scam_n": 12,
+      "injection_detected_rate": null,
+      "injection_n": 0,
+      "price_in_band": null,
+      "priced_n": 0,
+      "latency_p50_s": 37.06,
+      "latency_p95_s": 57.18,
+      "tokens_per_job": 4014,
+      "usd_per_job": 0.0,
+      "pred_actions": {
+        "bid": 4,
+        "watch": 1,
+        "skip": 7
+      },
+      "rules": {
+        "bid": 4,
+        "minimum_fit_score": 1,
+        "minimum_hourly_ratio": 3,
+        "watch_fit_score": 3,
+        "minimum_project_budget": 1
+      }
+    }
+  },
+  "detail_file": "evals/results/decisions_open_alt_detail.jsonl"
+}

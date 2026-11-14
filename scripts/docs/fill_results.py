@@ -225,7 +225,9 @@ def block_optimisation() -> str:
     det = RES / "decisions_open_detail.jsonl"
     if not (d and o and det.exists()):
         return pending("evals/results/decisions_open.json + outcomes_best.json")
-    rows_ = [json.loads(x) for x in det.read_text().splitlines() if x.strip()]
+    # the detail file is appended to across resumed runs; keep the last row per (persona, job)
+    rows_ = list({(r["persona"], r["job_id"]): r for r in
+                  (json.loads(x) for x in det.read_text().splitlines() if x.strip())}.values())
     stop = [r for r in rows_ if r.get("pred") in ("skip", "watch")]
     go = [r for r in rows_ if r.get("pred") == "bid"]
     mean = lambda xs: sum(xs) / len(xs) if xs else None
@@ -233,6 +235,12 @@ def block_optimisation() -> str:
     full = o["overall"].get("latency_mean_s") or o["overall"].get("latency_p50_s")
     n = len(rows_)
     saved = (len(stop) * (full - a_stop)) if (full and a_stop is not None) else None
+    (RES / "optimisation.json").write_text(json.dumps({
+        "source": ["decisions_open_detail.jsonl", "outcomes_best.json"], "jobs": n, "stopped": len(stop),
+        "mean_s_stopped": round(a_stop, 1) if a_stop is not None else None,
+        "mean_s_to_decide_bid": round(a_go, 1) if a_go is not None else None,
+        "full_proposal_p50_s": round(full, 1) if full else None,
+        "gpu_s_saved": round(saved) if saved is not None else None}, indent=1))
     rows = [["Jobs analysed", n], ["Stopped at decide (skip or watch)", f"{len(stop)} ({f(len(stop) / n, pct=True)})"],
             ["Mean s per job that stopped at decide", f(a_stop, 1)], ["Mean s to decide on a job that went on to bid", f(a_go, 1)],
             ["p50 s for a full proposal (outcomes_best)", f(full, 1)],

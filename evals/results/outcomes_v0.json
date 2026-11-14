@@ -1,0 +1,159 @@
+{
+  "provenance": {
+    "commit": "96269e9",
+    "generated_at": "2026-11-14T10:50:04.805745+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "profile": "open",
+  "rag_variant": "v0_naive",
+  "per_persona": 5,
+  "writer_model": "qwen3:8b",
+  "client_mode": "rule",
+  "overall": {
+    "jobs": 15,
+    "proposals": 9,
+    "submitted": 9,
+    "reply_rate": 0.2222,
+    "hire_rate": 0.0,
+    "unsupported_before_per_proposal": 1.0,
+    "unsupported_after_per_proposal": 0.889,
+    "unsupported_rate_before": 0.1429,
+    "unsupported_rate_after": 0.1481,
+    "judge_mean": 3.889,
+    "critic_revisions_mean": 1.889,
+    "compliance_violations_caught": 0,
+    "compliance_blocked": 0,
+    "latency_p50_s": 361.04,
+    "latency_p95_s": 548.08,
+    "tokens_per_proposal": 20618,
+    "usd_per_proposal": 0.0,
+    "not_drafted": [
+      {
+        "job_id": "job_00470",
+        "status": "watching",
+        "decision": "watch"
+      },
+      {
+        "job_id": "job_00327",
+        "status": "dead_letter",
+        "decision": "bid"
+      },
+      {
+        "job_id": "job_00861",
+        "status": "skipped",
+        "decision": "skip"
+      },
+      {
+        "job_id": "job_00055",
+        "status": "watching",
+        "decision": "watch"
+      },
+      {
+        "job_id": "job_00206",
+        "status": "watching",
+        "decision": "watch"
+      },
+      {
+        "job_id": "job_00876",
+        "status": "dead_letter",
+        "decision": "skip"
+      }
+    ]
+  },
+  "by_persona": {
+    "ai_ml": {
+      "jobs": 5,
+      "proposals": 5,
+      "submitted": 5,
+      "reply_rate": 0.2,
+      "hire_rate": 0.0,
+      "unsupported_before_per_proposal": 1.2,
+      "unsupported_after_per_proposal": 0.8,
+      "unsupported_rate_before": 0.1667,
+      "unsupported_rate_after": 0.1333,
+      "judge_mean": 3.8,
+      "critic_revisions_mean": 2.0,
+      "compliance_violations_caught": 0,
+      "compliance_blocked": 0,
+      "latency_p50_s": 335.58,
+      "latency_p95_s": 395.07,
+      "tokens_per_proposal": 19015,
+      "usd_per_proposal": 0.0,
+      "not_drafted": []
+    },
+    "fullstack": {
+      "jobs": 5,
+      "proposals": 2,
+      "submitted": 2,
+      "reply_rate": 0.0,
+      "hire_rate": 0.0,
+      "unsupported_before_per_proposal": 0.5,
+      "unsupported_after_per_proposal": 1.5,
+      "unsupported_rate_before": 0.0833,
+      "unsupported_rate_after": 0.2727,
+      "judge_mean": 4.0,
+      "critic_revisions_mean": 2.0,
+      "compliance_violations_caught": 0,
+      "compliance_blocked": 0,
+      "latency_p50_s": 455.75,
+      "latency_p95_s": 548.08,
+      "tokens_per_proposal": 25424,
+      "usd_per_proposal": 0.0,
+      "not_drafted": [
+        {
+          "job_id": "job_00470",
+          "status": "watching",
+          "decision": "watch"
+        },
+        {
+          "job_id": "job_00327",
+          "status": "dead_letter",
+          "decision": "bid"
+        },
+        {
+          "job_id": "job_00861",
+          "status": "skipped",
+          "decision": "skip"
+        }
+      ]
+    },
+    "data_analyst": {
+      "jobs": 5,
+      "proposals": 2,
+      "submitted": 2,
+      "reply_rate": 0.5,
+      "hire_rate": 0.0,
+      "unsupported_before_per_proposal": 1.0,
+      "unsupported_after_per_proposal": 0.5,
+      "unsupported_rate_before": 0.1333,
+      "unsupported_rate_after": 0.0769,
+      "judge_mean": 4.0,
+      "critic_revisions_mean": 1.5,
+      "compliance_violations_caught": 0,
+      "compliance_blocked": 0,
+      "latency_p50_s": 306.26,
+      "latency_p95_s": 361.04,
+      "tokens_per_proposal": 19819,
+      "usd_per_proposal": 0.0,
+      "not_drafted": [
+        {
+          "job_id": "job_00055",
+          "status": "watching",
+          "decision": "watch"
+        },
+        {
+          "job_id": "job_00206",
+          "status": "watching",
+          "decision": "watch"
+        },
+        {
+          "job_id": "job_00876",
+          "status": "dead_letter",
+          "decision": "skip"
+        }
+      ]
+    }
+  },
+  "detail_file": "evals/results/outcomes_v0_detail.jsonl"
+}

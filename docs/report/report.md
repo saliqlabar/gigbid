@@ -152,12 +152,12 @@ verification (what the verifier removed) and after (an independent second verifi
 <!-- RESULTS:rag -->
 | Variant | Evidence Recall@5 | MRR | nDCG@10 | Unsupported claims / proposal | Judge score (1-5) | GigSim reply rate | p95 latency (s) | Cost / proposal (USD) |
 |---|---|---|---|---|---|---|---|---|
-| v0_naive | 0.242 | 0.405 | 0.222 | n/a | n/a | n/a | n/a | n/a |
+| v0_naive | 0.242 | 0.405 | 0.222 | 0.889 | 3.89 | 22.2% | 548.1 | 0.0000 |
 | v1_decompose | 0.268 | 0.492 | 0.255 | n/a | n/a | n/a | n/a | n/a |
 | v2_hybrid | 0.284 | 0.467 | 0.260 | n/a | n/a | n/a | n/a | n/a |
 | v3_rerank | 0.277 | 0.483 | 0.264 | n/a | n/a | n/a | n/a | n/a |
 | v4_outcome | 0.276 | 0.457 | 0.259 | n/a | n/a | n/a | n/a | n/a |
-| v5_multivector | 0.327 | 0.395 | 0.316 | n/a | n/a | n/a | n/a | n/a |
+| v5_multivector | 0.327 | 0.395 | 0.316 | 0.889 | 3.67 | 22.2% | 359.8 | 0.0000 |
 | v8_corrective | 0.037 | 0.048 | 0.031 | n/a | n/a | n/a | n/a | n/a |
 
 <sub>Source: `evals/results/rag_variants.json` (all bid jobs with gold evidence, 3 personas); proposal columns from `outcomes_v0.json` / `outcomes_best.json` (fixed set, 5 jobs per persona, local open models, 0 USD)</sub>
@@ -207,7 +207,27 @@ The live deployment cannot hold nomic-embed in 512 MB, so it uses bge-small; the
   synthetic portfolios (section 1), so a project that genuinely shows a skill but was not tagged for it counts as
   a miss. The comparison between variants is fairer than the absolute number.
 
-**Analysis — proposals (H-B1, H-B2).** _Pending `outcomes_v0.json` / `outcomes_best.json` (GPU queue)._
+**Analysis — proposals (H-B1, H-B2).** Both hypotheses written before the outcome runs **fail**.
+
+* *H-B1 (reply rate +10 points)*: V0 and V5 both got 22.2%, 2 replies from 9 submitted proposals each. Of 15
+  fixed jobs, 9 reached a proposal under both variants (the rest were stopped at `decide`). With 9 proposals one
+  reply is 11 points, so this sample can neither show nor rule out a 10-point gain; the honest reading is "no
+  evidence that better retrieval moves the GigSim reply rate", not "it does not".
+* *H-B2 (fewer unsupported claims)*: before verification V5 drafts had **more** unsupported claims (2.0 per
+  proposal vs 1.0). V5 retrieves more projects per requirement, the Writer cites more of them, and more of those
+  citations stretch what the evidence says. After verification both are at 0.889, so the verifier, not the
+  retriever, is what holds grounding in place.
+* *Judge score*: 3.67 (V5) vs 3.89 (V0) on the 1–5 scale; the judge is not yet calibrated against my labels
+  (below), so I do not read anything into a 0.2 difference.
+* *Latency*: V5's p95 per proposal is lower (360 s vs 548 s); its p50 is similar (342 s vs 361 s), so the
+  difference is in the slow tail of 9 letters, not a faster pipeline; I did not trace which step made V0's
+  slowest letters slow.
+
+**What ships.** V5 multi-vector stays as the production retriever: it is the clear winner on every retrieval
+metric except MRR, costs about 3 s per search on CPU, and the outcome run shows no downside after verification.
+But the report does **not** claim it improves outcomes: the gain that could be measured is in retrieval, and the
+step that protects the proposal is claim verification. The reranker (V3) is kept only because V5 is built on it;
+the ablation below shows what removing it costs.
 
 **What ships.** _One-paragraph decision, written after the outcome runs._
 
@@ -218,7 +238,8 @@ compliance violations left in the final letter than the single ReAct agent, beca
 Compliance Guard are deterministic steps the model cannot skip; the ReAct agent uses fewer tokens and may match
 the graph on bid/skip accuracy for simple, single-requirement jobs.
 
-**Setup** (`evals/runners/study_c.py`). The same 50 dev jobs (stratified by job type, fixed seed) through
+**Setup** (`evals/runners/study_c.py`). The same dev jobs (50 requested, 49 after the per-persona stratified
+sample rounds down; fixed seed) through
 (a) one ReAct agent (`create_react_agent`) holding all read tools, (b) a prebuilt supervisor
 (`langgraph-supervisor`) over analyst / risk / fit / writer agents, (c) GigBid's bid graph. Same MCP tools, same
 strong model for the baselines, same harness approval. Unsupported claims are counted by one independent
@@ -226,10 +247,40 @@ verifier pass on each system's final letter against the evidence that system act
 by applying the Compliance Guard's rules after the fact.
 
 <!-- RESULTS:study_c -->
-*Pending: `evals/results/study_c.json` has not been produced yet.*
+| System | Jobs | Failed | Bid/skip acc. | Bid F1 | Scam recall | Scams bid on | Unsupported / proposal | Violations left | Violations caught | Reply rate | Tokens / job | p95 s |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| react | 49 | 0 | 0.653 | 0.514 | 1.000 | 0 | 2.000 | 0 | 0 | 0.0% | 2049 | 21.7 |
+| supervisor | 49 | 0 | 0.735 | 0.649 | 1.000 | 0 | 2.571 | 3 | 0 | 7.1% | 1743 | 38.2 |
+| graph | 49 | 0 | 0.837 | 0.809 | 1.000 | 0 | 0.737 | 0 | 0 | 17.6% | 8716 | 229.4 |
+
+<sub>Source: `evals/results/study_c.json` (same 50 dev jobs; baselines on qwen3:8b)</sub>
 <!-- /RESULTS:study_c -->
 
-**Analysis.** _To be completed from the results._
+**Analysis.** The hypothesis is **partly supported**.
+
+* *Scam recall did not separate the systems*: all three caught every scam (1.000) and none bid on one, so the
+  deterministic risk veto bought nothing over a strong model here. The 9 scam jobs in this sample are obvious
+  ones; the difference showed up elsewhere.
+* *Compliance violations left in the final letter*: graph 0, ReAct 0, supervisor 3. All three of the supervisor's
+  were on injection jobs, where its writer agent followed text from the post. ReAct reached 0 a different way: it
+  refused to bid on almost every injection job (bid/skip accuracy 0.182 on those 11 jobs, against 0.727 for the
+  graph), so it was safe by skipping work the gold labels say was worth bidding on.
+* *Grounding is the clearest gain*: 0.737 unsupported claims per proposal for the graph against 2.000 (ReAct) and
+  2.571 (supervisor). That is the claim-verification step, which neither baseline has.
+* *Decisions*: bid/skip accuracy 0.837 (graph) vs 0.735 (supervisor) vs 0.653 (ReAct), bid F1 0.809 vs 0.649 vs
+  0.514. The second half of the hypothesis is **not** supported: ReAct did not match the graph on simple
+  in-persona jobs either (0.667 vs 0.750).
+* *Cost*: the graph used about 4× the tokens per job (8716 vs 2049) and its p95 latency was 229 s against 22 s,
+  because it is the only system that drafts, verifies, critiques and revises. Its median (10.5 s) is lower than
+  either baseline's because skipped jobs stop at `decide`.
+* *Reply rate* (graph 17.6%, supervisor 7.1%, ReAct 0%) is from 12–19 submitted proposals per system, too few to
+  call a difference.
+
+**Caveats.** The graph's analysis nodes use the cheap model and the baselines use qwen3:8b throughout, so the
+comparison is "architecture with its intended model mix", not one model held fixed. 49 jobs, one seed.
+
+**Decision.** The hand-built graph ships: it is the only system with no violations left *and* no refusals of good
+jobs, and it has a third of the unsupported claims. The price is tokens and tail latency on jobs it bids on.
 
 ## 6. The change request
 
@@ -352,9 +403,9 @@ against the budgets declared in section 1, without excuses.
 | Environment | Budget | Declared | Measured | Status |
 |---|---|---|---|---|
 | local | p95 s per job analysed | 45 | 51.2 | **missed** |
-| local | p95 s per proposal | 420 | n/a | n/a |
+| local | p95 s per proposal | 420 | 359.8 | met |
 | local | USD per job analysed | 0.0 | 0.0000 | met |
-| local | USD per proposal | 0.0 | n/a | n/a |
+| local | USD per proposal | 0.0 | 0.0000 | met |
 | hosted | p95 s per job analysed | 10 | n/a | n/a |
 | hosted | p95 s per proposal | 60 | n/a | n/a |
 | hosted | USD per job analysed | 0.002 | n/a | n/a |
@@ -376,8 +427,21 @@ job that is skipped or watched never pays for drafting, verification, critique a
 most of a proposal's time and tokens go. Measured on the decision run:
 
 <!-- RESULTS:optimisation -->
-*Pending: `evals/results/decisions_open.json + outcomes_best.json` has not been produced yet.*
+| Skipping early | Value |
+|---|---|
+| Jobs analysed | 120 |
+| Stopped at decide (skip or watch) | 75 (62.5%) |
+| Mean s per job that stopped at decide | 34.7 |
+| Mean s to decide on a job that went on to bid | 36.5 |
+| p50 s for a full proposal (outcomes_best) | 341.9 |
+| GPU time saved on this sample by not drafting stopped jobs (s) | 23045 |
+
+<sub>Source: `decisions_open_detail.jsonl` (per-job latency) and `outcomes_best.json`</sub>
 <!-- /RESULTS:optimisation -->
+
+62.5% of jobs stopped at `decide`, each after about 35 s instead of the roughly 342 s a full proposal takes, about
+6.4 GPU-hours saved on this 120-job sample. This is an estimate (stopped jobs × difference of means/medians), not
+a measured A/B run, since the pipeline was never run without the early stop.
 
 **Decisions.** On 120 stratified dev jobs (40 per persona) GigBid bid on 45, skipped 63 and watched 12: bid F1
 0.854 (precision 0.911, recall 0.804), every scam caught (recall 1.000, precision 0.960: one legitimate job was
