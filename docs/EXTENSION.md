@@ -55,6 +55,13 @@ new job ──► route_job (agent/agency.py)
 Confusion (gold → routed): `{"ai_ml->data_analyst": 1, "ai_ml->ai_ml": 13, "ai_ml->fullstack": 1, "fullstack->fullstack": 12, "fullstack->ai_ml": 2, "fullstack->data_analyst": 1, "data_analyst->data_analyst": 7, "data_analyst->ai_ml": 4, "data_analyst->fullstack": 4}` · routing p95 25.5 s
 <!-- /RESULTS:agency -->
 
+**Reading.** Routing loses to the category rule, but the rule's 100% is built into the data: every bid job in a
+persona's synthetic dev set has that persona's category, so there are no cross-category jobs where routing by
+evidence could win. Most routing errors are data_analyst jobs sent to another member (8 of 15), the same Fit Matcher
+under-scoring seen in the decision eval. Recommended use: category rule first, evidence routing only when the
+category is missing or shared, or its member's fit is below `agency.min_fit_to_route`. Full discussion: report
+section 7.
+
 ## Limits
 
 * Gold labels only say which persona's dev set marked the job as a bid; a job two members could both do well is
