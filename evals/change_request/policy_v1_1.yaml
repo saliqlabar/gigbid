@@ -1,0 +1,12 @@
+# Simulated "platform policy update" (the brief's 2 Nov change request; the instructor's GigSim, which would have
+# shipped the real one, was not in the starter kit). Served by GigSim unchanged, via GIGSIM_SEED_DIR pointing at a
+# seed folder with this file as policy.yaml (evals/change_request/run.py builds it).
+version: "1.1"
+effective_from: "2026-11-02"
+rules:
+  connects_surcharge: 2          # NEW COST: two extra Connects on every submission
+  max_cover_letter_words: 300    # tightened from 400
+  no_off_platform_contact: true
+  no_guarantees: true
+  no_unpaid_trials: true
+  minimum_hourly_bid_usd: 10     # NEW RULE: hourly bids below $10/h are not allowed

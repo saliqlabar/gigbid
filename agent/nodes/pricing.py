@@ -26,6 +26,10 @@ def quote(job: dict, profile: dict, stats: dict, client: dict, fit: float, polic
         amount = min(max(rate, band_lo), band_hi)
         why.append(f"hourly: my rate ${rate:.0f}; client range {lo}-{hi}; market p25-p75 {mlo}-{mhi}")
         why.append(f"bid ${amount:.0f}/h = my rate clamped into the band ${band_lo:.0f}-${band_hi:.0f}")
+        min_h = (policy.get("rules") or {}).get("minimum_hourly_bid_usd")
+        if min_h and amount < float(min_h):
+            amount, band_hi = float(min_h), max(band_hi, float(min_h))
+            why.append(f"raised to ${amount:.0f}/h: platform policy minimum hourly bid")
         est_total = amount * float(c.get("assumed_hours", 20))
         bid_type = "hourly"
     else:
