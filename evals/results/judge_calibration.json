@@ -1,0 +1,433 @@
+{
+  "provenance": {
+    "commit": "9163aa2",
+    "generated_at": "2026-11-14T19:49:28.202584+00:00",
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "judge_model": "qwen3:8b",
+  "n": 30,
+  "cohen_kappa": -0.0701,
+  "quadratic_weighted_kappa": 0.0597,
+  "exact_agreement": 0.0333,
+  "within_one": 0.5,
+  "mean_mine": 2.033,
+  "mean_judge": 3.7,
+  "disagreements": [
+    {
+      "item_id": "item_04",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific MATLAB experience, but irrelevant FAISS/RAG claims and vague NLP relevance.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_07",
+      "mine": 2,
+      "judge": 5,
+      "judge_reason": "Specific, credible solution with concrete steps and clear next action.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_19",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "specific and credible but slightly long with one vague tech claim about PyTorch/FAISS relevance",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_20",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "specific and credible with one small weakness (slightly long, one vague claim)",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_22",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_28",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks detailed algorithm explanation and formula reference.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_01",
+      "mine": 3,
+      "judge": 5,
+      "judge_reason": "Specific examples align with telecom data needs, clear roadmap structure, concise and credible.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_03",
+      "mine": 1,
+      "judge": 3,
+      "judge_reason": "relevant but lacks clear next steps and contains vague placeholder references.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_05",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly vague on PowerPoint macro details).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_06",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific with relevant tech, but past projects lack direct sports betting relevance and next steps are vague.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_09",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "specific tools mentioned but vague case study references lack concrete examples",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_12",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks clear next step and minor vagueness in evidence claims.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_16",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Missing UX/UI examples but covers other tech stack requirements.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_18",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks Azure experience and clear next step.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_30",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim)",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_02",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks cloud/orchestration details, no clear next step",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_10",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific skills align with job requirements but lacks cloud orchestration tools mention and clear next steps.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_11",
+      "mine": 1,
+      "judge": 2,
+      "judge_reason": "Lacks MATLAB experience, focuses on Python, vague claims, no clear next step.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_13",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "proposal lacks ANN/GIS specifics, no clear next steps, generic ML references",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_14",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but vague on Excel export method and lacks clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_15",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks depth on key tech stack elements and clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_17",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "Relevant but generic, lacks CRO-specific tactics and clear next steps.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_21",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific but lacks details on email automation and Docylink integration",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_23",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks clear next steps and vague evidence reference.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_24",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks detailed methodology, specific tools, and clear next steps beyond delivery timeline",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_25",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks specific PyG experience and clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_26",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "specific but vague claims about past projects, lacks concrete examples",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_27",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_29",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (vague evidence IDs and no clear next steps).",
+      "my_note": ""
+    }
+  ],
+  "detail": [
+    {
+      "item_id": "item_01",
+      "mine": 3,
+      "judge": 5,
+      "judge_reason": "Specific examples align with telecom data needs, clear roadmap structure, concise and credible.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_02",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks cloud/orchestration details, no clear next step",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_03",
+      "mine": 1,
+      "judge": 3,
+      "judge_reason": "relevant but lacks clear next steps and contains vague placeholder references.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_04",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific MATLAB experience, but irrelevant FAISS/RAG claims and vague NLP relevance.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_05",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly vague on PowerPoint macro details).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_06",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific with relevant tech, but past projects lack direct sports betting relevance and next steps are vague.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_07",
+      "mine": 2,
+      "judge": 5,
+      "judge_reason": "Specific, credible solution with concrete steps and clear next action.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_08",
+      "mine": 3,
+      "judge": 3,
+      "judge_reason": "Relevant but lacks Excel-specific visualization details and clear next steps.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_09",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "specific tools mentioned but vague case study references lack concrete examples",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_10",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific skills align with job requirements but lacks cloud orchestration tools mention and clear next steps.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_11",
+      "mine": 1,
+      "judge": 2,
+      "judge_reason": "Lacks MATLAB experience, focuses on Python, vague claims, no clear next step.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_12",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks clear next step and minor vagueness in evidence claims.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_13",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "proposal lacks ANN/GIS specifics, no clear next steps, generic ML references",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_14",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but vague on Excel export method and lacks clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_15",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks depth on key tech stack elements and clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_16",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Missing UX/UI examples but covers other tech stack requirements.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_17",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "Relevant but generic, lacks CRO-specific tactics and clear next steps.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_18",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks Azure experience and clear next step.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_19",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "specific and credible but slightly long with one vague tech claim about PyTorch/FAISS relevance",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_20",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "specific and credible with one small weakness (slightly long, one vague claim)",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_21",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific but lacks details on email automation and Docylink integration",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_22",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_23",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks clear next steps and vague evidence reference.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_24",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks detailed methodology, specific tools, and clear next steps beyond delivery timeline",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_25",
+      "mine": 2,
+      "judge": 3,
+      "judge_reason": "relevant but lacks specific PyG experience and clear next steps",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_26",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "specific but vague claims about past projects, lacks concrete examples",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_27",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_28",
+      "mine": 1,
+      "judge": 4,
+      "judge_reason": "Specific and credible but lacks detailed algorithm explanation and formula reference.",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_29",
+      "mine": 3,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (vague evidence IDs and no clear next steps).",
+      "my_note": ""
+    },
+    {
+      "item_id": "item_30",
+      "mine": 2,
+      "judge": 4,
+      "judge_reason": "Specific and credible with one small weakness (slightly long, one vague claim)",
+      "my_note": ""
+    }
+  ]
+}

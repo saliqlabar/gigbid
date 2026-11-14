@@ -192,8 +192,26 @@ both outcome runs and all three Study C systems, and the CSV shows only a neutra
 `evals/datasets/judge_labels_key.json`):
 
 <!-- RESULTS:judge -->
-*Pending: `evals/results/judge_calibration.json` has not been produced yet.*
+Cohen's kappa **-0.070** (quadratic-weighted 0.060), exact agreement 3.3%, within one point 50.0% on 30 proposals I labelled blind (judge qwen3:8b). <sub>Source: `evals/results/judge_calibration.json`</sub>
 <!-- /RESULTS:judge -->
+
+**The LLM judge is not usable as a quality measure.** Agreement is at chance level (κ −0.07, weighted 0.06).
+The main cause is leniency: the judge's mean is 3.70 against my 2.03, it gave 4 or 5 to 20 of the 30 letters, and
+I gave none. Its largest disagreements are the letters I scored 1 for invented experience (item_04 "5 years of
+MATLAB", item_22, item_28 "car valuation models for Austrian markets"), which the judge scored 4 as "specific and
+credible": it reads the letter against the job, but not against the freelancer's portfolio, so it cannot see a
+claim is invented. That is exactly what the claim verifier checks, so the verifier's unsupported-claim count, not
+the judge score, is the quality signal this report relies on. The judge columns in section 4 are kept for
+completeness but carry no weight.
+
+Grouping my scores by which system wrote the letter (from the blind key, after labelling) gives small groups:
+ReAct 2.50 (6 letters), supervisor 2.00 (8), GigBid's graph 1.88 (16: the 8 from Study C plus the 8 from the two
+outcome runs, which also run the graph). I did **not** prefer
+the graph's letters: they cite real portfolio items but often stretch them to the job (a churn model offered as
+evidence for GIS land-use modelling), which reads worse to a client than a short generic letter. With 6–8 letters
+per group this is not a significant difference, but it qualifies Study C: the graph's grounding advantage is real
+on the verifier's measure and was not visible to a human reader. Limits: one labeller (the author), 30 items, no
+4s or 5s in my labels, which itself lowers κ.
 
 The live deployment cannot hold nomic-embed in 512 MB, so it uses bge-small; the cost of that, measured:
 
@@ -248,8 +266,8 @@ difference in either direction is small.
   proposal vs 1.0). V5 retrieves more projects per requirement, the Writer cites more of them, and more of those
   citations stretch what the evidence says. After verification both are at 0.889, so the verifier, not the
   retriever, is what holds grounding in place.
-* *Judge score*: 3.67 (V5) vs 3.89 (V0) on the 1–5 scale; the judge is not yet calibrated against my labels
-  (below), so I do not read anything into a 0.2 difference.
+* *Judge score*: 3.67 (V5) vs 3.89 (V0) on the 1–5 scale; the judge turned out not to agree with my labels at
+  all (below), so this column carries no weight.
 * *Latency*: V5's p95 per proposal is lower (360 s vs 548 s); its p50 is similar (342 s vs 361 s), so the
   difference is in the slow tail of 9 letters, not a faster pipeline; I did not trace which step made V0's
   slowest letters slow.

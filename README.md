@@ -119,7 +119,7 @@ Hardware for local runs: RTX 4060 Laptop 8 GB (WSL2, Ollama), so open-model cost
 ### LLM judge calibration
 
 <!-- RESULTS:judge -->
-*Pending: `evals/results/judge_calibration.json` has not been produced yet.*
+Cohen's kappa **-0.070** (quadratic-weighted 0.060), exact agreement 3.3%, within one point 50.0% on 30 proposals I labelled blind (judge qwen3:8b). <sub>Source: `evals/results/judge_calibration.json`</sub>
 <!-- /RESULTS:judge -->
 
 ### Deployment embedding trade-off
