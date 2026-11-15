@@ -4,12 +4,13 @@
   `models.nodes` maps each node to a tier. All providers are OpenAI-compatible (Ollama, Groq, ...).
 - Every call is recorded into the current usage scope: node, model, tokens, latency, USD. Graph nodes
   sum these per thread (token budget, R8 cost/latency reporting).
-- Bounded retries; nodes listed in `fallback_nodes` switch to the fallback model when the primary
+- Bounded retries (a 429 waits for the provider's retry-after instead of failing at once); nodes listed in `fallback_nodes` switch to the fallback model when the primary
   keeps failing (C7). Other nodes raise LLMUnavailable and the graph moves the job to dead-letter.
 - `structured()` asks for JSON and validates it into a Pydantic hand-off object, with one repair try.
 """
 from __future__ import annotations
 
+import asyncio
 import contextvars
 import json
 import os
@@ -18,7 +19,7 @@ import time
 from contextlib import contextmanager
 from typing import Any, TypeVar
 
-from openai import AsyncOpenAI, OpenAI
+from openai import AsyncOpenAI, OpenAI, RateLimitError
 from pydantic import BaseModel, ValidationError
 
 from agent import prompts
@@ -96,6 +97,18 @@ def _record(node: str, spec: dict, resp, secs: float, prompt_version: str) -> di
     return rec
 
 
+_RATE_WAITS = 6     # a 429 is not a model failure: wait as long as the provider asks, at most this many times
+
+
+def _rate_wait(e: Exception) -> float:
+    """Seconds to wait after a 429 (Groq free tier: 8k tokens/min), from Retry-After or the message."""
+    try:
+        return min(float(e.response.headers.get("retry-after")) + 0.5, 30.0)
+    except (AttributeError, TypeError, ValueError):
+        m = re.search(r"try again in ([\d.]+)s", str(e))
+        return min(float(m.group(1)) + 0.5, 30.0) if m else 10.0
+
+
 _THINK = re.compile(r"<think>.*?</think>", re.S)
 
 
@@ -132,13 +145,23 @@ async def acomplete(node: str, prompt: str, variables: dict, json_mode: bool = F
     msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}] + (extra_messages or [])
     last = None
     for spec in _specs(node):
-        for _ in range(int(_mcfg().get("max_retries", 1)) + 1):
+        tries, waits = int(_mcfg().get("max_retries", 1)) + 1, 0
+        while tries > 0:
             t = time.perf_counter()
             try:
                 resp = await _client(spec["provider"], True).chat.completions.create(
                     messages=msgs, **_params(spec, json_mode, temperature))
+            except RateLimitError as e:
+                last = e
+                if waits < _RATE_WAITS:
+                    waits += 1
+                    await asyncio.sleep(_rate_wait(e))
+                else:
+                    tries -= 1
+                continue
             except Exception as e:  # noqa: BLE001 - provider errors are retried, then fall back
                 last = e
+                tries -= 1
                 continue
             _record(node, spec, resp, time.perf_counter() - t, ver)
             return _text(resp)
@@ -153,13 +176,19 @@ def complete_text(node: str, variables: dict, prompt: str | None = None) -> str:
     msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     last = None
     for spec in _specs(node):
-        try:
-            t = time.perf_counter()
-            resp = _client(spec["provider"], False).chat.completions.create(messages=msgs, **_params(spec, False, 0.2))
-            _record(node, spec, resp, time.perf_counter() - t, ver)
-            return _text(resp)
-        except Exception as e:  # noqa: BLE001
-            last = e
+        for _ in range(_RATE_WAITS + 1):
+            try:
+                t = time.perf_counter()
+                resp = _client(spec["provider"], False).chat.completions.create(
+                    messages=msgs, **_params(spec, False, 0.2))
+                _record(node, spec, resp, time.perf_counter() - t, ver)
+                return _text(resp)
+            except RateLimitError as e:
+                last = e
+                time.sleep(_rate_wait(e))
+            except Exception as e:  # noqa: BLE001
+                last = e
+                break
     raise LLMUnavailable(f"{node}: all models failed ({last})")
 
 
