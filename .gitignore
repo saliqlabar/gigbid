@@ -22,3 +22,4 @@ apps/web/dist/
 apps/web/node_modules/
 .logs/
 docs/report/report.html
+demo-output/
