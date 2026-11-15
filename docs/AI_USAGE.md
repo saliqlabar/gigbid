@@ -15,19 +15,15 @@ assistant's text.
 | MCP servers and adapters | `mcp_servers/**`, `agent/marketplace_port.py` | drafted servers, schemas, idempotency and audit log; I reviewed the annotations and wrote the tool-design study tasks with it |
 | Agents and graphs | `agent/**` | drafted nodes, state, reducers, prompts (each prompt reviewed and edited by me) |
 | RAG | `rag/**` | implemented the variants and claim verification from my variant list |
-| Web and API | `apps/**` | generated most of the React screens and FastAPI routers; I checked them in the browser and with Playwright |
+| Web and API | `apps/**` | generated most of the React screens, FastAPI routers and Playwright scripts (tests and the demo recording); I checked them in the browser and with Playwright |
 | Evaluation | `evals/runners/**`, `scripts/**` | wrote the runners; I chose sample sizes and read the per-job detail files behind every aggregate |
 | Docs | `docs/**`, `README.md` | first drafts from the code and results files; I edited them |
-| Demo video | `apps/web/tests/demo/**` | wrote the Playwright script that recorded the captioned walkthrough on the live site; I checked the cut |
-| Write-up | Medium post | drafted an example article from my results files; I rewrote it and checked every number |
 | Synthetic data | `scripts/synth/**`, `scripts/data/**` | generated persona corpora and the dev set from the Kaggle Upwork data (see DATA_CARD.md) |
 
 Judge-calibration labels (`evals/datasets/judge_labels.csv`) are mine alone; the assistant never saw or
 proposed scores for them.
 
 ## Things it got wrong that were caught
-
-<!-- AUTHOR: keep the one(s) you personally caught and explain in your own words; delete the rest. -->
 
 1. **Guessed the Upwork tool names.** The first live adapter mapped port methods to tool names like
    `search_jobs` / `get_job` that do not exist. When the account was connected, Upwork's real `tools/list`
