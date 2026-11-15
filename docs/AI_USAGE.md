@@ -18,6 +18,8 @@ assistant's text.
 | Web and API | `apps/**` | generated most of the React screens and FastAPI routers; I checked them in the browser and with Playwright |
 | Evaluation | `evals/runners/**`, `scripts/**` | wrote the runners; I chose sample sizes and read the per-job detail files behind every aggregate |
 | Docs | `docs/**`, `README.md` | first drafts from the code and results files; I edited them |
+| Demo video | `apps/web/tests/demo/**` | wrote the Playwright script that recorded the captioned walkthrough on the live site; I checked the cut |
+| Write-up | Medium post | drafted an example article from my results files; I rewrote it and checked every number |
 | Synthetic data | `scripts/synth/**`, `scripts/data/**` | generated persona corpora and the dev set from the Kaggle Upwork data (see DATA_CARD.md) |
 
 Judge-calibration labels (`evals/datasets/judge_labels.csv`) are mine alone; the assistant never saw or

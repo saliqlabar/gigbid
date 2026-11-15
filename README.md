@@ -6,10 +6,10 @@ message and Connects spend before anything leaves the system. It runs on open-we
 Groq's hosted open models when deployed), talks to a marketplace simulator for development and grading, and
 to **Upwork's official MCP server** for real use, through the same adapter.
 
-<!-- DEMO GIF: docs/images/demo.gif (30 s: inbox → proposal studio → approve) -->
+![30-second demo: inbox → job detail → proposal studio → approve → pipeline](docs/images/demo.gif)
 
 **Live demo:** <https://gigbid-7w1o.onrender.com> (login `reviewer`, password in the Classroom submission; free plan sleeps when idle, first load takes ~1 min) ·
-**Demo video:** _link_ · **Write-up:** _link_ · **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md)
+**Demo video (3 min):** [Google Drive](https://drive.google.com/file/d/1Jpqsqtnn_Djk3THCdBcQzt2cAyUv8jZP/view) · **Write-up:** [Better Retrieval Didn't Make Better Proposals (Medium)](https://medium.com/@saliqlabar1/better-retrieval-didnt-make-better-proposals-63e6babae553) · **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md)
 (`uvx --from git+https://github.com/saliqlabar/gigbid gigbid-portfolio-mcp`)
 
 AI-4016 R&D assignment (FAST-NUCES Islamabad). Report: [`docs/report/`](docs/report/) · Design review docs: [`docs/`](docs/).
@@ -135,6 +135,11 @@ The free host has 512 MB RAM; `nomic-embed-text-v1.5` alone needs about 900 MB, 
 
 <sub>Source: `rag_variants.json` vs `rag_deploy_embedding.json`</sub>
 <!-- /RESULTS:deploy_embedding -->
+
+## Résumé bullet
+
+* Built GigBid, a LangGraph multi-agent freelancer copilot (3 MCP servers, hybrid RAG with claim verification, human approval with exactly-once submit) that cut unsupported claims to 0.737 per proposal vs 2.000 for a single ReAct agent and raised bid/skip accuracy to 0.837 vs 0.653 on the same jobs.
+* Ran retrieval ablations and a 30-label LLM-judge calibration (kappa -0.070), found the reranker lowered Recall@5 (0.355 without it vs 0.327) and fixed a fail-open risk check that let 4 scams through (4 → 0).
 
 ## Traces
 
