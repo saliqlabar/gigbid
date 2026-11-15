@@ -541,9 +541,10 @@ whose writer agent reads the post, left 3 violations in final letters on injecti
 
 ## 10. Results against the declared budgets
 
-The instructor's hidden test run happens after the deadline against the live URL; at the time of writing there is
-no live URL (free hosts that fit the stack required a payment card), so this section reports the dev-set runs
-against the budgets declared in section 1, without excuses.
+The instructor's hidden test run happens after the deadline against the live URL
+(<https://gigbid-7w1o.onrender.com>, Render free plan, `open_hosted` profile on Groq). The live URL went up on the
+last day, after the eval runs, so this section reports the dev-set runs against the budgets declared in section 1,
+without excuses; the hosted rows stay n/a because no measured hosted run exists.
 
 <!-- RESULTS:budgets -->
 | Environment | Budget | Declared | Measured | Status |
@@ -614,9 +615,12 @@ the shipped model too: it had 1 crashed job in 120.
 bidding more: in the final run even skipped jobs had a median of 32.7 s (22.6 s in run 1), so the whole pipeline
 was slower. Run 1 and the final run used the same models and jobs; the final run was made after the WSL memory
 change and the extra injection-stripping step, and I did not isolate which of the two (or GPU contention) is
-responsible. *Met:* 0 USD per job locally. *Not measured:* the proposal budgets (pending `outcomes_best.json`)
-and every hosted budget, because there is no hosted deployment (section 10 opening) and the Groq decision run was
-not made; these are reported as n/a rather than estimated.
+responsible. *Met:* local p95 per proposal (359.8 s against 420 s) and 0 USD per job and per proposal locally.
+*Not measured:* every hosted budget, because the deployment went live after the eval runs (section 10 opening) and the Groq
+decision run was not made; these are reported as n/a rather than estimated. A first smoke test on the live URL
+found one real defect: a scout analysing 10 jobs hit Groq's free-tier limit (8,000 tokens/min) and every job went
+to dead-letter, because the retry loop retried a 429 immediately. Model calls now wait for the provider's
+retry-after (at most 6 waits) before counting a failure.
 
 ## Appendix A — reproducing every table
 
