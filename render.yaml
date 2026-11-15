@@ -21,6 +21,6 @@ services:
       - key: GIGSIM_API_TOKEN
         sync: false
       - key: CORS_ORIGINS
-        value: https://gigbid.onrender.com
+        value: https://gigbid-7w1o.onrender.com
       - key: APP_ENV
         value: production

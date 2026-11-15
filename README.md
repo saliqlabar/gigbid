@@ -8,7 +8,7 @@ to **Upwork's official MCP server** for real use, through the same adapter.
 
 <!-- DEMO GIF: docs/images/demo.gif (30 s: inbox → proposal studio → approve) -->
 
-**Live demo:** _link added at deployment_ (reviewer login in the Classroom submission) ·
+**Live demo:** <https://gigbid-7w1o.onrender.com> (login `reviewer`, password in the Classroom submission; free plan sleeps when idle, first load takes ~1 min) ·
 **Demo video:** _link_ · **Write-up:** _link_ · **Portfolio MCP server:** [`mcp_servers/portfolio`](mcp_servers/portfolio/README.md)
 (`uvx --from git+https://github.com/saliqlabar/gigbid gigbid-portfolio-mcp`)
 
